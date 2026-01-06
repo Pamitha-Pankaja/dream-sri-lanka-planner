@@ -14,6 +14,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 const Index = () => {
   return (
     <LanguageProvider>
+      {/* Main content container */}
       <div className="min-h-screen">
         <Navbar />
         <HeroSection />
