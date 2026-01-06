@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
-import { ArrowLeft, Calendar, MapPin, Check, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2 } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import SriLankaMap from './SriLankaMap';
 
@@ -88,6 +88,32 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
         </div>
       </div>
 
+      {/* Places to Stay */}
+      {tour.placesToStay && tour.placesToStay.length > 0 && (
+        <div className="mb-16">
+          <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('placesToStay')}</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {tour.placesToStay.map((stay, idx) => (
+              <div
+                key={idx}
+                className="bg-card rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-300 border border-border/50"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Building2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-primary font-medium uppercase tracking-wide mb-1">{stay.location}</p>
+                    <h4 className="font-medium text-foreground mb-1">{stay.hotel}</h4>
+                    <p className="text-xs text-muted-foreground">{stay.type}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Route Map */}
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('routeMap')}</h2>
@@ -133,6 +159,14 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                 </div>
 
                 <p className="text-muted-foreground mb-4">{day.description}</p>
+
+                {/* Accommodation */}
+                {day.accommodation && (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 bg-secondary/50 px-3 py-2 rounded-lg w-fit">
+                    <Building2 className="w-4 h-4 text-primary" />
+                    <span>{t('overnightAt')} <strong className="text-foreground">{day.accommodation}</strong></span>
+                  </div>
+                )}
 
                 <div className="flex flex-wrap gap-2">
                   {day.activities.map((activity, actIdx) => (

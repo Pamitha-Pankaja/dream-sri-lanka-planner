@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import LanguageSwitcher from './LanguageSwitcher';
 import WhatsAppButton from './WhatsAppButton';
 import heroElephants from '@/assets/hero-elephants.jpg';
 
@@ -12,7 +11,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -22,18 +21,6 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
       </div>
-
-      {/* Language Switcher */}
-      <div className="absolute top-6 right-6 z-20 text-primary-foreground">
-        <LanguageSwitcher />
-      </div>
-
-      {/* Navigation */}
-      <nav className="absolute top-6 left-6 z-20 hidden md:flex items-center gap-8">
-        <span className="text-2xl font-serif font-bold text-primary-foreground tracking-tight">
-          Visit Sri Lanka
-        </span>
-      </nav>
 
       {/* Hero Content */}
       <div className="relative z-10 text-center text-primary-foreground px-4 max-w-5xl mx-auto">
