@@ -1,8 +1,10 @@
 import React from 'react';
 import { LanguageProvider } from '@/context/LanguageContext';
+import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import WhySriLanka from '@/components/WhySriLanka';
 import ToursSection from '@/components/ToursSection';
+import DayToursSection from '@/components/DayToursSection';
 import ExperiencesSection from '@/components/ExperiencesSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import ContactSection from '@/components/ContactSection';
@@ -13,9 +15,11 @@ const Index = () => {
   return (
     <LanguageProvider>
       <div className="min-h-screen">
+        <Navbar />
         <HeroSection />
         <WhySriLanka />
         <ToursSection />
+        <DayToursSection />
         <ExperiencesSection />
         <ReviewsSection />
         <ContactSection />
