@@ -45,348 +45,714 @@ export interface DayTour {
 
 export const tours: Tour[] = [
   {
-    id: 'classic-sri-lanka',
-    name: 'Classic Sri Lanka Discovery',
-    duration: { days: 12, nights: 11 },
-    summary: 'The ultimate journey through Sri Lanka\'s cultural heart, misty highlands, wild safaris, and tropical beaches. Experience ancient wonders, scenic train rides, and unforgettable wildlife encounters.',
-    route: ['Colombo', 'Sigiriya', 'Kandy', 'Nuwara Eliya', 'Ella', 'Yala', 'Mirissa', 'Bentota'],
-    tags: ['culture', 'wildlife', 'nature', 'beach'],
+    id: 'luxury-classic-sri-lanka',
+    name: 'Luxury Holidays Classic Sri Lanka',
+    duration: { days: 16, nights: 15 },
+    summary: 'This itinerary takes in the very best that Sri Lanka has to offer. Journey from bustling Colombo to ancient ruins and temples of the Cultural Triangle, up into the mystical Hill Country full of tea plantations, then head down south to the coast for whale watching, surfing, and incredible food. Cap off a wonderful holiday in the UNESCO World Heritage site of Galle Fort.',
+    route: ['Negombo', 'Anuradhapura', 'Sigiriya', 'Kandy', 'Tea Country', 'Yala', 'Galle'],
+    tags: ['culture', 'wildlife', 'nature', 'beach', 'heritage'],
     heroImage: sigiriyaFortress,
     highlights: [
-      'Climb the ancient Sigiriya Rock Fortress',
-      'Scenic train ride through tea country',
+      'Explore magnificent Anuradhapura ancient city',
+      'Climb UNESCO-listed Sigiriya Rock Fortress',
+      'Visit Temple of the Tooth in Kandy',
+      'Scenic train ride through Tea Country',
       'Safari at Yala National Park',
-      'Temple of the Sacred Tooth Relic',
-      'Whale watching in Mirissa',
-      'Beach relaxation in Bentota'
+      'Discover UNESCO Galle Fort',
+      'Visit Handunugoda Tea Estate',
+      'Whale watching in Galle'
     ],
     placesToStay: [
-      { location: 'Colombo', hotel: 'Shangri-La Colombo', type: '5-Star Luxury' },
-      { location: 'Sigiriya', hotel: 'Aliya Resort & Spa', type: 'Boutique Resort' },
-      { location: 'Kandy', hotel: 'Earl\'s Regency', type: '5-Star Hotel' },
-      { location: 'Nuwara Eliya', hotel: 'Heritance Tea Factory', type: 'Heritage Hotel' },
-      { location: 'Ella', hotel: '98 Acres Resort', type: 'Eco Retreat' },
-      { location: 'Yala', hotel: 'Cinnamon Wild Yala', type: 'Safari Lodge' },
-      { location: 'Mirissa', hotel: 'Lantern Boutique Hotel', type: 'Beach Boutique' },
-      { location: 'Bentota', hotel: 'Taj Bentota Resort', type: '5-Star Beach Resort' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
+      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique' },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
+      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows' },
+      { location: 'Yala', hotel: 'Ruhunu Yala Safari Camping', type: 'Luxury Camp' },
+      { location: 'Galle', hotel: 'Kahanda Kanda', type: 'Boutique Villa' },
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Welcome to Colombo',
-        description: 'Arrive at Bandaranaike International Airport where your personal guide awaits. Transfer to your boutique hotel in Colombo. Evening city orientation walk through the historic Fort district and vibrant Pettah markets.',
+        title: 'Arrival',
+        description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to your hotel, The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa. You will have the remainder of the day at leisure to explore the surroundings or just relax.',
         image: beachParadise,
-        location: 'Colombo',
-        activities: ['Airport pickup', 'City tour', 'Local dinner'],
-        accommodation: 'Shangri-La Colombo'
+        location: 'Negombo',
+        activities: ['Airport pickup', 'Hotel check-in', 'Leisure time'],
+        accommodation: 'The Wallawwa'
       },
       {
         day: 2,
-        title: 'Journey to Sigiriya',
-        description: 'Drive through the scenic countryside to the Cultural Triangle. Visit the magnificent Dambulla Cave Temple with its stunning Buddha statues. Afternoon at leisure to explore the village by bicycle or relax by the pool.',
+        title: 'Negombo to Anuradhapura',
+        description: 'This morning, meet your personal driver and start your journey to Anuradhapura, approximately 4.5 hours away. Upon arrival, check into Ulagalla Resort. This perfectly positioned boutique eco-hotel is in prime location to explore the Cultural Triangle of Sri Lanka. Beautifully furnished to the highest standard with state-of-the-art amenities, each room features a four-poster bed, plunge pool and terrace, as well as bicycles for guests to use.',
         image: sigiriyaFortress,
-        location: 'Sigiriya',
-        activities: ['Dambulla Cave Temple', 'Village cycling', 'Sunset views'],
-        accommodation: 'Aliya Resort & Spa'
+        location: 'Anuradhapura',
+        activities: ['Scenic drive', 'Resort check-in', 'Pool relaxation'],
+        accommodation: 'Ulagalla Resort'
       },
       {
         day: 3,
-        title: 'Sigiriya Rock Fortress',
-        description: 'Early morning climb of the iconic Sigiriya Rock Fortress, a UNESCO World Heritage Site. Marvel at the ancient frescoes and water gardens. Afternoon visit to Polonnaruwa ancient city with its remarkable ruins.',
+        title: 'Visit Anuradhapura',
+        description: 'After breakfast, visit the magnificent Anuradhapura with your expert guide. Sights include Jethawanaramaya, Twin Ponds, Samadhi statue, Moonstone, Abayagiriya, Rathnaprasadaya, Thuparamaya and Ruwanweliseya. If time permits, visit Mihinthale and Isurumuniya with your driver. In the afternoon, make your way to Dambulla, which houses the famed Royal Rock Temple.',
         image: sigiriyaFortress,
-        location: 'Sigiriya',
-        activities: ['Rock fortress climb', 'Ancient frescoes', 'Polonnaruwa ruins'],
-        accommodation: 'Aliya Resort & Spa'
+        location: 'Anuradhapura',
+        activities: ['Ancient city tour', 'Dambulla Cave Temple', 'Cultural exploration'],
+        accommodation: 'Ulagalla Resort'
       },
       {
         day: 4,
-        title: 'Royal Kandy',
-        description: 'Drive to Kandy, passing through spice gardens. Visit the sacred Temple of the Tooth Relic. Experience a traditional Kandyan dance performance. Evening stroll around Kandy Lake.',
-        image: kandyTemple,
+        title: 'Visit Sigiriya en route to Kandy',
+        description: 'Depart Ulagalla Resort for Kandy. En route, visit Sigiriya Rock Fortress, an ancient rock fortress and palace ruin in the heart of the Matale District. This UNESCO World Heritage Site was built in the 5th century AD by King Kasyapa as a fortress-palace. The tour takes approximately 3 hours. Enjoy lunch at Ena de Silva then continue to Kandy. Upon arrival, explore the Temple of the Tooth and enjoy a cultural show before checking into The Kandy House.',
+        image: sigiriyaFortress,
         location: 'Kandy',
-        activities: ['Temple of the Tooth', 'Spice garden', 'Cultural dance show'],
-        accommodation: 'Earl\'s Regency'
+        activities: ['Sigiriya Rock climb', 'Ancient frescoes', 'Temple of the Tooth', 'Cultural show'],
+        accommodation: 'The Kandy House'
       },
       {
         day: 5,
-        title: 'Tea Country Highlands',
-        description: 'Journey to Nuwara Eliya through emerald tea plantations. Visit a working tea factory and learn the art of Ceylon tea. Explore the charming colonial-era town known as "Little England."',
-        image: teaPlantation,
-        location: 'Nuwara Eliya',
-        activities: ['Tea factory tour', 'Tea tasting', 'Colonial town walk'],
-        accommodation: 'Heritance Tea Factory'
+        title: 'Kandy',
+        description: 'Your guide will take you on a tour to explore Kandy at your own leisure. Kandy was the last capital of the Sri Lankan kings and is a UNESCO World Heritage Site. Visit the Temple of the Tooth which houses the relic of Buddha, witness a traditional Kandyan dance performance, and explore the Royal Botanic Gardens. You may also enjoy a game of golf at Victoria\'s scenic Golf & Country Club or visit Udawattakele sanctuary.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Temple of the Tooth', 'Royal Botanic Gardens', 'Cultural dance show', 'City stroll'],
+        accommodation: 'The Kandy House'
       },
       {
         day: 6,
-        title: 'Scenic Train to Ella',
-        description: 'Board the famous blue train for one of the world\'s most scenic rail journeys. Wind through misty mountains, tea estates, and dramatic bridges. Arrive in the laid-back town of Ella.',
+        title: 'Kandy to Tea Country',
+        description: 'Early morning, head by train to the Hill Country in central Sri Lanka. The train ride from Kandy to the heart of Sri Lanka\'s Tea Country is one of the most scenic train rides in Asia. As you meander out of Kandy, dense jungle opens into cloud forest, with undulating vistas of immaculate tea bush carpets in between. On arrival, you will be driven to Tea Trails where you will check in and have the rest of the day free at leisure.',
         image: ellaTrain,
-        location: 'Ella',
-        activities: ['Scenic train ride', 'Mountain views', 'Nine Arches Bridge'],
-        accommodation: '98 Acres Resort'
+        location: 'Tea Country',
+        activities: ['Scenic train ride', 'Mountain views', 'Resort check-in'],
+        accommodation: 'Ceylon Tea Trails'
       },
       {
         day: 7,
-        title: 'Ella Adventures',
-        description: 'Sunrise hike to Little Adam\'s Peak for panoramic views. Visit the iconic Nine Arches Bridge. Afternoon waterfall swim at Ravana Falls. Evening cooking class with a local family.',
-        image: waterfall,
-        location: 'Ella',
-        activities: ['Hiking', 'Waterfall swim', 'Cooking class'],
-        accommodation: '98 Acres Resort'
+        title: 'Tea Country',
+        description: 'Relax and explore the beauty of the Tea Country at your leisure. Optional activities include a private guided tour of a tea factory to learn about the process and sample different teas, mountain biking along trails with a picnic lunch, white water rafting at Kitulgala, visit to Nuwara Eliya (Little Scotland) with opportunity to play golf on one of the most scenic courses in the world, or scale Adam\'s Peak at sunrise.',
+        image: teaPlantation,
+        location: 'Tea Country',
+        activities: ['Tea factory tour', 'Tea tasting', 'Optional hiking', 'Mountain biking'],
+        accommodation: 'Ceylon Tea Trails'
       },
       {
         day: 8,
-        title: 'Wild Yala',
-        description: 'Drive to Yala National Park, home to the world\'s highest density of leopards. Afternoon safari through diverse landscapes searching for elephants, leopards, and exotic birds.',
-        image: yalaLeopard,
-        location: 'Yala',
-        activities: ['Wildlife safari', 'Leopard spotting', 'Bush dinner'],
-        accommodation: 'Cinnamon Wild Yala'
+        title: 'Tea Country',
+        description: 'Another day to enjoy the all-inclusive comforts of Tea Trails. Continue exploring the misty highlands, visit more tea estates, or simply relax and take in the stunning mountain scenery from your colonial planter\'s bungalow.',
+        image: teaPlantation,
+        location: 'Tea Country',
+        activities: ['Leisure day', 'Tea estate visits', 'Relaxation'],
+        accommodation: 'Ceylon Tea Trails'
       },
       {
         day: 9,
-        title: 'Dawn Safari & Coastal Journey',
-        description: 'Early morning safari to catch wildlife at their most active. After breakfast, drive to the southern coast and the charming beach town of Mirissa. Sunset on the beach.',
+        title: 'Tea Trails to Yala',
+        description: 'Rise early for a 6-hour drive to Ruhunu Yala Safari tented camp in Yala National Park. Arrive at noon to be greeted by a gourmet lunch, followed by an evening game drive and dinner. Ruhunu Yala Safaris combines professional guides and luxury camping facilities with the ultimate safari experience deep in Yala National Park.',
         image: yalaLeopard,
-        location: 'Mirissa',
-        activities: ['Morning safari', 'Beach arrival', 'Sunset drinks'],
-        accommodation: 'Lantern Boutique Hotel'
+        location: 'Yala',
+        activities: ['Scenic drive', 'Gourmet lunch', 'Evening safari'],
+        accommodation: 'Ruhunu Yala Safari Camping'
       },
       {
         day: 10,
-        title: 'Whale Watching & Beach Life',
-        description: 'Optional early morning whale watching excursion to see blue whales and dolphins. Rest of the day at leisure for beach relaxation, snorkeling, or exploring the coast.',
+        title: 'Yala Safari',
+        description: 'Full day of safari adventures in Yala National Park. Yala is home to the world\'s highest density of leopards, along with elephants, sloth bears, and exotic birds. Enjoy morning and evening game drives with expert guides, and relax at camp during the heat of the day.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Morning safari', 'Wildlife spotting', 'Evening safari'],
+        accommodation: 'Ruhunu Yala Safari Camping'
+      },
+      {
+        day: 11,
+        title: 'Yala Safari',
+        description: 'Continue your safari experience with more game drives. The diverse landscapes of Yala offer excellent opportunities to spot leopards, elephants, crocodiles, and over 200 species of birds. Enjoy bush dinners under the stars.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Safari drives', 'Bird watching', 'Bush dinner'],
+        accommodation: 'Ruhunu Yala Safari Camping'
+      },
+      {
+        day: 12,
+        title: 'Yala Safari',
+        description: 'Final morning safari to catch wildlife at their most active before departing from camp. A magical once-in-a-lifetime camping experience at the edge of Sri Lanka\'s premier game reserve.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Dawn safari', 'Wildlife photography', 'Camp departure'],
+        accommodation: 'Ruhunu Yala Safari Camping'
+      },
+      {
+        day: 13,
+        title: 'From Yala to Galle',
+        description: 'Drive to Galle, approximately 6 hours away. Upon arrival, check into Kahanda Kanda, followed by lunch and a tour of a cinnamon plantation. In the afternoon, visit Handunugoda Tea Estate, possibly the closest tea plantation in the world to the sea. Known as the Virgin\'s White Tea Factory, it produces tea completely untouched by hand. Finish with a tea tasting.',
+        image: beachParadise,
+        location: 'Galle',
+        activities: ['Coastal drive', 'Cinnamon plantation', 'Handunugoda Tea Estate', 'Tea tasting'],
+        accommodation: 'Kahanda Kanda'
+      },
+      {
+        day: 14,
+        title: 'Exploring Galle',
+        description: 'Free day at leisure to relax and enjoy Kahanda Kanda and Galle. Just 15 minutes from the beaches of Galle. Suggested activities include visiting the UNESCO World Heritage Site of Galle Fort, exploring boutique shops on Hospital Street, Church Street or Leyn Bann Street, or taking a Galle Fort walk excursion with your chauffeur.',
+        image: beachParadise,
+        location: 'Galle',
+        activities: ['Galle Fort tour', 'Boutique shopping', 'Beach time'],
+        accommodation: 'Kahanda Kanda'
+      },
+      {
+        day: 15,
+        title: 'Exploring Galle',
+        description: 'Another day to explore the southern coast. Visit Unawatuna Beach, a turtle hatchery, take a rainforest excursion, enjoy a boat ride on Koggala Lake, or go whale watching. Spend your final night at Kahanda Kanda and prepare for departure.',
+        image: mirissaSunset,
+        location: 'Galle',
+        activities: ['Beach visit', 'Turtle hatchery', 'Whale watching', 'Koggala Lake boat ride'],
+        accommodation: 'Kahanda Kanda'
+      },
+      {
+        day: 16,
+        title: 'Departure',
+        description: 'Around 8:00 am you will be picked up at your hotel and driven to Colombo airport (approximately 3 hour drive) in time to catch your flight home.',
+        image: beachParadise,
+        location: 'Colombo Airport',
+        activities: ['Airport transfer', 'Departure']
+      }
+    ]
+  },
+  {
+    id: 'luxury-wild-holidays',
+    name: 'Luxury Wild Holidays Sri Lanka',
+    duration: { days: 14, nights: 13 },
+    summary: 'Renowned for its charming colonial vibe, incredible tea country and plethora of beaches, Sri Lanka is also home to some great wilderness. During this itinerary, immerse yourself in the country and encounter exotic animals that call the Pearl of the Indian Ocean home. From elephants to whales, the ever elusive leopard and bears, there is much to be admired.',
+    route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Koggala', 'Galle'],
+    tags: ['wildlife', 'nature', 'safari', 'beach'],
+    heroImage: yalaLeopard,
+    highlights: [
+      'Millennium Elephant Foundation experience',
+      'Temple of the Tooth in Kandy',
+      'Royal Botanical Gardens',
+      'Living Heritage Koslanda retreat',
+      'Yala National Park safari camping',
+      'Leopard and elephant spotting',
+      'Koggala Lake exploration',
+      'Galle Fort discovery'
+    ],
+    placesToStay: [
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
+      { location: 'Kandy', hotel: 'Polwaththa Eco Lodges', type: 'Eco Lodge' },
+      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel' },
+      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Luxury Camp' },
+      { location: 'Koggala', hotel: 'Tri Lanka', type: 'Sustainable Luxury' },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival',
+        description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa. Remainder of the day at leisure.',
+        image: beachParadise,
+        location: 'Negombo',
+        activities: ['Airport pickup', 'Hotel check-in', 'Leisure time'],
+        accommodation: 'The Wallawwa'
+      },
+      {
+        day: 2,
+        title: 'From Negombo to Kandy',
+        description: 'Travel into the hills via the Millennium Elephant Foundation where you can enjoy watching elephants bathing in a river. Continue to Polwaththa Eco Lodges, consisting of 14 lodges in a pristine environment, giving you a "Living-in-the-Jungle" experience. Situated 19km east of Kandy, each lodge offers comfort with great views and privacy, within reach of the stunning Knuckles Range.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Millennium Elephant Foundation', 'Elephant watching', 'Eco lodge check-in'],
+        accommodation: 'Polwaththa Eco Lodges'
+      },
+      {
+        day: 3,
+        title: 'Kandy Exploration',
+        description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and watching a cultural dancing show featuring traditional Kandyan dance accompanied by live music.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Temple of the Tooth', 'Royal Botanical Gardens', 'Cultural dance show', 'Hiking'],
+        accommodation: 'Polwaththa Eco Lodges'
+      },
+      {
+        day: 4,
+        title: 'From Kandy to Koslanda',
+        description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country, named for the velveteen tea plantations that carpet the misty hills. Drive through the market town of Nuwara Eliya, and continue to Koslanda, near Haputale, to stay at Living Heritage Koslanda. This secluded boutique hotel celebrates Sri Lanka\'s traditional architectural design and is set in 80 acres, including a patch of forest known locally as "God\'s Forest", with a river and secluded waterfall.',
+        image: teaPlantation,
+        location: 'Koslanda',
+        activities: ['Scenic drive', 'Tea country views', 'Boutique hotel check-in'],
+        accommodation: 'Living Heritage Koslanda'
+      },
+      {
+        day: 5,
+        title: 'Koslanda',
+        description: 'Elephants seasonally travel through the forest and much wildlife can be seen in the hotel grounds. Suggested activities include guided walks, visits to tea and rubber plantations, and day trips to Udawalawe National Park, famous for herds of elephants.',
+        image: waterfall,
+        location: 'Koslanda',
+        activities: ['Guided forest walks', 'Tea plantation visits', 'Wildlife spotting'],
+        accommodation: 'Living Heritage Koslanda'
+      },
+      {
+        day: 6,
+        title: 'Admiring Wildlife at Yala National Park',
+        description: 'Descend the hills into the low-lying southeastern plains and to the edge of Yala National Park, stopping off en route at Buduruwagala – a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to a dense population of leopards, elephants and sloth bears.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Buduruwagala Buddhist carvings', 'Camp check-in', 'Evening safari'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 7,
+        title: 'Yala Safari',
+        description: 'Camping at the edge of the park is a magical once-in-a-lifetime experience. Ruhunu Yala Safari Camp has comfortable family and double tents, with two game drives per day led by experienced local guides. Search for leopards, elephants, and the incredible diversity of wildlife in this premier game reserve.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Morning safari', 'Leopard spotting', 'Evening safari'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 8,
+        title: 'Yala Safari',
+        description: 'Continue your safari adventure with more game drives through Yala\'s diverse landscapes. The park is home to over 200 bird species, making it a paradise for bird watchers as well as those seeking larger wildlife encounters.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Safari drives', 'Bird watching', 'Wildlife photography'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 9,
+        title: 'Koggala Lake',
+        description: 'Travel west along the picturesque cove-sprinkled southern coastline to Koggala Lake, a 30-minute drive from the famed UNESCO town of Galle. Stay at Tri Lanka, a fantastic hotel celebrating local materials and luxurious yet fully sustainable architectural design on the banks of Koggala Lake, one of Sri Lanka\'s largest inland waterways.',
+        image: beachParadise,
+        location: 'Koggala',
+        activities: ['Coastal drive', 'Sustainable luxury hotel', 'Lake views'],
+        accommodation: 'Tri Lanka'
+      },
+      {
+        day: 10,
+        title: 'Koggala',
+        description: 'Take a boat trip on Koggala Lake to see birds, visit Sinharaja Rainforest, go whale or dolphin watching (in season) or simply relax on a nearby beach. Other suggested activities include guided bicycle rides, river kayaking, surfing and visits to local turtle hatcheries.',
+        image: beachParadise,
+        location: 'Koggala',
+        activities: ['Lake boat trip', 'Bird watching', 'Beach relaxation'],
+        accommodation: 'Tri Lanka'
+      },
+      {
+        day: 11,
+        title: 'Koggala',
+        description: 'Another day to explore the area around Koggala Lake. Visit the Sinharaja Rainforest, a UNESCO World Heritage Site, or spend the day kayaking, cycling, or relaxing at the sustainable luxury of Tri Lanka.',
+        image: beachParadise,
+        location: 'Koggala',
+        activities: ['Rainforest visit', 'Kayaking', 'Cycling'],
+        accommodation: 'Tri Lanka'
+      },
+      {
+        day: 12,
+        title: 'Koggala',
+        description: 'Continue to enjoy the peaceful surroundings of Koggala Lake. Optional whale watching excursions, visits to turtle hatcheries, or simply relaxing by the pool with views of the lake.',
+        image: mirissaSunset,
+        location: 'Koggala',
+        activities: ['Whale watching', 'Turtle hatchery', 'Pool relaxation'],
+        accommodation: 'Tri Lanka'
+      },
+      {
+        day: 13,
+        title: 'Koggala',
+        description: 'Final full day to explore Galle Fort or enjoy the beaches. The UNESCO World Heritage Site of Galle Fort is just a short drive away, offering boutique shops, art galleries, and historic ramparts to explore.',
+        image: beachParadise,
+        location: 'Koggala',
+        activities: ['Galle Fort visit', 'Shopping', 'Beach time'],
+        accommodation: 'Tri Lanka'
+      },
+      {
+        day: 14,
+        title: 'Departure',
+        description: 'Depart Galle and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
+        image: beachParadise,
+        location: 'Colombo Airport',
+        activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
+      }
+    ]
+  },
+  {
+    id: 'luxury-honeymoon',
+    name: 'Luxury Honeymoon in Sri Lanka',
+    duration: { days: 14, nights: 13 },
+    summary: 'Sri Lanka makes a perfect destination for newlyweds. Famed for its wonderful landscape and relaxing atmosphere, it\'s such a romantic place. There are romantic spots all over the island, simply perfect for a honeymoon. Visit a variety of romantic settings such as the misty tea plantations, historical sites and Yala National Park, while staying at the most romantic hotels.',
+    route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Mirissa', 'Galle'],
+    tags: ['honeymoon', 'romance', 'luxury', 'beach', 'wildlife'],
+    heroImage: mirissaSunset,
+    highlights: [
+      'Romantic manor house stay at The Wallawwa',
+      'Millennium Elephant Foundation experience',
+      'Historic Kandy House boutique stay',
+      'Secluded Living Heritage Koslanda',
+      'Romantic safari camping at Yala',
+      'Beachfront bliss in Mirissa',
+      'Whale watching excursion',
+      'Galle Fort exploration'
+    ],
+    placesToStay: [
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
+      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel' },
+      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Honeymoon Suite' },
+      { location: 'Mirissa', hotel: 'Lantern Boutique Hotel', type: 'Beachfront Boutique' },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival',
+        description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges couples with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa – the venue for post- and pre-flight pampering.',
+        image: beachParadise,
+        location: 'Negombo',
+        activities: ['Airport pickup', 'Romantic check-in', 'Spa relaxation'],
+        accommodation: 'The Wallawwa'
+      },
+      {
+        day: 2,
+        title: 'Negombo',
+        description: 'Spend the day at leisure to explore the surroundings or just relax. Enjoy the tropical gardens, indulge in couples spa treatments, and savor gourmet cuisine at this romantic manor house.',
+        image: beachParadise,
+        location: 'Negombo',
+        activities: ['Couples spa', 'Garden strolls', 'Romantic dinner'],
+        accommodation: 'The Wallawwa'
+      },
+      {
+        day: 3,
+        title: 'Exploring Kandy',
+        description: 'Travel to your next destination, Kandy – "City Top of the Mountain". On the way, visit the Millennium Elephant Foundation to observe and walk with elephants. Arrive at the charming and historic Kandy House, a stunning manor house that is beautifully romantic and particularly suited to honeymooners.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Elephant experience', 'Scenic drive', 'Romantic hotel check-in'],
+        accommodation: 'The Kandy House'
+      },
+      {
+        day: 4,
+        title: 'Kandy',
+        description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and enjoying a traditional Kandyan dance show.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Temple of the Tooth', 'Botanical Gardens', 'Cultural show'],
+        accommodation: 'The Kandy House'
+      },
+      {
+        day: 5,
+        title: 'From Kandy to Koslanda',
+        description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country. Drive through the market town of Nuwara Eliya and continue to Koslanda to stay at Living Heritage Koslanda. This secluded boutique hotel offers three hugely spacious suites with generous living areas, courtyard with alfresco jacuzzi and open-to-the-skies shower.',
+        image: teaPlantation,
+        location: 'Koslanda',
+        activities: ['Tea country drive', 'Boutique hotel', 'Jacuzzi relaxation'],
+        accommodation: 'Living Heritage Koslanda'
+      },
+      {
+        day: 6,
+        title: 'Koslanda',
+        description: 'Set in 80 acres, the property borders a patch of forest known locally as "God\'s Forest", which contains a river and a secluded waterfall. Suggested activities include trekking, tree planting and cooking classes together.',
+        image: waterfall,
+        location: 'Koslanda',
+        activities: ['Waterfall visit', 'Couples cooking class', 'Forest trekking'],
+        accommodation: 'Living Heritage Koslanda'
+      },
+      {
+        day: 7,
+        title: 'Yala National Park',
+        description: 'Travel from the hills into the low-lying southeastern plains to the edge of Yala National Park. Stop at Buduruwagala, a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to leopards, elephants and sloth bears.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Buddhist rock carvings', 'Safari camp arrival', 'Evening safari'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 8,
+        title: 'Yala Safari',
+        description: 'Cozy up under canvas in the camp\'s beautifully secluded AC Honeymoon Suite, dine à deux by candlelight, shower under the stars and enjoy expertly guided game drives into the park. A magical once-in-a-lifetime experience for couples.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Game drives', 'Romantic candlelit dinner', 'Star gazing'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 9,
+        title: 'Yala Safari',
+        description: 'Continue your romantic safari adventure. Search for the elusive leopard together, spot elephants at waterholes, and enjoy the thrill of African-style safari in this incredible national park.',
+        image: yalaLeopard,
+        location: 'Yala',
+        activities: ['Morning safari', 'Wildlife spotting', 'Sunset drinks'],
+        accommodation: 'Ruhunu Safari Camping'
+      },
+      {
+        day: 10,
+        title: 'Mirissa',
+        description: 'Travel west along the picturesque cove-sprinkled southern coastline to Mirissa, famed for pretty beaches and surfing lessons. Check into Lantern Boutique Hotel, a blissful beach villa with swimming pool overlooking the Indian Ocean.',
         image: mirissaSunset,
         location: 'Mirissa',
-        activities: ['Whale watching', 'Beach relaxation', 'Snorkeling'],
+        activities: ['Coastal drive', 'Beach check-in', 'Sunset on beach'],
         accommodation: 'Lantern Boutique Hotel'
       },
       {
         day: 11,
-        title: 'Golden Beaches of Bentota',
-        description: 'Transfer to Bentota along the scenic coastal road. Afternoon water sports or spa treatments. Farewell dinner at a beachfront restaurant.',
-        image: beachParadise,
-        location: 'Bentota',
-        activities: ['Water sports', 'Spa', 'Farewell dinner'],
-        accommodation: 'Taj Bentota Resort'
+        title: 'Mirissa',
+        description: 'Enjoy alfresco dining, relax poolside, indulge in spa treatments together. Optional whale watching trip to see blue whales and dolphins, or take a city tour of Matara.',
+        image: mirissaSunset,
+        location: 'Mirissa',
+        activities: ['Whale watching', 'Couples spa', 'Poolside relaxation'],
+        accommodation: 'Lantern Boutique Hotel'
       },
       {
         day: 12,
-        title: 'Farewell Sri Lanka',
-        description: 'Final morning to enjoy the beach. Transfer to the airport for your departure, taking home memories of an unforgettable journey through the pearl of the Indian Ocean.',
+        title: 'Mirissa',
+        description: 'Another day of beachfront bliss. Surfing lessons, sunset walks along the beach, or simply enjoying the romantic atmosphere of this beautiful southern coast.',
+        image: mirissaSunset,
+        location: 'Mirissa',
+        activities: ['Surfing lessons', 'Beach walks', 'Romantic dinner'],
+        accommodation: 'Lantern Boutique Hotel'
+      },
+      {
+        day: 13,
+        title: 'Mirissa',
+        description: 'Final full day to enjoy the paradise beaches of Mirissa. Snorkeling, paddleboarding, or simply lounging on the golden sand before your journey home tomorrow.',
+        image: mirissaSunset,
+        location: 'Mirissa',
+        activities: ['Snorkeling', 'Beach relaxation', 'Farewell dinner'],
+        accommodation: 'Lantern Boutique Hotel'
+      },
+      {
+        day: 14,
+        title: 'Departure',
+        description: 'Depart Mirissa and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
         image: beachParadise,
         location: 'Colombo Airport',
-        activities: ['Beach time', 'Airport transfer', 'Departure']
+        activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
       }
     ]
   },
   {
-    id: 'surf-beach-adventure',
-    name: 'Surf & Beach Adventure',
+    id: 'discover-luxury-secret',
+    name: 'Discover Luxury Secret Sri Lanka',
     duration: { days: 10, nights: 9 },
-    summary: 'Ride world-class waves from Arugam Bay to Hikkaduwa, explore hidden beaches, and embrace the laid-back surf culture of Sri Lanka\'s legendary coastlines.',
-    route: ['Colombo', 'Arugam Bay', 'Mirissa', 'Weligama', 'Hikkaduwa'],
-    tags: ['surf', 'beach', 'adventure', 'relaxation'],
-    heroImage: surfAdventure,
+    summary: 'On this 10-day trip, discover the hidden side to the exotic island of Sri Lanka. Travel west to east from the wildlife of Wilpattu, through the ancient culture of Sigiriya and onto the palm-fringed beaches of Pasikuda. Far from the crowds to the south, this promises to be a trip where you can relax and discover in equal measure.',
+    route: ['Negombo', 'Wilpattu', 'Sigiriya', 'Pasikuda', 'Negombo'],
+    tags: ['wildlife', 'culture', 'beach', 'off-the-beaten-path'],
+    heroImage: sigiriyaFortress,
     highlights: [
-      'Surf legendary Arugam Bay breaks',
-      'Learn to surf in Weligama',
-      'Whale watching in Mirissa',
-      'Hidden beach discoveries',
-      'Beach parties and sunsets',
-      'Snorkeling in Hikkaduwa'
+      'Wilpattu National Park – real leopard country',
+      'Luxury Leopard Trails safari camp',
+      'Sigiriya Rock Fortress climb',
+      'Ancient wall paintings discovery',
+      'Pristine Pasikuda beaches',
+      'Ayurvedic spa treatments',
+      'Boutique manor house stays',
+      'Off-the-beaten-path exploration'
     ],
     placesToStay: [
-      { location: 'Arugam Bay', hotel: 'Stardust Beach Hotel', type: 'Surf Camp' },
-      { location: 'Mirissa', hotel: 'Mandara Resort', type: 'Beachfront Resort' },
-      { location: 'Weligama', hotel: 'Cape Weligama', type: 'Luxury Cliff Resort' },
-      { location: 'Hikkaduwa', hotel: 'Hikka Tranz by Cinnamon', type: 'Beach Hotel' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
+      { location: 'Wilpattu', hotel: 'Leopard Trails Camp', type: 'Luxury Safari Camp' },
+      { location: 'Sigiriya', hotel: 'Water Garden Sigiriya', type: 'Boutique Resort' },
+      { location: 'Pasikuda', hotel: 'Uga Bay Resort', type: 'Beach Resort' },
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Arrival & East Coast Bound',
-        description: 'Arrive in Colombo and head straight to the legendary surf destination of Arugam Bay. Long scenic drive through the eastern province. Evening surf check and beach dinner.',
-        image: surfAdventure,
-        location: 'Arugam Bay',
-        activities: ['Airport transfer', 'Scenic drive', 'Beach dinner'],
-        accommodation: 'Stardust Beach Hotel'
+        title: 'Arrival',
+        description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
+        image: beachParadise,
+        location: 'Negombo',
+        activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
+        accommodation: 'The Wallawwa'
       },
       {
         day: 2,
-        title: 'Arugam Bay Surf Days',
-        description: 'Full day of surfing at Main Point or Whiskey Point. Professional surf coaching available. Evening beach yoga and fresh seafood dinner.',
-        image: surfAdventure,
-        location: 'Arugam Bay',
-        activities: ['Surfing', 'Beach yoga', 'Seafood dinner'],
-        accommodation: 'Stardust Beach Hotel'
+        title: 'Wilpattu',
+        description: 'Begin your journey north to Wilpattu National Park. Forget the bustling plains of Yala, for Wilpattu is real leopard country. Spend your nights at the luxurious Leopard Trails camp, fully immersed in the wildlife that surrounds you. Bounded by rivers and peppered with large lakes known as "villus", Wilpattu provides the perfect setting for spotting game.',
+        image: yalaLeopard,
+        location: 'Wilpattu',
+        activities: ['Safari drive', 'Leopard spotting', 'Luxury camp dinner'],
+        accommodation: 'Leopard Trails Camp'
       },
       {
         day: 3,
-        title: 'Surf Safari',
-        description: 'Explore different breaks along the coast. Visit Pottuvil Point for advanced surfers or Peanut Farm for mellow waves. Sunset session and bonfire on the beach.',
-        image: surfAdventure,
-        location: 'Arugam Bay',
-        activities: ['Surf safari', 'Beach bonfire', 'Stargazing'],
-        accommodation: 'Stardust Beach Hotel'
+        title: 'Wilpattu Safari',
+        description: 'Keep your eyes peeled for sloth bears, barking deer and Asian elephants. Join expert guides as you head out onto the plains in search of fauna – but also listen as they unveil the great archaeological and historical importance of the park. Wildlife, history, and tantalizing Sri Lankan cuisine served around a campfire.',
+        image: yalaLeopard,
+        location: 'Wilpattu',
+        activities: ['Game drives', 'Wildlife spotting', 'Campfire dinner'],
+        accommodation: 'Leopard Trails Camp'
       },
       {
         day: 4,
-        title: 'Lagoon & Wildlife',
-        description: 'Morning surf session. Afternoon lagoon safari to spot crocodiles and exotic birds. Optional visit to nearby Kumana National Park.',
-        image: yalaLeopard,
-        location: 'Arugam Bay',
-        activities: ['Morning surf', 'Lagoon safari', 'Wildlife spotting'],
-        accommodation: 'Stardust Beach Hotel'
+        title: 'Sigiriya',
+        description: 'Continue east to the foot of Sri Lanka\'s Cultural Triangle – Sigiriya. Stay at the beautiful Water Garden Sigiriya, a peaceful retreat set amid landscaped gardens with stunning views onto Sigiriya\'s star attraction. Dust off each day with a dip in the pool, a massage at the spa and a moonlit gourmet dinner.',
+        image: sigiriyaFortress,
+        location: 'Sigiriya',
+        activities: ['Resort check-in', 'Pool relaxation', 'Spa treatment'],
+        accommodation: 'Water Garden Sigiriya'
       },
       {
         day: 5,
-        title: 'Journey to the South',
-        description: 'Scenic drive across the island to the southern coast. Stop at Ella for lunch with mountain views. Arrive in Mirissa as the sun sets over the Indian Ocean.',
-        image: ellaTrain,
-        location: 'Mirissa',
-        activities: ['Scenic drive', 'Ella stopover', 'Sunset beach'],
-        accommodation: 'Mandara Resort'
+        title: 'Sigiriya Rock',
+        description: 'Spend the day with a private guide visiting this ancient site. Climb your way to the top of Sigiriya Rock, past ancient wall paintings, to reach views that extend all the way into the horizon over dense jungle. A mythical past of feuding dynasties suits Sigiriya\'s striking setting – built in the 5th century AD by King Kasyapa as a fortress-palace.',
+        image: sigiriyaFortress,
+        location: 'Sigiriya',
+        activities: ['Sigiriya Rock climb', 'Ancient frescoes', 'Panoramic views'],
+        accommodation: 'Water Garden Sigiriya'
       },
       {
         day: 6,
-        title: 'Mirissa Magic',
-        description: 'Optional early morning whale watching. Learn to paddleboard or kayak. Explore the fishing harbor and enjoy fresh catch for lunch. Sunset from Parrot Rock.',
-        image: mirissaSunset,
-        location: 'Mirissa',
-        activities: ['Whale watching', 'Paddleboarding', 'Sunset views'],
-        accommodation: 'Mandara Resort'
+        title: 'Pasikuda',
+        description: 'A final drive east takes you to your coastal destination where you can relax at the stylish Uga Bay Resort. Oozing luxury and relaxation, it\'s beached-out bliss all the way here. Lie back on the perfect white sands and dip your feet into the warm Indian Ocean.',
+        image: beachParadise,
+        location: 'Pasikuda',
+        activities: ['Coastal drive', 'Beach resort check-in', 'Ocean swimming'],
+        accommodation: 'Uga Bay Resort'
       },
       {
         day: 7,
-        title: 'Weligama Surf School',
-        description: 'Perfect beach for learning to surf. Professional lessons for beginners or board rental for experienced surfers. Visit the famous stilt fishermen. Night market exploration.',
-        image: surfAdventure,
-        location: 'Weligama',
-        activities: ['Surf lessons', 'Stilt fishermen', 'Night market'],
-        accommodation: 'Cape Weligama'
+        title: 'Pasikuda Beach',
+        description: 'Four nights stay means plenty of time to indulge in a local Ayurvedic massage where you can listen to the calming ocean waves within Uga Bay\'s beachfront spa. Relax on the pristine white sand beaches of the east coast.',
+        image: beachParadise,
+        location: 'Pasikuda',
+        activities: ['Ayurvedic spa', 'Beach relaxation', 'Ocean activities'],
+        accommodation: 'Uga Bay Resort'
       },
       {
         day: 8,
-        title: 'Galle & Coastal Cruise',
-        description: 'Morning visit to historic Galle Fort, a UNESCO World Heritage Site. Coastal drive to Hikkaduwa with stops at hidden beaches. Sunset snorkeling at Coral Beach.',
+        title: 'Pasikuda Beach',
+        description: 'Continue to enjoy the pristine beaches of Pasikuda. Snorkeling, diving, or simply lounging by the pool with views of the Indian Ocean. This less-visited east coast offers a more peaceful beach experience.',
         image: beachParadise,
-        location: 'Hikkaduwa',
-        activities: ['Galle Fort tour', 'Beach hopping', 'Snorkeling'],
-        accommodation: 'Hikka Tranz by Cinnamon'
+        location: 'Pasikuda',
+        activities: ['Snorkeling', 'Pool relaxation', 'Beach walks'],
+        accommodation: 'Uga Bay Resort'
       },
       {
         day: 9,
-        title: 'Hikkaduwa Beach Day',
-        description: 'Final full day of ocean adventures. Surf the reef break, snorkel with sea turtles, or simply relax on the golden sand. Farewell dinner with ocean views.',
+        title: 'Negombo',
+        description: 'Before returning home, stopover in Negombo for a night at the hidden oasis of The Wallawwa. Here, enjoy your last few bites of the freshest fusion in Asian cuisine whilst overlooking exquisite gardens. Authentic and chic, the rooms offer a lovely last slice of luxury before departing.',
         image: beachParadise,
-        location: 'Hikkaduwa',
-        activities: ['Surfing', 'Sea turtle snorkeling', 'Beach relaxation'],
-        accommodation: 'Hikka Tranz by Cinnamon'
+        location: 'Negombo',
+        activities: ['Scenic transfer', 'Final dinner', 'Garden relaxation'],
+        accommodation: 'The Wallawwa'
       },
       {
         day: 10,
         title: 'Departure',
-        description: 'Morning beach time before transfer to Colombo airport. Depart with sun-kissed memories and the rhythm of the ocean in your heart.',
+        description: 'Morning you\'ll head to the airport for your flight home, taking with you memories of Sri Lanka\'s secret corners and hidden gems.',
         image: beachParadise,
         location: 'Colombo Airport',
-        activities: ['Beach time', 'Airport transfer', 'Departure']
+        activities: ['Airport transfer', 'Departure']
       }
     ]
   },
   {
-    id: 'luxury-coastal-escape',
-    name: 'Tropical Coastal Luxury',
-    duration: { days: 8, nights: 7 },
-    summary: 'A refined journey along Sri Lanka\'s pristine southern coast, staying in boutique beach resorts, indulging in spa treatments, and discovering hidden coastal gems.',
-    route: ['Colombo', 'Galle', 'Tangalle', 'Mirissa', 'Bentota'],
-    tags: ['beach', 'relaxation', 'nature', 'culture'],
-    heroImage: beachParadise,
+    id: 'tea-plantations-coastal',
+    name: 'Tea Plantations & Coastal Hideaways',
+    duration: { days: 10, nights: 9 },
+    summary: 'A lush tropical island with nothing below it but the huge expanse of the Indian Ocean, Sri Lanka is a hive of energy. Visit fifth century fortresses, learn how tea is made and explore gorgeous beachfront villages, all while staying in some of our favorite hotels in the world. On this trip you\'ll be completely charmed by this little Asian nation.',
+    route: ['Negombo', 'Anuradhapura', 'Kandy', 'Tea Country', 'Tangalle', 'Galle'],
+    tags: ['culture', 'tea', 'beach', 'heritage'],
+    heroImage: teaPlantation,
     highlights: [
-      'Boutique beach resort stays',
-      'Historic Galle Fort exploration',
-      'Private beach experiences',
-      'Luxury spa treatments',
-      'Sunset yacht cruise',
-      'Fine dining experiences'
+      'Cultural Triangle exploration',
+      'Elephant safari in Minneriya',
+      'Ancient Buddhist caves of Dambulla',
+      'Polonnaruwa historic city',
+      'Temple of the Tooth in Kandy',
+      'Scenic train through Tea Country',
+      'White beaches of Tangalle',
+      'UNESCO Galle Fort discovery'
     ],
     placesToStay: [
-      { location: 'Galle', hotel: 'Amangalla', type: '5-Star Heritage' },
-      { location: 'Tangalle', hotel: 'Anantara Peace Haven', type: 'Luxury Resort' },
-      { location: 'Mirissa', hotel: 'Sri Sharavi Beach Villas', type: 'Private Villas' },
-      { location: 'Bentota', hotel: 'Saman Villas', type: 'Boutique Luxury' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
+      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique' },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
+      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows' },
+      { location: 'Tangalle', hotel: 'Anantara Peace Haven Resort', type: 'Beach Resort' },
+      { location: 'Galle', hotel: 'Amangalla', type: 'Heritage Luxury' },
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Elegant Arrival',
-        description: 'VIP airport welcome and private transfer to Galle in luxury vehicle. Check into your oceanfront suite. Evening champagne sunset on the terrace.',
+        title: 'Arrival',
+        description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
         image: beachParadise,
-        location: 'Galle',
-        activities: ['VIP transfer', 'Resort check-in', 'Champagne sunset'],
-        accommodation: 'Amangalla'
+        location: 'Negombo',
+        activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
+        accommodation: 'The Wallawwa'
       },
       {
         day: 2,
-        title: 'Galle Fort Discovery',
-        description: 'Private guided tour of UNESCO-listed Galle Fort. Explore boutique shops, art galleries, and charming cafes. Afternoon spa treatment at your resort.',
-        image: beachParadise,
-        location: 'Galle',
-        activities: ['Fort tour', 'Boutique shopping', 'Spa treatment'],
-        accommodation: 'Amangalla'
+        title: 'Thirappane - Cultural Triangle',
+        description: 'Drive to the Cultural Triangle for three nights at the sun-drenched Ulagalla Resort – a retreat with thatched bungalows on stilts floating above paddy fields. By day, visit some of Sri Lanka\'s oldest historic monuments and unwind in your private plunge pool. With a wine cellar and lagoon for kayaking, you\'ll be immersed in the authentic beauty of this Sri Lankan gem.',
+        image: sigiriyaFortress,
+        location: 'Anuradhapura',
+        activities: ['Scenic drive', 'Resort check-in', 'Private plunge pool'],
+        accommodation: 'Ulagalla Resort'
       },
       {
         day: 3,
-        title: 'Secret Beaches of Tangalle',
-        description: 'Scenic coastal drive to Tangalle, stopping at pristine hidden beaches. Check into an exclusive eco-resort. Private dinner on the beach under the stars.',
-        image: beachParadise,
-        location: 'Tangalle',
-        activities: ['Beach hopping', 'Eco-resort', 'Private beach dinner'],
-        accommodation: 'Anantara Peace Haven'
+        title: 'Minneriya / Polonnaruwa',
+        description: 'Take an elephant safari in Minneriya, see the ancient Buddhist cave temples of Dambulla or explore the city of Polonnaruwa. This UNESCO World Heritage Site features ancient wall paintings and historical significance that brings Sri Lanka\'s rich history to life.',
+        image: yalaLeopard,
+        location: 'Cultural Triangle',
+        activities: ['Elephant safari', 'Dambulla caves', 'Polonnaruwa ruins'],
+        accommodation: 'Ulagalla Resort'
       },
       {
         day: 4,
-        title: 'Wellness & Nature',
-        description: 'Morning yoga overlooking the ocean. Visit a sea turtle conservation project. Afternoon at leisure for swimming and sunbathing. Ayurvedic massage at sunset.',
-        image: beachParadise,
-        location: 'Tangalle',
-        activities: ['Yoga', 'Turtle conservation', 'Ayurvedic spa'],
-        accommodation: 'Anantara Peace Haven'
+        title: 'Kandy',
+        description: 'Head to Kandy for a brief but memorable stop. Visit Buddha\'s Tooth Relic or explore the stunning Botanical Gardens, where Giant Java trees have branches so wide they need stilts to stay up. Relax by the pool at the romantic Kandy House sipping locally grown tea – quaint, colonial comfort at its best.',
+        image: kandyTemple,
+        location: 'Kandy',
+        activities: ['Temple of the Tooth', 'Botanical Gardens', 'Tea tasting'],
+        accommodation: 'The Kandy House'
       },
       {
         day: 5,
-        title: 'Mirissa Paradise',
-        description: 'Transfer to Mirissa\'s palm-fringed beaches. Afternoon paddleboarding or simply float in the warm waters. Sunset cocktails at Parrot Rock.',
-        image: mirissaSunset,
-        location: 'Mirissa',
-        activities: ['Beach transfer', 'Water activities', 'Sunset cocktails'],
-        accommodation: 'Sri Sharavi Beach Villas'
+        title: 'Hatton - Tea Country',
+        description: 'No trip to Sri Lanka is complete without visiting tea country. Take a train (still run on British colonial equipment) through rolling fields of tea leaves and learn how tea is processed, before sampling the freshest cuppa of your life. Rest at Tea Trails – four old planter\'s bungalows now converted into a boutique hotel.',
+        image: ellaTrain,
+        location: 'Tea Country',
+        activities: ['Scenic train ride', 'Tea factory tour', 'Tea tasting'],
+        accommodation: 'Ceylon Tea Trails'
       },
       {
         day: 6,
-        title: 'Ocean Encounters',
-        description: 'Optional sunrise whale watching expedition. Late breakfast and beach relaxation. Private cooking class featuring local seafood. Moonlit beach walk.',
-        image: mirissaSunset,
-        location: 'Mirissa',
-        activities: ['Whale watching', 'Cooking class', 'Beach walk'],
-        accommodation: 'Sri Sharavi Beach Villas'
+        title: 'Tea Country',
+        description: 'Enjoy evening jazz cocktail hours, discuss the next day\'s personalized menu with the chef, and sleep under a mosquito net in your colonial style room. Pastoral perfection in the misty highlands of Sri Lanka.',
+        image: teaPlantation,
+        location: 'Tea Country',
+        activities: ['Tea estate walks', 'Cocktail hours', 'Colonial dining'],
+        accommodation: 'Ceylon Tea Trails'
       },
       {
         day: 7,
-        title: 'Bentota Bliss',
-        description: 'Drive to Bentota along the picturesque coast. Afternoon sunset river cruise through mangroves. Farewell gala dinner at an award-winning restaurant.',
+        title: 'Tangalle',
+        description: 'Head to the white beaches of Tangalle for some coastline fun. Stroll along the shore, kite-surf, wakeboard, deep sea fish or simply indulge in the amazing Anantara Peace Haven hotel. Relax in your suite with uninterrupted views of the palm-studded beach.',
         image: beachParadise,
-        location: 'Bentota',
-        activities: ['River cruise', 'Mangrove exploration', 'Gala dinner'],
-        accommodation: 'Saman Villas'
+        location: 'Tangalle',
+        activities: ['Beach arrival', 'Water sports', 'Ocean views'],
+        accommodation: 'Anantara Peace Haven Resort'
       },
       {
         day: 8,
-        title: 'Fond Farewell',
-        description: 'Final morning spa session or beach yoga. Leisurely brunch before private transfer to the airport. Depart with lasting memories of coastal paradise.',
+        title: 'Tangalle',
+        description: 'Dine at the poolside restaurant overlooking golden sand beaches, perfect for reflecting on your Sri Lankan adventure. Time it right and experience both elephants in the north and blue whales in the south – nature\'s most graceful yet powerful creatures.',
+        image: beachParadise,
+        location: 'Tangalle',
+        activities: ['Whale watching', 'Beach relaxation', 'Poolside dining'],
+        accommodation: 'Anantara Peace Haven Resort'
+      },
+      {
+        day: 9,
+        title: 'Galle',
+        description: 'Transfer to the magical fortress town of Galle, filled with red-tiled rooftops over eclectic art galleries, cafes and boutique hotels. Visit local markets with the chef during a cookery lesson, or try delicious "wade" (street snacks) with the hotel\'s signature "Arrack sour". Unwind in Sri Lanka\'s most incredible spa before watching the sunset from Amangalla\'s top floor lounge.',
+        image: beachParadise,
+        location: 'Galle',
+        activities: ['Galle Fort tour', 'Cooking class', 'Spa experience', 'Sunset cocktails'],
+        accommodation: 'Amangalla'
+      },
+      {
+        day: 10,
+        title: 'Departure',
+        description: 'Morning you\'ll head to the airport for your flight home, taking memories of tea-scented highlands and palm-fringed beaches with you.',
         image: beachParadise,
         location: 'Colombo Airport',
-        activities: ['Morning spa', 'Brunch', 'Airport transfer']
+        activities: ['Airport transfer', 'Departure']
       }
     ]
   }
@@ -397,80 +763,80 @@ export const dayTours: DayTour[] = [
     id: 'sigiriya-dambulla',
     name: 'Sigiriya & Dambulla Day Tour',
     location: 'Sigiriya & Dambulla',
-    summary: 'Discover two UNESCO World Heritage Sites in one day. Climb the iconic Sigiriya Rock Fortress and explore the magnificent Dambulla Cave Temple with its ancient Buddha statues.',
+    summary: 'Explore the ancient wonders of Sri Lanka\'s Cultural Triangle with a visit to the iconic Sigiriya Rock Fortress and the magnificent Dambulla Cave Temple in one unforgettable day.',
     highlights: [
-      'Climb the 1,200 steps of Sigiriya Rock Fortress',
-      'See ancient frescoes of the Sigiriya maidens',
-      'Explore the 5 cave temples of Dambulla',
-      'Marvel at 150+ Buddha statues',
-      'Learn about the royal palace history'
+      'Climb Sigiriya Rock Fortress',
+      'View ancient frescoes',
+      'Explore Dambulla Cave Temple',
+      'Visit local spice garden',
+      'Scenic countryside views'
     ],
     heroImage: sigiriyaFortress,
-    duration: 'Full Day (10-12 hours)',
-    tags: ['culture', 'adventure', 'nature']
+    duration: '12 hours',
+    tags: ['culture', 'history', 'UNESCO']
   },
   {
-    id: 'kandy-day-tour',
-    name: 'Kandy Day Tour',
+    id: 'kandy-cultural',
+    name: 'Kandy Cultural Day Tour',
     location: 'Kandy',
-    summary: 'Experience the cultural capital of Sri Lanka. Visit the sacred Temple of the Tooth, explore spice gardens, and enjoy a traditional Kandyan dance performance.',
+    summary: 'Discover the royal city of Kandy, visit the sacred Temple of the Tooth Relic, explore the beautiful botanical gardens, and experience traditional Kandyan dance performances.',
     highlights: [
       'Temple of the Sacred Tooth Relic',
-      'Peradeniya Royal Botanical Gardens',
-      'Traditional spice garden visit',
-      'Kandyan cultural dance show',
-      'Scenic views of Kandy Lake'
+      'Royal Botanical Gardens',
+      'Traditional Kandyan dance show',
+      'Kandy Lake walk',
+      'Local craft markets'
     ],
     heroImage: kandyTemple,
-    duration: 'Full Day (10-12 hours)',
-    tags: ['culture', 'nature', 'relaxation']
+    duration: '10 hours',
+    tags: ['culture', 'religion', 'nature']
   },
   {
     id: 'yala-safari',
-    name: 'Yala National Park Safari',
+    name: 'Yala Safari Day Tour',
     location: 'Yala National Park',
-    summary: 'Embark on an exciting jeep safari in Sri Lanka\'s most famous national park. Home to the world\'s highest density of leopards, along with elephants, crocodiles, and exotic birds.',
+    summary: 'Experience an exciting wildlife safari at Yala National Park, home to the world\'s highest density of leopards, elephants, and an incredible variety of bird species.',
     highlights: [
-      'Leopard spotting opportunities',
-      'Elephant herds in natural habitat',
-      'Crocodile sightings at waterholes',
-      'Over 200 bird species',
-      'Professional safari guide'
+      'Jeep safari in Yala National Park',
+      'Leopard and elephant spotting',
+      'Bird watching',
+      'Scenic coastal views',
+      'Expert naturalist guide'
     ],
     heroImage: yalaLeopard,
-    duration: 'Full Day (12-14 hours)',
-    tags: ['wildlife', 'safari', 'adventure']
+    duration: '14 hours',
+    tags: ['wildlife', 'safari', 'nature']
   },
   {
     id: 'galle-fort',
-    name: 'Galle Fort Day Tour',
-    location: 'Galle',
-    summary: 'Step back in time at the UNESCO-listed Galle Fort. Wander through colonial streets, discover boutique shops, and enjoy stunning ocean views from the ancient ramparts.',
+    name: 'Galle Fort & Beaches Day Tour',
+    location: 'Galle & South Coast',
+    summary: 'Explore the UNESCO World Heritage Galle Fort with its colonial architecture, boutique shops, and art galleries. End the day relaxing on pristine southern beaches.',
     highlights: [
-      'UNESCO World Heritage Galle Fort',
-      'Dutch colonial architecture',
-      'Boutique shopping and cafes',
-      'Lighthouse and rampart walks',
-      'Sea turtle hatchery visit'
+      'UNESCO Galle Fort exploration',
+      'Colonial architecture',
+      'Boutique shopping',
+      'Unawatuna Beach visit',
+      'Sea turtle hatchery'
     ],
     heroImage: beachParadise,
-    duration: 'Full Day (8-10 hours)',
-    tags: ['culture', 'beach', 'relaxation']
+    duration: '10 hours',
+    tags: ['heritage', 'beach', 'shopping']
   },
   {
-    id: 'whale-watching',
-    name: 'Whale Watching Day Tour',
-    location: 'Mirissa',
-    summary: 'Set sail on the Indian Ocean for an unforgettable encounter with blue whales, sperm whales, and playful dolphins. Sri Lanka is one of the best places in the world to see these magnificent creatures.',
+    id: 'ella-train',
+    name: 'Ella Scenic Train Experience',
+    location: 'Ella & Hill Country',
+    summary: 'Journey on one of the world\'s most scenic train rides through misty tea plantations, cross the famous Nine Arches Bridge, and hike to stunning viewpoints in Ella.',
     highlights: [
-      'Blue whale sightings',
-      'Sperm whale encounters',
-      'Playful dolphin pods',
-      'Experienced marine crew',
-      'Beach time in Mirissa'
+      'Scenic train ride',
+      'Nine Arches Bridge',
+      'Little Adam\'s Peak hike',
+      'Tea plantation visit',
+      'Ravana Falls'
     ],
-    heroImage: snorkeling,
-    duration: 'Full Day (10-12 hours)',
-    tags: ['wildlife', 'adventure', 'beach']
+    heroImage: ellaTrain,
+    duration: '12 hours',
+    tags: ['nature', 'adventure', 'scenic']
   }
 ];
