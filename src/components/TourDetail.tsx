@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
-import { ArrowLeft, Calendar, MapPin, Check, Building2 } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, Star } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import SriLankaMap from './SriLankaMap';
 
@@ -88,24 +88,36 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
         </div>
       </div>
 
-      {/* Places to Stay */}
+      {/* Places to Stay - Enhanced */}
       {tour.placesToStay && tour.placesToStay.length > 0 && (
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('placesToStay')}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="text-center mb-8">
+            <span className="text-primary font-medium uppercase tracking-wider text-sm">
+              {t('placesToStay')}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif mt-2">Where You'll Stay</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {tour.placesToStay.map((stay, idx) => (
               <div
                 key={idx}
-                className="bg-card rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-300 border border-border/50"
+                className="relative bg-gradient-to-br from-primary/5 via-card to-accent/5 rounded-2xl p-6 shadow-soft hover:shadow-elevated transition-all duration-300 border-2 border-primary/20 hover:border-primary/40 group"
               >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Building2 className="w-5 h-5 text-primary" />
+                {/* Star Badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-accent rounded-full flex items-center justify-center shadow-lg">
+                  <Star className="w-4 h-4 text-accent-foreground fill-current" />
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Building2 className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <div>
-                    <p className="text-xs text-primary font-medium uppercase tracking-wide mb-1">{stay.location}</p>
-                    <h4 className="font-medium text-foreground mb-1">{stay.hotel}</h4>
-                    <p className="text-xs text-muted-foreground">{stay.type}</p>
+                  <div className="flex-1">
+                    <p className="text-xs text-accent font-bold uppercase tracking-wide mb-1">{stay.location}</p>
+                    <h4 className="font-serif font-semibold text-foreground text-lg leading-tight mb-2">{stay.hotel}</h4>
+                    <span className="inline-block px-3 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground">
+                      {stay.type}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -160,11 +172,16 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
                 <p className="text-muted-foreground mb-4">{day.description}</p>
 
-                {/* Accommodation */}
+                {/* Accommodation - Enhanced */}
                 {day.accommodation && (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 bg-secondary/50 px-3 py-2 rounded-lg w-fit">
-                    <Building2 className="w-4 h-4 text-primary" />
-                    <span>{t('overnightAt')} <strong className="text-foreground">{day.accommodation}</strong></span>
+                  <div className="flex items-center gap-3 mb-4 bg-gradient-to-r from-primary/10 to-accent/10 px-4 py-3 rounded-xl border border-primary/20 w-fit">
+                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                      <Building2 className="w-4 h-4 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <span className="text-xs text-muted-foreground block">{t('overnightAt')}</span>
+                      <strong className="text-foreground font-semibold">{day.accommodation}</strong>
+                    </div>
                   </div>
                 )}
 

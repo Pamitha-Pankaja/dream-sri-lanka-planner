@@ -284,3 +284,21 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Welcome screen colors */
+.bg-ocean-deep {
+  background-color: hsl(205 87% 35%);
+}
+
+.text-ocean-deep {
+  color: hsl(205 87% 35%);
+}
