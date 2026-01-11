@@ -1,22 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { dayTours, DayTour } from '@/data/tours';
 import { Clock, MapPin, ChevronRight } from 'lucide-react';
-import WhatsAppButton from './WhatsAppButton';
 
 const DayToursSection = () => {
   const { t } = useLanguage();
-
-  const tagIcons: Record<string, string> = {
-    surf: '🏄',
-    safari: '🦁',
-    beach: '🏖️',
-    culture: '🛕',
-    nature: '🌿',
-    adventure: '⛰️',
-    wildlife: '🐘',
-    relaxation: '🧘',
-  };
 
   return (
     <section id="day-tours" className="section-padding bg-muted">
@@ -34,10 +23,10 @@ const DayToursSection = () => {
           </p>
         </div>
 
-        {/* Day Tour Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Day Tour Cards - Grid Layout like Absolute Lanka */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {dayTours.map((tour) => (
-            <DayTourCard key={tour.id} tour={tour} t={t} tagIcons={tagIcons} />
+            <DayTourCard key={tour.id} tour={tour} t={t} />
           ))}
         </div>
       </div>
@@ -48,66 +37,85 @@ const DayToursSection = () => {
 interface DayTourCardProps {
   tour: DayTour;
   t: (key: string) => string;
-  tagIcons: Record<string, string>;
 }
 
-const DayTourCard = ({ tour, t, tagIcons }: DayTourCardProps) => {
+const DayTourCard = ({ tour, t }: DayTourCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/day-tours/${tour.id}`);
+  };
+
   return (
-    <div className="card-premium group bg-card overflow-hidden">
-      {/* Image */}
-      <div className="relative h-48 overflow-hidden">
+    <div 
+      onClick={handleClick}
+      className="card-premium group bg-card overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
+    >
+      {/* Image with Overlay */}
+      <div className="relative h-64 overflow-hidden">
         <img
           src={tour.heroImage}
           alt={tour.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         
         {/* Duration Badge */}
-        <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm text-foreground px-3 py-1.5 rounded-full flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-primary" />
-          <span className="text-xs font-medium">{tour.duration}</span>
+        <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-4 py-2 rounded-sm">
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            <span className="text-sm font-medium">{tour.duration}</span>
+          </div>
+        </div>
+
+        {/* Tour Type Badge */}
+        <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm text-foreground px-3 py-1.5 rounded-sm">
+          <span className="text-xs font-medium">{tour.tourType}</span>
+        </div>
+        
+        {/* Title on Image */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="text-xl md:text-2xl font-serif text-white group-hover:text-primary-foreground transition-colors">
+            {tour.name}
+          </h3>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-6">
         {/* Location */}
-        <div className="flex items-center gap-1.5 text-primary text-sm mb-2">
+        <div className="flex items-center gap-2 text-primary text-sm mb-3">
           <MapPin className="w-4 h-4" />
-          <span className="font-medium">{tour.location}</span>
+          <span className="font-medium">{tour.startsEnds}</span>
         </div>
 
-        {/* Title */}
-        <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-primary transition-colors">
-          {tour.name}
-        </h3>
-
         {/* Summary */}
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+        <p className="text-muted-foreground text-sm mb-5 line-clamp-3 leading-relaxed">
           {tour.summary}
         </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {tour.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground flex items-center gap-1"
-            >
-              {tagIcons[tag]} {t(tag)}
-            </span>
-          ))}
+        {/* Highlights Preview */}
+        <div className="mb-5">
+          <ul className="space-y-1.5">
+            {tour.highlights.slice(0, 3).map((highlight, index) => (
+              <li key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="truncate">{highlight}</span>
+              </li>
+            ))}
+            {tour.highlights.length > 3 && (
+              <li className="text-sm text-primary font-medium">
+                +{tour.highlights.length - 3} more highlights
+              </li>
+            )}
+          </ul>
         </div>
 
-        {/* CTA */}
-        <WhatsAppButton
-          message={`Hi! I'm interested in the ${tour.name}. Can you tell me more about availability and pricing?`}
-          className="w-full justify-center text-sm"
-        >
-          {t('inquireNow')}
-          <ChevronRight className="w-4 h-4" />
-        </WhatsAppButton>
+        {/* Read More Link */}
+        <div className="flex items-center text-primary font-medium text-sm group-hover:gap-3 transition-all">
+          <span>{t('readMore')}</span>
+          <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+        </div>
       </div>
     </div>
   );
