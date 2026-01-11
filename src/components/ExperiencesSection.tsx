@@ -1,26 +1,26 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import surfAdventure from '@/assets/surf-adventure.jpg';
-import yalaLeopard from '@/assets/yala-leopard.jpg';
-import snorkeling from '@/assets/snorkeling.jpg';
-import waterfall from '@/assets/waterfall.jpg';
-import localFood from '@/assets/local-food.jpg';
-import ellaTrain from '@/assets/ella-train.jpg';
-import mirissaSunset from '@/assets/mirissa-sunset.jpg';
-import teaPlantation from '@/assets/tea-plantation.jpg';
+import surfingWaves from '@/assets/surfing-waves.jpg';
+import leopardTree from '@/assets/leopard-tree.jpg';
+import snorkelingReef from '@/assets/snorkeling-reef.jpg';
+import tropicalWaterfall from '@/assets/tropical-waterfall.jpg';
+import sriLankanFood from '@/assets/sri-lankan-food.jpg';
+import trainScenic from '@/assets/train-scenic.jpg';
+import kalpitiyaBeachSunset from '@/assets/kalpitiya-beach-sunset.jpg';
+import teaPlantationAerial from '@/assets/tea-plantation-aerial.jpg';
 
 const ExperiencesSection = () => {
   const { t } = useLanguage();
 
   const experiences = [
-    { image: surfAdventure, title: 'Surfing', desc: 'World-class waves' },
-    { image: yalaLeopard, title: 'Safari', desc: 'Wildlife encounters' },
-    { image: snorkeling, title: 'Snorkeling', desc: 'Coral reefs & turtles' },
-    { image: waterfall, title: 'Waterfalls', desc: 'Jungle adventures' },
-    { image: localFood, title: 'Local Cuisine', desc: 'Spices & flavors' },
-    { image: ellaTrain, title: 'Train Journeys', desc: 'Scenic railways' },
-    { image: mirissaSunset, title: 'Beach Sunsets', desc: 'Golden moments' },
-    { image: teaPlantation, title: 'Tea Plantations', desc: 'Highland beauty' },
+    { image: surfingWaves, title: 'Surfing', desc: 'World-class waves' },
+    { image: leopardTree, title: 'Safari', desc: 'Wildlife encounters' },
+    { image: snorkelingReef, title: 'Snorkeling', desc: 'Coral reefs & turtles' },
+    { image: tropicalWaterfall, title: 'Waterfalls', desc: 'Jungle adventures' },
+    { image: sriLankanFood, title: 'Local Cuisine', desc: 'Spices & flavors' },
+    { image: trainScenic, title: 'Train Journeys', desc: 'Scenic railways' },
+    { image: kalpitiyaBeachSunset, title: 'Beach Sunsets', desc: 'Golden moments' },
+    { image: teaPlantationAerial, title: 'Tea Plantations', desc: 'Highland beauty' },
   ];
 
   return (

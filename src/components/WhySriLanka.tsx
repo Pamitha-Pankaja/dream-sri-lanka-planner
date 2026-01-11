@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Palmtree, Waves, TreePine, Building2, Heart, Mountain } from 'lucide-react';
-import beachParadise from '@/assets/beach-paradise.jpg';
-import sigiriyaFortress from '@/assets/sigiriya-fortress.jpg';
+import kalpitiyaBeachSunset from '@/assets/kalpitiya-beach-sunset.jpg';
+import sigiriyaSunset from '@/assets/sigiriya-sunset.jpg';
 
 const WhySriLanka = () => {
   const { t } = useLanguage();
@@ -37,15 +37,15 @@ const WhySriLanka = () => {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-elevated">
               <img
-                src={beachParadise}
-                alt="Sri Lanka beach paradise"
+                src={kalpitiyaBeachSunset}
+                alt="Sri Lanka beach sunset with palm trees"
                 className="w-full h-[400px] object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-2xl overflow-hidden shadow-elevated hidden md:block">
               <img
-                src={sigiriyaFortress}
-                alt="Sigiriya Rock"
+                src={sigiriyaSunset}
+                alt="Sigiriya Rock at sunset"
                 className="w-full h-full object-cover"
               />
             </div>

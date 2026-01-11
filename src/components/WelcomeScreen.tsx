@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Compass } from 'lucide-react';
-import sigiriyaImage from '@/assets/sigiriya-fortress.jpg';
+import sigiriyaSunset from '@/assets/sigiriya-sunset.jpg';
 
 interface WelcomeScreenProps {
   onComplete: () => void;
@@ -29,10 +29,10 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         isExiting ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      {/* Background Image */}
+      {/* Background Image - Sigiriya at Sunset */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${sigiriyaImage})` }}
+        style={{ backgroundImage: `url(${sigiriyaSunset})` }}
       />
       
       {/* Dark Overlay */}

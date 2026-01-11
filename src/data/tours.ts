@@ -1,13 +1,14 @@
-import beachParadise from '@/assets/beach-paradise.jpg';
-import sigiriyaFortress from '@/assets/sigiriya-fortress.jpg';
-import ellaTrain from '@/assets/ella-train.jpg';
-import yalaLeopard from '@/assets/yala-leopard.jpg';
-import surfAdventure from '@/assets/surf-adventure.jpg';
-import mirissaSunset from '@/assets/mirissa-sunset.jpg';
-import kandyTemple from '@/assets/kandy-temple.jpg';
-import teaPlantation from '@/assets/tea-plantation.jpg';
-import waterfall from '@/assets/waterfall.jpg';
-import snorkeling from '@/assets/snorkeling.jpg';
+import kalpitiyaBeachSunset from '@/assets/kalpitiya-beach-sunset.jpg';
+import sigiriyaSunset from '@/assets/sigiriya-sunset.jpg';
+import trainScenic from '@/assets/train-scenic.jpg';
+import leopardTree from '@/assets/leopard-tree.jpg';
+import surfingWaves from '@/assets/surfing-waves.jpg';
+import buddhaReflection from '@/assets/buddha-reflection.jpg';
+import elephantsHerd from '@/assets/elephants-herd.jpg';
+import teaPlantationAerial from '@/assets/tea-plantation-aerial.jpg';
+import tropicalWaterfall from '@/assets/tropical-waterfall.jpg';
+import snorkelingReef from '@/assets/snorkeling-reef.jpg';
+import sriLankanFood from '@/assets/sri-lankan-food.jpg';
 
 export interface TourDay {
   day: number;
@@ -63,7 +64,7 @@ export const tours: Tour[] = [
     summary: 'This itinerary takes in the very best that Sri Lanka has to offer. Journey from bustling Colombo to ancient ruins and temples of the Cultural Triangle, up into the mystical Hill Country full of tea plantations, then head down south to the coast for whale watching, surfing, and incredible food. Cap off a wonderful holiday in the UNESCO World Heritage site of Galle Fort.',
     route: ['Negombo', 'Anuradhapura', 'Sigiriya', 'Kandy', 'Tea Country', 'Yala', 'Galle'],
     tags: ['culture', 'wildlife', 'nature', 'beach', 'heritage'],
-    heroImage: sigiriyaFortress,
+    heroImage: sigiriyaSunset,
     highlights: [
       'Explore magnificent Anuradhapura ancient city',
       'Climb UNESCO-listed Sigiriya Rock Fortress',
@@ -87,7 +88,7 @@ export const tours: Tour[] = [
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to your hotel, The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa. You will have the remainder of the day at leisure to explore the surroundings or just relax.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Airport pickup', 'Hotel check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -96,7 +97,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Negombo to Anuradhapura',
         description: 'This morning, meet your personal driver and start your journey to Anuradhapura, approximately 4.5 hours away. Upon arrival, check into Ulagalla Resort. This perfectly positioned boutique eco-hotel is in prime location to explore the Cultural Triangle of Sri Lanka. Beautifully furnished to the highest standard with state-of-the-art amenities, each room features a four-poster bed, plunge pool and terrace, as well as bicycles for guests to use.',
-        image: sigiriyaFortress,
+        image: sigiriyaSunset,
         location: 'Anuradhapura',
         activities: ['Scenic drive', 'Resort check-in', 'Pool relaxation'],
         accommodation: 'Ulagalla Resort'
@@ -105,7 +106,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Visit Anuradhapura',
         description: 'After breakfast, visit the magnificent Anuradhapura with your expert guide. Sights include Jethawanaramaya, Twin Ponds, Samadhi statue, Moonstone, Abayagiriya, Rathnaprasadaya, Thuparamaya and Ruwanweliseya. If time permits, visit Mihinthale and Isurumuniya with your driver. In the afternoon, make your way to Dambulla, which houses the famed Royal Rock Temple.',
-        image: sigiriyaFortress,
+        image: buddhaReflection,
         location: 'Anuradhapura',
         activities: ['Ancient city tour', 'Dambulla Cave Temple', 'Cultural exploration'],
         accommodation: 'Ulagalla Resort'
@@ -114,7 +115,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Visit Sigiriya en route to Kandy',
         description: 'Depart Ulagalla Resort for Kandy. En route, visit Sigiriya Rock Fortress, an ancient rock fortress and palace ruin in the heart of the Matale District. This UNESCO World Heritage Site was built in the 5th century AD by King Kasyapa as a fortress-palace. The tour takes approximately 3 hours. Enjoy lunch at Ena de Silva then continue to Kandy. Upon arrival, explore the Temple of the Tooth and enjoy a cultural show before checking into The Kandy House.',
-        image: sigiriyaFortress,
+        image: sigiriyaSunset,
         location: 'Kandy',
         activities: ['Sigiriya Rock climb', 'Ancient frescoes', 'Temple of the Tooth', 'Cultural show'],
         accommodation: 'The Kandy House'
@@ -123,7 +124,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Kandy',
         description: 'Your guide will take you on a tour to explore Kandy at your own leisure. Kandy was the last capital of the Sri Lankan kings and is a UNESCO World Heritage Site. Visit the Temple of the Tooth which houses the relic of Buddha, witness a traditional Kandyan dance performance, and explore the Royal Botanic Gardens. You may also enjoy a game of golf at Victoria\'s scenic Golf & Country Club or visit Udawattakele sanctuary.',
-        image: kandyTemple,
+        image: buddhaReflection,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Royal Botanic Gardens', 'Cultural dance show', 'City stroll'],
         accommodation: 'The Kandy House'
@@ -132,7 +133,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Kandy to Tea Country',
         description: 'Early morning, head by train to the Hill Country in central Sri Lanka. The train ride from Kandy to the heart of Sri Lanka\'s Tea Country is one of the most scenic train rides in Asia. As you meander out of Kandy, dense jungle opens into cloud forest, with undulating vistas of immaculate tea bush carpets in between. On arrival, you will be driven to Tea Trails where you will check in and have the rest of the day free at leisure.',
-        image: ellaTrain,
+        image: trainScenic,
         location: 'Tea Country',
         activities: ['Scenic train ride', 'Mountain views', 'Resort check-in'],
         accommodation: 'Ceylon Tea Trails'
@@ -141,7 +142,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Tea Country',
         description: 'Relax and explore the beauty of the Tea Country at your leisure. Optional activities include a private guided tour of a tea factory to learn about the process and sample different teas, mountain biking along trails with a picnic lunch, white water rafting at Kitulgala, visit to Nuwara Eliya (Little Scotland) with opportunity to play golf on one of the most scenic courses in the world, or scale Adam\'s Peak at sunrise.',
-        image: teaPlantation,
+        image: teaPlantationAerial,
         location: 'Tea Country',
         activities: ['Tea factory tour', 'Tea tasting', 'Optional hiking', 'Mountain biking'],
         accommodation: 'Ceylon Tea Trails'
@@ -150,7 +151,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Tea Country',
         description: 'Another day to enjoy the all-inclusive comforts of Tea Trails. Continue exploring the misty highlands, visit more tea estates, or simply relax and take in the stunning mountain scenery from your colonial planter\'s bungalow.',
-        image: teaPlantation,
+        image: teaPlantationAerial,
         location: 'Tea Country',
         activities: ['Leisure day', 'Tea estate visits', 'Relaxation'],
         accommodation: 'Ceylon Tea Trails'
@@ -159,7 +160,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Tea Trails to Yala',
         description: 'Rise early for a 6-hour drive to Ruhunu Yala Safari tented camp in Yala National Park. Arrive at noon to be greeted by a gourmet lunch, followed by an evening game drive and dinner. Ruhunu Yala Safaris combines professional guides and luxury camping facilities with the ultimate safari experience deep in Yala National Park.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Scenic drive', 'Gourmet lunch', 'Evening safari'],
         accommodation: 'Ruhunu Yala Safari Camping'
@@ -168,7 +169,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Yala Safari',
         description: 'Full day of safari adventures in Yala National Park. Yala is home to the world\'s highest density of leopards, along with elephants, sloth bears, and exotic birds. Enjoy morning and evening game drives with expert guides, and relax at camp during the heat of the day.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Morning safari', 'Wildlife spotting', 'Evening safari'],
         accommodation: 'Ruhunu Yala Safari Camping'
@@ -177,7 +178,7 @@ export const tours: Tour[] = [
         day: 11,
         title: 'Yala Safari',
         description: 'Continue your safari experience with more game drives. The diverse landscapes of Yala offer excellent opportunities to spot leopards, elephants, crocodiles, and over 200 species of birds. Enjoy bush dinners under the stars.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Yala',
         activities: ['Safari drives', 'Bird watching', 'Bush dinner'],
         accommodation: 'Ruhunu Yala Safari Camping'
@@ -186,7 +187,7 @@ export const tours: Tour[] = [
         day: 12,
         title: 'Yala Safari',
         description: 'Final morning safari to catch wildlife at their most active before departing from camp. A magical once-in-a-lifetime camping experience at the edge of Sri Lanka\'s premier game reserve.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Yala',
         activities: ['Dawn safari', 'Wildlife photography', 'Camp departure'],
         accommodation: 'Ruhunu Yala Safari Camping'
@@ -195,7 +196,7 @@ export const tours: Tour[] = [
         day: 13,
         title: 'From Yala to Galle',
         description: 'Drive to Galle, approximately 6 hours away. Upon arrival, check into Kahanda Kanda, followed by lunch and a tour of a cinnamon plantation. In the afternoon, visit Handunugoda Tea Estate, possibly the closest tea plantation in the world to the sea. Known as the Virgin\'s White Tea Factory, it produces tea completely untouched by hand. Finish with a tea tasting.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Galle',
         activities: ['Coastal drive', 'Cinnamon plantation', 'Handunugoda Tea Estate', 'Tea tasting'],
         accommodation: 'Kahanda Kanda'
@@ -204,7 +205,7 @@ export const tours: Tour[] = [
         day: 14,
         title: 'Exploring Galle',
         description: 'Free day at leisure to relax and enjoy Kahanda Kanda and Galle. Just 15 minutes from the beaches of Galle. Suggested activities include visiting the UNESCO World Heritage Site of Galle Fort, exploring boutique shops on Hospital Street, Church Street or Leyn Bann Street, or taking a Galle Fort walk excursion with your chauffeur.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Galle',
         activities: ['Galle Fort tour', 'Boutique shopping', 'Beach time'],
         accommodation: 'Kahanda Kanda'
@@ -213,7 +214,7 @@ export const tours: Tour[] = [
         day: 15,
         title: 'Exploring Galle',
         description: 'Another day to explore the southern coast. Visit Unawatuna Beach, a turtle hatchery, take a rainforest excursion, enjoy a boat ride on Koggala Lake, or go whale watching. Spend your final night at Kahanda Kanda and prepare for departure.',
-        image: mirissaSunset,
+        image: surfingWaves,
         location: 'Galle',
         activities: ['Beach visit', 'Turtle hatchery', 'Whale watching', 'Koggala Lake boat ride'],
         accommodation: 'Kahanda Kanda'
@@ -222,7 +223,7 @@ export const tours: Tour[] = [
         day: 16,
         title: 'Departure',
         description: 'Around 8:00 am you will be picked up at your hotel and driven to Colombo airport (approximately 3 hour drive) in time to catch your flight home.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Colombo Airport',
         activities: ['Airport transfer', 'Departure']
       }
@@ -235,7 +236,7 @@ export const tours: Tour[] = [
     summary: 'Renowned for its charming colonial vibe, incredible tea country and plethora of beaches, Sri Lanka is also home to some great wilderness. During this itinerary, immerse yourself in the country and encounter exotic animals that call the Pearl of the Indian Ocean home. From elephants to whales, the ever elusive leopard and bears, there is much to be admired.',
     route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Koggala', 'Galle'],
     tags: ['wildlife', 'nature', 'safari', 'beach'],
-    heroImage: yalaLeopard,
+    heroImage: leopardTree,
     highlights: [
       'Millennium Elephant Foundation experience',
       'Temple of the Tooth in Kandy',
@@ -258,7 +259,7 @@ export const tours: Tour[] = [
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa. Remainder of the day at leisure.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Airport pickup', 'Hotel check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -267,7 +268,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'From Negombo to Kandy',
         description: 'Travel into the hills via the Millennium Elephant Foundation where you can enjoy watching elephants bathing in a river. Continue to Polwaththa Eco Lodges, consisting of 14 lodges in a pristine environment, giving you a "Living-in-the-Jungle" experience. Situated 19km east of Kandy, each lodge offers comfort with great views and privacy, within reach of the stunning Knuckles Range.',
-        image: kandyTemple,
+        image: elephantsHerd,
         location: 'Kandy',
         activities: ['Millennium Elephant Foundation', 'Elephant watching', 'Eco lodge check-in'],
         accommodation: 'Polwaththa Eco Lodges'
@@ -276,7 +277,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Kandy Exploration',
         description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and watching a cultural dancing show featuring traditional Kandyan dance accompanied by live music.',
-        image: kandyTemple,
+        image: buddhaReflection,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Royal Botanical Gardens', 'Cultural dance show', 'Hiking'],
         accommodation: 'Polwaththa Eco Lodges'
@@ -285,7 +286,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'From Kandy to Koslanda',
         description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country, named for the velveteen tea plantations that carpet the misty hills. Drive through the market town of Nuwara Eliya, and continue to Koslanda, near Haputale, to stay at Living Heritage Koslanda. This secluded boutique hotel celebrates Sri Lanka\'s traditional architectural design and is set in 80 acres, including a patch of forest known locally as "God\'s Forest", with a river and secluded waterfall.',
-        image: teaPlantation,
+        image: teaPlantationAerial,
         location: 'Koslanda',
         activities: ['Scenic drive', 'Tea country views', 'Boutique hotel check-in'],
         accommodation: 'Living Heritage Koslanda'
@@ -294,7 +295,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Koslanda',
         description: 'Elephants seasonally travel through the forest and much wildlife can be seen in the hotel grounds. Suggested activities include guided walks, visits to tea and rubber plantations, and day trips to Udawalawe National Park, famous for herds of elephants.',
-        image: waterfall,
+        image: tropicalWaterfall,
         location: 'Koslanda',
         activities: ['Guided forest walks', 'Tea plantation visits', 'Wildlife spotting'],
         accommodation: 'Living Heritage Koslanda'
@@ -303,7 +304,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Admiring Wildlife at Yala National Park',
         description: 'Descend the hills into the low-lying southeastern plains and to the edge of Yala National Park, stopping off en route at Buduruwagala – a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to a dense population of leopards, elephants and sloth bears.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Buduruwagala Buddhist carvings', 'Camp check-in', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -312,7 +313,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Yala Safari',
         description: 'Camping at the edge of the park is a magical once-in-a-lifetime experience. Ruhunu Yala Safari Camp has comfortable family and double tents, with two game drives per day led by experienced local guides. Search for leopards, elephants, and the incredible diversity of wildlife in this premier game reserve.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Morning safari', 'Leopard spotting', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -321,7 +322,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Yala Safari',
         description: 'Continue your safari adventure with more game drives through Yala\'s diverse landscapes. The park is home to over 200 bird species, making it a paradise for bird watchers as well as those seeking larger wildlife encounters.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Yala',
         activities: ['Safari drives', 'Bird watching', 'Wildlife photography'],
         accommodation: 'Ruhunu Safari Camping'
@@ -330,7 +331,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Koggala Lake',
         description: 'Travel west along the picturesque cove-sprinkled southern coastline to Koggala Lake, a 30-minute drive from the famed UNESCO town of Galle. Stay at Tri Lanka, a fantastic hotel celebrating local materials and luxurious yet fully sustainable architectural design on the banks of Koggala Lake, one of Sri Lanka\'s largest inland waterways.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Koggala',
         activities: ['Coastal drive', 'Sustainable luxury hotel', 'Lake views'],
         accommodation: 'Tri Lanka'
@@ -339,7 +340,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Koggala',
         description: 'Take a boat trip on Koggala Lake to see birds, visit Sinharaja Rainforest, go whale or dolphin watching (in season) or simply relax on a nearby beach. Other suggested activities include guided bicycle rides, river kayaking, surfing and visits to local turtle hatcheries.',
-        image: beachParadise,
+        image: snorkelingReef,
         location: 'Koggala',
         activities: ['Lake boat trip', 'Bird watching', 'Beach relaxation'],
         accommodation: 'Tri Lanka'
@@ -348,7 +349,7 @@ export const tours: Tour[] = [
         day: 11,
         title: 'Koggala',
         description: 'Another day to explore the area around Koggala Lake. Visit the Sinharaja Rainforest, a UNESCO World Heritage Site, or spend the day kayaking, cycling, or relaxing at the sustainable luxury of Tri Lanka.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Koggala',
         activities: ['Rainforest visit', 'Kayaking', 'Cycling'],
         accommodation: 'Tri Lanka'
@@ -357,7 +358,7 @@ export const tours: Tour[] = [
         day: 12,
         title: 'Koggala',
         description: 'Continue to enjoy the peaceful surroundings of Koggala Lake. Optional whale watching excursions, visits to turtle hatcheries, or simply relaxing by the pool with views of the lake.',
-        image: mirissaSunset,
+        image: surfingWaves,
         location: 'Koggala',
         activities: ['Whale watching', 'Turtle hatchery', 'Pool relaxation'],
         accommodation: 'Tri Lanka'
@@ -366,7 +367,7 @@ export const tours: Tour[] = [
         day: 13,
         title: 'Koggala',
         description: 'Final full day to explore Galle Fort or enjoy the beaches. The UNESCO World Heritage Site of Galle Fort is just a short drive away, offering boutique shops, art galleries, and historic ramparts to explore.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Koggala',
         activities: ['Galle Fort visit', 'Shopping', 'Beach time'],
         accommodation: 'Tri Lanka'
@@ -375,7 +376,7 @@ export const tours: Tour[] = [
         day: 14,
         title: 'Departure',
         description: 'Depart Galle and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Colombo Airport',
         activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
       }
@@ -388,7 +389,7 @@ export const tours: Tour[] = [
     summary: 'Sri Lanka makes a perfect destination for newlyweds. Famed for its wonderful landscape and relaxing atmosphere, it\'s such a romantic place. There are romantic spots all over the island, simply perfect for a honeymoon. Visit a variety of romantic settings such as the misty tea plantations, historical sites and Yala National Park, while staying at the most romantic hotels.',
     route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Mirissa', 'Galle'],
     tags: ['honeymoon', 'romance', 'luxury', 'beach', 'wildlife'],
-    heroImage: mirissaSunset,
+    heroImage: kalpitiyaBeachSunset,
     highlights: [
       'Romantic manor house stay at The Wallawwa',
       'Millennium Elephant Foundation experience',
@@ -411,7 +412,7 @@ export const tours: Tour[] = [
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges couples with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa – the venue for post- and pre-flight pampering.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Airport pickup', 'Romantic check-in', 'Spa relaxation'],
         accommodation: 'The Wallawwa'
@@ -420,7 +421,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Negombo',
         description: 'Spend the day at leisure to explore the surroundings or just relax. Enjoy the tropical gardens, indulge in couples spa treatments, and savor gourmet cuisine at this romantic manor house.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Couples spa', 'Garden strolls', 'Romantic dinner'],
         accommodation: 'The Wallawwa'
@@ -429,7 +430,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Exploring Kandy',
         description: 'Travel to your next destination, Kandy – "City Top of the Mountain". On the way, visit the Millennium Elephant Foundation to observe and walk with elephants. Arrive at the charming and historic Kandy House, a stunning manor house that is beautifully romantic and particularly suited to honeymooners.',
-        image: kandyTemple,
+        image: elephantsHerd,
         location: 'Kandy',
         activities: ['Elephant experience', 'Scenic drive', 'Romantic hotel check-in'],
         accommodation: 'The Kandy House'
@@ -438,7 +439,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Kandy',
         description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and enjoying a traditional Kandyan dance show.',
-        image: kandyTemple,
+        image: buddhaReflection,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Botanical Gardens', 'Cultural show'],
         accommodation: 'The Kandy House'
@@ -447,7 +448,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'From Kandy to Koslanda',
         description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country. Drive through the market town of Nuwara Eliya and continue to Koslanda to stay at Living Heritage Koslanda. This secluded boutique hotel offers three hugely spacious suites with generous living areas, courtyard with alfresco jacuzzi and open-to-the-skies shower.',
-        image: teaPlantation,
+        image: teaPlantationAerial,
         location: 'Koslanda',
         activities: ['Tea country drive', 'Boutique hotel', 'Jacuzzi relaxation'],
         accommodation: 'Living Heritage Koslanda'
@@ -456,7 +457,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Koslanda',
         description: 'Set in 80 acres, the property borders a patch of forest known locally as "God\'s Forest", which contains a river and a secluded waterfall. Suggested activities include trekking, tree planting and cooking classes together.',
-        image: waterfall,
+        image: tropicalWaterfall,
         location: 'Koslanda',
         activities: ['Waterfall visit', 'Couples cooking class', 'Forest trekking'],
         accommodation: 'Living Heritage Koslanda'
@@ -465,7 +466,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Yala National Park',
         description: 'Travel from the hills into the low-lying southeastern plains to the edge of Yala National Park. Stop at Buduruwagala, a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to leopards, elephants and sloth bears.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Buddhist rock carvings', 'Safari camp arrival', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -474,7 +475,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Yala Safari',
         description: 'Cozy up under canvas in the camp\'s beautifully secluded AC Honeymoon Suite, dine à deux by candlelight, shower under the stars and enjoy expertly guided game drives into the park. A magical once-in-a-lifetime experience for couples.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Yala',
         activities: ['Game drives', 'Romantic candlelit dinner', 'Star gazing'],
         accommodation: 'Ruhunu Safari Camping'
@@ -483,7 +484,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Yala Safari',
         description: 'Continue your romantic safari adventure. Search for the elusive leopard together, spot elephants at waterholes, and enjoy the thrill of African-style safari in this incredible national park.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Yala',
         activities: ['Morning safari', 'Wildlife spotting', 'Sunset drinks'],
         accommodation: 'Ruhunu Safari Camping'
@@ -492,7 +493,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Mirissa',
         description: 'Travel west along the picturesque cove-sprinkled southern coastline to Mirissa, famed for pretty beaches and surfing lessons. Check into Lantern Boutique Hotel, a blissful beach villa with swimming pool overlooking the Indian Ocean.',
-        image: mirissaSunset,
+        image: surfingWaves,
         location: 'Mirissa',
         activities: ['Coastal drive', 'Beach check-in', 'Sunset on beach'],
         accommodation: 'Lantern Boutique Hotel'
@@ -501,7 +502,7 @@ export const tours: Tour[] = [
         day: 11,
         title: 'Mirissa',
         description: 'Enjoy alfresco dining, relax poolside, indulge in spa treatments together. Optional whale watching trip to see blue whales and dolphins, or take a city tour of Matara.',
-        image: mirissaSunset,
+        image: kalpitiyaBeachSunset,
         location: 'Mirissa',
         activities: ['Whale watching', 'Couples spa', 'Poolside relaxation'],
         accommodation: 'Lantern Boutique Hotel'
@@ -510,7 +511,7 @@ export const tours: Tour[] = [
         day: 12,
         title: 'Mirissa',
         description: 'Another day of beachfront bliss. Surfing lessons, sunset walks along the beach, or simply enjoying the romantic atmosphere of this beautiful southern coast.',
-        image: mirissaSunset,
+        image: surfingWaves,
         location: 'Mirissa',
         activities: ['Surfing lessons', 'Beach walks', 'Romantic dinner'],
         accommodation: 'Lantern Boutique Hotel'
@@ -519,7 +520,7 @@ export const tours: Tour[] = [
         day: 13,
         title: 'Mirissa',
         description: 'Final full day to enjoy the paradise beaches of Mirissa. Snorkeling, paddleboarding, or simply lounging on the golden sand before your journey home tomorrow.',
-        image: mirissaSunset,
+        image: snorkelingReef,
         location: 'Mirissa',
         activities: ['Snorkeling', 'Beach relaxation', 'Farewell dinner'],
         accommodation: 'Lantern Boutique Hotel'
@@ -528,7 +529,7 @@ export const tours: Tour[] = [
         day: 14,
         title: 'Departure',
         description: 'Depart Mirissa and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Colombo Airport',
         activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
       }
@@ -541,7 +542,7 @@ export const tours: Tour[] = [
     summary: 'On this 10-day trip, discover the hidden side to the exotic island of Sri Lanka. Travel west to east from the wildlife of Wilpattu, through the ancient culture of Sigiriya and onto the palm-fringed beaches of Pasikuda. Far from the crowds to the south, this promises to be a trip where you can relax and discover in equal measure.',
     route: ['Negombo', 'Wilpattu', 'Sigiriya', 'Pasikuda', 'Negombo'],
     tags: ['wildlife', 'culture', 'beach', 'off-the-beaten-path'],
-    heroImage: sigiriyaFortress,
+    heroImage: sigiriyaSunset,
     highlights: [
       'Wilpattu National Park – real leopard country',
       'Luxury Leopard Trails safari camp',
@@ -563,7 +564,7 @@ export const tours: Tour[] = [
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -572,7 +573,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Wilpattu',
         description: 'Begin your journey north to Wilpattu National Park. Forget the bustling plains of Yala, for Wilpattu is real leopard country. Spend your nights at the luxurious Leopard Trails camp, fully immersed in the wildlife that surrounds you. Bounded by rivers and peppered with large lakes known as "villus", Wilpattu provides the perfect setting for spotting game.',
-        image: yalaLeopard,
+        image: leopardTree,
         location: 'Wilpattu',
         activities: ['Safari drive', 'Leopard spotting', 'Luxury camp dinner'],
         accommodation: 'Leopard Trails Camp'
@@ -581,7 +582,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Wilpattu Safari',
         description: 'Keep your eyes peeled for sloth bears, barking deer and Asian elephants. Join expert guides as you head out onto the plains in search of fauna – but also listen as they unveil the great archaeological and historical importance of the park. Wildlife, history, and tantalizing Sri Lankan cuisine served around a campfire.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Wilpattu',
         activities: ['Game drives', 'Wildlife spotting', 'Campfire dinner'],
         accommodation: 'Leopard Trails Camp'
@@ -590,7 +591,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Sigiriya',
         description: 'Continue east to the foot of Sri Lanka\'s Cultural Triangle – Sigiriya. Stay at the beautiful Water Garden Sigiriya, a peaceful retreat set amid landscaped gardens with stunning views onto Sigiriya\'s star attraction. Dust off each day with a dip in the pool, a massage at the spa and a moonlit gourmet dinner.',
-        image: sigiriyaFortress,
+        image: sigiriyaSunset,
         location: 'Sigiriya',
         activities: ['Resort check-in', 'Pool relaxation', 'Spa treatment'],
         accommodation: 'Water Garden Sigiriya'
@@ -599,7 +600,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Sigiriya Rock',
         description: 'Spend the day with a private guide visiting this ancient site. Climb your way to the top of Sigiriya Rock, past ancient wall paintings, to reach views that extend all the way into the horizon over dense jungle. A mythical past of feuding dynasties suits Sigiriya\'s striking setting – built in the 5th century AD by King Kasyapa as a fortress-palace.',
-        image: sigiriyaFortress,
+        image: sigiriyaSunset,
         location: 'Sigiriya',
         activities: ['Sigiriya Rock climb', 'Ancient frescoes', 'Panoramic views'],
         accommodation: 'Water Garden Sigiriya'
@@ -608,7 +609,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Pasikuda',
         description: 'A final drive east takes you to your coastal destination where you can relax at the stylish Uga Bay Resort. Oozing luxury and relaxation, it\'s beached-out bliss all the way here. Lie back on the perfect white sands and dip your feet into the warm Indian Ocean.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Pasikuda',
         activities: ['Coastal drive', 'Beach resort check-in', 'Ocean swimming'],
         accommodation: 'Uga Bay Resort'
@@ -617,7 +618,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Pasikuda Beach',
         description: 'Four nights stay means plenty of time to indulge in a local Ayurvedic massage where you can listen to the calming ocean waves within Uga Bay\'s beachfront spa. Relax on the pristine white sand beaches of the east coast.',
-        image: beachParadise,
+        image: snorkelingReef,
         location: 'Pasikuda',
         activities: ['Ayurvedic spa', 'Beach relaxation', 'Ocean activities'],
         accommodation: 'Uga Bay Resort'
@@ -626,7 +627,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Pasikuda Beach',
         description: 'Continue to enjoy the pristine beaches of Pasikuda. Snorkeling, diving, or simply lounging by the pool with views of the Indian Ocean. This less-visited east coast offers a more peaceful beach experience.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Pasikuda',
         activities: ['Snorkeling', 'Pool relaxation', 'Beach walks'],
         accommodation: 'Uga Bay Resort'
@@ -635,7 +636,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Negombo',
         description: 'Before returning home, stopover in Negombo for a night at the hidden oasis of The Wallawwa. Here, enjoy your last few bites of the freshest fusion in Asian cuisine whilst overlooking exquisite gardens. Authentic and chic, the rooms offer a lovely last slice of luxury before departing.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Scenic transfer', 'Final dinner', 'Garden relaxation'],
         accommodation: 'The Wallawwa'
@@ -644,7 +645,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Departure',
         description: 'Morning you\'ll head to the airport for your flight home, taking with you memories of Sri Lanka\'s secret corners and hidden gems.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Colombo Airport',
         activities: ['Airport transfer', 'Departure']
       }
@@ -657,7 +658,7 @@ export const tours: Tour[] = [
     summary: 'A lush tropical island with nothing below it but the huge expanse of the Indian Ocean, Sri Lanka is a hive of energy. Visit fifth century fortresses, learn how tea is made and explore gorgeous beachfront villages, all while staying in some of our favorite hotels in the world. On this trip you\'ll be completely charmed by this little Asian nation.',
     route: ['Negombo', 'Anuradhapura', 'Kandy', 'Tea Country', 'Tangalle', 'Galle'],
     tags: ['culture', 'tea', 'beach', 'heritage'],
-    heroImage: teaPlantation,
+    heroImage: teaPlantationAerial,
     highlights: [
       'Cultural Triangle exploration',
       'Elephant safari in Minneriya',
@@ -681,7 +682,7 @@ export const tours: Tour[] = [
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Negombo',
         activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -690,7 +691,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Thirappane - Cultural Triangle',
         description: 'Drive to the Cultural Triangle for three nights at the sun-drenched Ulagalla Resort – a retreat with thatched bungalows on stilts floating above paddy fields. By day, visit some of Sri Lanka\'s oldest historic monuments and unwind in your private plunge pool. With a wine cellar and lagoon for kayaking, you\'ll be immersed in the authentic beauty of this Sri Lankan gem.',
-        image: sigiriyaFortress,
+        image: sigiriyaSunset,
         location: 'Anuradhapura',
         activities: ['Scenic drive', 'Resort check-in', 'Private plunge pool'],
         accommodation: 'Ulagalla Resort'
@@ -699,7 +700,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Minneriya / Polonnaruwa',
         description: 'Take an elephant safari in Minneriya, see the ancient Buddhist cave temples of Dambulla or explore the city of Polonnaruwa. This UNESCO World Heritage Site features ancient wall paintings and historical significance that brings Sri Lanka\'s rich history to life.',
-        image: yalaLeopard,
+        image: elephantsHerd,
         location: 'Cultural Triangle',
         activities: ['Elephant safari', 'Dambulla caves', 'Polonnaruwa ruins'],
         accommodation: 'Ulagalla Resort'
@@ -708,7 +709,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Kandy',
         description: 'Head to Kandy for a brief but memorable stop. Visit Buddha\'s Tooth Relic or explore the stunning Botanical Gardens, where Giant Java trees have branches so wide they need stilts to stay up. Relax by the pool at the romantic Kandy House sipping locally grown tea – quaint, colonial comfort at its best.',
-        image: kandyTemple,
+        image: buddhaReflection,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Botanical Gardens', 'Tea tasting'],
         accommodation: 'The Kandy House'
@@ -717,7 +718,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Hatton - Tea Country',
         description: 'No trip to Sri Lanka is complete without visiting tea country. Take a train (still run on British colonial equipment) through rolling fields of tea leaves and learn how tea is processed, before sampling the freshest cuppa of your life. Rest at Tea Trails – four old planter\'s bungalows now converted into a boutique hotel.',
-        image: ellaTrain,
+        image: trainScenic,
         location: 'Tea Country',
         activities: ['Scenic train ride', 'Tea factory tour', 'Tea tasting'],
         accommodation: 'Ceylon Tea Trails'
@@ -726,7 +727,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Tea Country',
         description: 'Enjoy evening jazz cocktail hours, discuss the next day\'s personalized menu with the chef, and sleep under a mosquito net in your colonial style room. Pastoral perfection in the misty highlands of Sri Lanka.',
-        image: teaPlantation,
+        image: teaPlantationAerial,
         location: 'Tea Country',
         activities: ['Tea estate walks', 'Cocktail hours', 'Colonial dining'],
         accommodation: 'Ceylon Tea Trails'
@@ -735,7 +736,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Tangalle',
         description: 'Head to the white beaches of Tangalle for some coastline fun. Stroll along the shore, kite-surf, wakeboard, deep sea fish or simply indulge in the amazing Anantara Peace Haven hotel. Relax in your suite with uninterrupted views of the palm-studded beach.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Tangalle',
         activities: ['Beach arrival', 'Water sports', 'Ocean views'],
         accommodation: 'Anantara Peace Haven Resort'
@@ -744,7 +745,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Tangalle',
         description: 'Dine at the poolside restaurant overlooking golden sand beaches, perfect for reflecting on your Sri Lankan adventure. Time it right and experience both elephants in the north and blue whales in the south – nature\'s most graceful yet powerful creatures.',
-        image: beachParadise,
+        image: surfingWaves,
         location: 'Tangalle',
         activities: ['Whale watching', 'Beach relaxation', 'Poolside dining'],
         accommodation: 'Anantara Peace Haven Resort'
@@ -753,7 +754,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Galle',
         description: 'Transfer to the magical fortress town of Galle, filled with red-tiled rooftops over eclectic art galleries, cafes and boutique hotels. Visit local markets with the chef during a cookery lesson, or try delicious "wade" (street snacks) with the hotel\'s signature "Arrack sour". Unwind in Sri Lanka\'s most incredible spa before watching the sunset from Amangalla\'s top floor lounge.',
-        image: beachParadise,
+        image: sriLankanFood,
         location: 'Galle',
         activities: ['Galle Fort tour', 'Cooking class', 'Spa experience', 'Sunset cocktails'],
         accommodation: 'Amangalla'
@@ -762,7 +763,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Departure',
         description: 'Morning you\'ll head to the airport for your flight home, taking memories of tea-scented highlands and palm-fringed beaches with you.',
-        image: beachParadise,
+        image: kalpitiyaBeachSunset,
         location: 'Colombo Airport',
         activities: ['Airport transfer', 'Departure']
       }
@@ -786,8 +787,8 @@ export const dayTours: DayTour[] = [
       'Fort (Railway Station)',
       'Shopping Excursion'
     ],
-    heroImage: beachParadise,
-    galleryImages: [beachParadise, kandyTemple, sigiriyaFortress],
+    heroImage: buddhaReflection,
+    galleryImages: [buddhaReflection, elephantsHerd, sigiriyaSunset],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -836,8 +837,8 @@ export const dayTours: DayTour[] = [
       'Bahirawakanda Temple',
       'Cultural Dance Show'
     ],
-    heroImage: kandyTemple,
-    galleryImages: [kandyTemple, teaPlantation, waterfall],
+    heroImage: buddhaReflection,
+    galleryImages: [buddhaReflection, teaPlantationAerial, tropicalWaterfall],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -888,8 +889,8 @@ export const dayTours: DayTour[] = [
       'Dutch Galle Fort',
       'Stilt Fishermen'
     ],
-    heroImage: beachParadise,
-    galleryImages: [beachParadise, mirissaSunset, snorkeling],
+    heroImage: kalpitiyaBeachSunset,
+    galleryImages: [kalpitiyaBeachSunset, surfingWaves, snorkelingReef],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -940,8 +941,8 @@ export const dayTours: DayTour[] = [
       'Spotted Deer & Sambars',
       'Bird Watching'
     ],
-    heroImage: yalaLeopard,
-    galleryImages: [yalaLeopard, waterfall, teaPlantation],
+    heroImage: leopardTree,
+    galleryImages: [leopardTree, elephantsHerd, teaPlantationAerial],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -992,8 +993,8 @@ export const dayTours: DayTour[] = [
       'Ancient Frescoes',
       'Dambulla Cave Temple'
     ],
-    heroImage: sigiriyaFortress,
-    galleryImages: [sigiriyaFortress, kandyTemple, teaPlantation],
+    heroImage: sigiriyaSunset,
+    galleryImages: [sigiriyaSunset, buddhaReflection, teaPlantationAerial],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -1044,8 +1045,8 @@ export const dayTours: DayTour[] = [
       'Waterfall Jumps & Abseiling',
       'Bird Watching'
     ],
-    heroImage: waterfall,
-    galleryImages: [waterfall, teaPlantation, ellaTrain],
+    heroImage: tropicalWaterfall,
+    galleryImages: [tropicalWaterfall, teaPlantationAerial, trainScenic],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
