@@ -3,6 +3,9 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Send, Loader2 } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import { toast } from '@/hooks/use-toast';
+import { tours, dayTours } from '@/data/tours';
+
+const WHATSAPP_NUMBER = '94777077325';
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -12,12 +15,19 @@ const ContactSection = () => {
     email: '',
     country: '',
     dates: '',
+    selectedPackage: '',
     message: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  // Combine tours and day tours for the dropdown
+  const allPackages = [
+    ...tours.map(tour => ({ id: tour.id, name: tour.name, type: 'Multi-Day Tour' })),
+    ...dayTours.map(tour => ({ id: tour.id, name: tour.name, type: 'Day Tour' })),
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,11 +42,12 @@ const ContactSection = () => {
     });
 
     // Open WhatsApp with the form data
-    const message = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}. ${formData.message}`;
+    const packageInfo = formData.selectedPackage ? `\nInterested Package: ${formData.selectedPackage}` : '';
+    const message = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}.${packageInfo}\n\n${formData.message}`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/94771234567?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
 
-    setFormData({ name: '', email: '', country: '', dates: '', message: '' });
+    setFormData({ name: '', email: '', country: '', dates: '', selectedPackage: '', message: '' });
     setIsSubmitting(false);
   };
 
@@ -64,6 +75,7 @@ const ContactSection = () => {
               </p>
               <WhatsAppButton
                 message="Hello! I'd like to plan a trip to Sri Lanka."
+                phoneNumber={WHATSAPP_NUMBER}
                 className="w-full justify-center"
               >
                 {t('chatWhatsApp')}
@@ -72,7 +84,7 @@ const ContactSection = () => {
 
             <div className="text-muted-foreground">
               <p className="mb-2">📧 info@visitsrilanka.com</p>
-              <p>📱 +94 77 123 4567</p>
+              <p>📱 +94 777 077 325</p>
             </div>
           </div>
 
@@ -146,6 +158,31 @@ const ContactSection = () => {
                   placeholder="e.g., March 2025"
                 />
               </div>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="selectedPackage" className="block text-sm font-medium mb-2">
+                {t('selectPackage')}
+              </label>
+              <select
+                id="selectedPackage"
+                name="selectedPackage"
+                value={formData.selectedPackage}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+              >
+                <option value="">Select a package (optional)</option>
+                <optgroup label="Multi-Day Tours">
+                  {allPackages.filter(p => p.type === 'Multi-Day Tour').map(pkg => (
+                    <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
+                  ))}
+                </optgroup>
+                <optgroup label="Day Tours">
+                  {allPackages.filter(p => p.type === 'Day Tour').map(pkg => (
+                    <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
+                  ))}
+                </optgroup>
+              </select>
             </div>
 
             <div className="mb-6">
