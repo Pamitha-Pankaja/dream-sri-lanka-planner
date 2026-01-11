@@ -20,9 +20,9 @@ export const translations: Record<Language, Record<string, string>> = {
     skipIntro: 'Skip intro',
     
     // Hero
-    heroTitle: 'Surf • Beach • Adventure',
-    heroSubtitle: 'in Sri Lanka',
-    heroDescription: 'Hand-crafted journeys inspired by ocean, nature, and freedom',
+    heroTitle: 'Discover the Pearl',
+    heroSubtitle: 'of the Indian Ocean',
+    heroDescription: 'Unforgettable journeys through ancient wonders, pristine beaches, and timeless traditions',
     planTrip: 'Plan Your Trip',
     chatWhatsApp: 'Chat on WhatsApp',
     
@@ -176,9 +176,9 @@ export const translations: Record<Language, Record<string, string>> = {
     skipIntro: 'דלג על הקדמה',
     
     // Hero
-    heroTitle: 'גלישה • חוף • הרפתקה',
-    heroSubtitle: 'בסרי לנקה',
-    heroDescription: 'מסעות מותאמים אישית בהשראת האוקיינוס, הטבע והחופש',
+    heroTitle: 'גלה את הפנינה',
+    heroSubtitle: 'של האוקיינוס ההודי',
+    heroDescription: 'מסעות בלתי נשכחים דרך פלאים עתיקים, חופים בתוליים ומסורות נצחיות',
     planTrip: 'תכנן את הטיול',
     chatWhatsApp: 'צ\'אט בוואטסאפ',
     
@@ -329,9 +329,9 @@ export const translations: Record<Language, Record<string, string>> = {
     enterSite: 'Seite betreten',
     skipIntro: 'Intro überspringen',
     
-    heroTitle: 'Surfen • Strand • Abenteuer',
-    heroSubtitle: 'in Sri Lanka',
-    heroDescription: 'Handgefertigte Reisen inspiriert von Ozean, Natur und Freiheit',
+    heroTitle: 'Entdecken Sie die Perle',
+    heroSubtitle: 'des Indischen Ozeans',
+    heroDescription: 'Unvergessliche Reisen durch antike Wunder, unberührte Strände und zeitlose Traditionen',
     planTrip: 'Planen Sie Ihre Reise',
     chatWhatsApp: 'Chat auf WhatsApp',
     aboutUs: 'Über Uns',
@@ -467,9 +467,9 @@ export const translations: Record<Language, Record<string, string>> = {
     enterSite: 'Entrer sur le site',
     skipIntro: 'Passer l\'intro',
     
-    heroTitle: 'Surf • Plage • Aventure',
-    heroSubtitle: 'au Sri Lanka',
-    heroDescription: 'Voyages sur mesure inspirés par l\'océan, la nature et la liberté',
+    heroTitle: 'Découvrez la Perle',
+    heroSubtitle: 'de l\'Océan Indien',
+    heroDescription: 'Voyages inoubliables à travers des merveilles anciennes, des plages immaculées et des traditions intemporelles',
     planTrip: 'Planifiez Votre Voyage',
     chatWhatsApp: 'Chat sur WhatsApp',
     aboutUs: 'À Propos',
@@ -605,9 +605,9 @@ export const translations: Record<Language, Record<string, string>> = {
     enterSite: 'Entrar al Sitio',
     skipIntro: 'Saltar intro',
     
-    heroTitle: 'Surf • Playa • Aventura',
-    heroSubtitle: 'en Sri Lanka',
-    heroDescription: 'Viajes artesanales inspirados en el océano, la naturaleza y la libertad',
+    heroTitle: 'Descubre la Perla',
+    heroSubtitle: 'del Océano Índico',
+    heroDescription: 'Viajes inolvidables a través de maravillas antiguas, playas vírgenes y tradiciones eternas',
     planTrip: 'Planifica Tu Viaje',
     chatWhatsApp: 'Chat en WhatsApp',
     aboutUs: 'Sobre Nosotros',
@@ -743,9 +743,9 @@ export const translations: Record<Language, Record<string, string>> = {
     enterSite: 'Entra nel Sito',
     skipIntro: 'Salta intro',
     
-    heroTitle: 'Surf • Spiaggia • Avventura',
-    heroSubtitle: 'in Sri Lanka',
-    heroDescription: 'Viaggi artigianali ispirati dall\'oceano, natura e libertà',
+    heroTitle: 'Scopri la Perla',
+    heroSubtitle: 'dell\'Oceano Indiano',
+    heroDescription: 'Viaggi indimenticabili attraverso antiche meraviglie, spiagge incontaminate e tradizioni senza tempo',
     planTrip: 'Pianifica il Tuo Viaggio',
     chatWhatsApp: 'Chat su WhatsApp',
     aboutUs: 'Chi Siamo',
@@ -881,9 +881,9 @@ export const translations: Record<Language, Record<string, string>> = {
     enterSite: 'Betreed de Site',
     skipIntro: 'Intro overslaan',
     
-    heroTitle: 'Surfen • Strand • Avontuur',
-    heroSubtitle: 'in Sri Lanka',
-    heroDescription: 'Handgemaakte reizen geïnspireerd door oceaan, natuur en vrijheid',
+    heroTitle: 'Ontdek de Parel',
+    heroSubtitle: 'van de Indische Oceaan',
+    heroDescription: 'Onvergetelijke reizen door oude wonderen, ongerepte stranden en tijdloze tradities',
     planTrip: 'Plan Uw Reis',
     chatWhatsApp: 'Chat op WhatsApp',
     aboutUs: 'Over Ons',
