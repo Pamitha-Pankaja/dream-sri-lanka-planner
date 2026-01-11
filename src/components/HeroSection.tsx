@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import WhatsAppButton from './WhatsAppButton';
-import elephantsHerd from '@/assets/elephants-herd.jpg';
+import elephantsHero from '@/assets/elephants-hero.jpg';
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -15,7 +15,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={elephantsHerd}
+          src={elephantsHero}
           alt="Wild elephants walking in Sri Lanka safari"
           className="w-full h-full object-cover"
         />
