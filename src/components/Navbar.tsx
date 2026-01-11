@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
@@ -7,6 +8,8 @@ import { Menu, X, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTailorMadeOpen, setIsTailorMadeOpen] = useState(false);
@@ -20,8 +23,15 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first with the hash
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+    } else {
+      // On home page, just scroll to the section
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const navLinks = [

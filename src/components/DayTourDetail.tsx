@@ -13,6 +13,11 @@ const DayTourDetail = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
   
+  // Scroll to top when component mounts
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+  
   const tour = dayTours.find(t => t.id === id);
   
   if (!tour) {
