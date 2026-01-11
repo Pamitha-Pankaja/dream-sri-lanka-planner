@@ -62,8 +62,21 @@ export const translations: Record<Language, Record<string, string>> = {
     // Day Tours
     dayTours: 'Day Tours',
     exploreSriLanka: 'Explore Sri Lanka',
-    dayToursTitle: 'Day Tours',
-    dayToursSubtitle: 'Perfect for short excursions from your base. Explore iconic destinations and return the same day.',
+    dayToursTitle: 'Private Luxury Day Tours',
+    dayToursSubtitle: 'From Colombo to culturally rich and environmentally diverse destinations. Experience the most highlighted parts of Sri Lanka in well-organized day tours.',
+    readMore: 'Read More',
+    overview: 'Overview',
+    tourHighlights: 'Tour Highlights',
+    itinerary: 'Itinerary',
+    gallery: 'Gallery',
+    bookThisTour: 'Book This Tour',
+    inclusions: 'Inclusions',
+    exclusions: 'Exclusions',
+    city: 'City',
+    heritage: 'Heritage',
+    UNESCO: 'UNESCO',
+    religion: 'Religion',
+    rafting: 'Rafting',
     
     // Experience tags
     surf: 'Surf',

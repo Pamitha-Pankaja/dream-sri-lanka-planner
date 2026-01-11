@@ -1,5 +1,4 @@
 import React from 'react';
-import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import WhySriLanka from '@/components/WhySriLanka';
@@ -13,23 +12,20 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   return (
-    <LanguageProvider>
-      {/* Main content container */}
-      <div className="min-h-screen">
-        <Navbar />
-        <HeroSection />
-        <WhySriLanka />
-        <ToursSection />
-        <DayToursSection />
-        <ExperiencesSection />
-        <ReviewsSection />
-        <ContactSection />
-        <Footer />
-        
-        {/* Floating WhatsApp Button */}
-        <WhatsAppButton floating />
-      </div>
-    </LanguageProvider>
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <WhySriLanka />
+      <ToursSection />
+      <DayToursSection />
+      <ExperiencesSection />
+      <ReviewsSection />
+      <ContactSection />
+      <Footer />
+      
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton floating />
+    </div>
   );
 };
 

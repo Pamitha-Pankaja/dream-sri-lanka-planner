@@ -32,14 +32,26 @@ export interface Tour {
   itinerary: TourDay[];
 }
 
+export interface DayTourItineraryStep {
+  title: string;
+  description: string;
+}
+
 export interface DayTour {
   id: string;
   name: string;
   location: string;
   summary: string;
+  overview: string;
   highlights: string[];
   heroImage: string;
+  galleryImages: string[];
   duration: string;
+  startsEnds: string;
+  tourType: string;
+  itinerary: DayTourItineraryStep[];
+  inclusions: string[];
+  exclusions: string[];
   tags: string[];
 }
 
@@ -760,83 +772,313 @@ export const tours: Tour[] = [
 
 export const dayTours: DayTour[] = [
   {
-    id: 'sigiriya-dambulla',
-    name: 'Sigiriya & Dambulla Day Tour',
-    location: 'Sigiriya & Dambulla',
-    summary: 'Explore the ancient wonders of Sri Lanka\'s Cultural Triangle with a visit to the iconic Sigiriya Rock Fortress and the magnificent Dambulla Cave Temple in one unforgettable day.',
+    id: 'colombo-city-tour',
+    name: 'Private Day Tour in Colombo',
+    location: 'Colombo',
+    summary: 'Explore the vibrant commercial capital of Sri Lanka with its colorful history running back to the fifth century.',
+    overview: 'Colombo has a colorful history running back to fifth century. Even in the ancient times this was an important port city in East-West sea trade. Now it has bloomed into a bustling modern city with a unique atmosphere. The spectacular city of Colombo is a mixture of colonial and modern atmosphere. Along with colonial era mansions there are modern condos reaching the sky. The temples architecture demonstrates an eclectic mix of Sri Lankan, Thai, Indian, and Chinese influences.',
     highlights: [
-      'Climb Sigiriya Rock Fortress',
-      'View ancient frescoes',
-      'Explore Dambulla Cave Temple',
-      'Visit local spice garden',
-      'Scenic countryside views'
+      'Kelaniya Ancient Temple',
+      'Cultural Exploration (Buddhist, Hindu, Muslim, Christian)',
+      'Independence Square',
+      'Galle Face Green',
+      'Pettah and Port Area',
+      'Fort (Railway Station)',
+      'Shopping Excursion'
     ],
-    heroImage: sigiriyaFortress,
-    duration: '12 hours',
-    tags: ['culture', 'history', 'UNESCO']
+    heroImage: beachParadise,
+    galleryImages: [beachParadise, kandyTemple, sigiriyaFortress],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Morning Pickup & Kelaniya Temple',
+        description: 'You will be picked up from your hotel in Colombo at 9 am and then proceed to Kelaniya Temple, one of the most sacred Buddhist temples in Sri Lanka.'
+      },
+      {
+        title: 'Galle Face & Gangaramaya Temple',
+        description: 'Visit Galle Face Green and Gangaramaya Temple, one of the most important Buddhist temples in Sri Lanka with its unique eclectic architecture.'
+      },
+      {
+        title: 'Fort & Independence Square',
+        description: 'Explore the harbor and fort areas of Colombo and visit the Independence Square located just a few minutes away from the Old Parliament building.'
+      },
+      {
+        title: 'Shopping & Return',
+        description: 'After lunch, enjoy shopping for high quality clothes at affordable prices. Sri Lanka is known for its garment industry. Return to your hotel.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'All entrance tickets at mentioned sites',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
+    tags: ['culture', 'city', 'heritage']
   },
   {
-    id: 'kandy-cultural',
-    name: 'Kandy Cultural Day Tour',
+    id: 'kandy-day-tour',
+    name: 'Private Day Tour to Kandy',
     location: 'Kandy',
-    summary: 'Discover the royal city of Kandy, visit the sacred Temple of the Tooth Relic, explore the beautiful botanical gardens, and experience traditional Kandyan dance performances.',
+    summary: 'Visit the UNESCO World Heritage city of Kandy, the last capital of the ancient kings era with the sacred Temple of the Tooth.',
+    overview: 'Kandy is a major city in Sri Lanka, located in the Central Province. It was the last capital of the ancient kings era of Sri Lanka. The city lies in the midst of hills in the Kandy plateau, which crosses an area of tropical plantations, mainly tea. Kandy is home of The Temple of the Tooth Relic (Sri Dalada Maligawa), one of the most sacred places of worship in the Buddhist world. It was declared a World Heritage Site by UNESCO in 1988.',
     highlights: [
-      'Temple of the Sacred Tooth Relic',
-      'Royal Botanical Gardens',
-      'Traditional Kandyan dance show',
-      'Kandy Lake walk',
-      'Local craft markets'
+      'Peradeniya Botanical Garden',
+      'Temple of Tooth Relic',
+      'Kandy City / Kandy Lake',
+      'Bahirawakanda Temple',
+      'Cultural Dance Show'
     ],
     heroImage: kandyTemple,
-    duration: '10 hours',
+    galleryImages: [kandyTemple, teaPlantation, waterfall],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Peradeniya Botanical Gardens',
+        description: 'Leave Colombo at 6:30 am and drive 3 hours to Peradeniya, home of the Royal Botanical Garden with its large collection of ornamental, decorative, and medicinal plants, as well as orchids.'
+      },
+      {
+        title: 'Kandy City Exploration',
+        description: 'Pause for lunch before continuing to Kandy. Shop for unique souvenirs including silk, crafts, gems, and batiks. Visit the Kandy View Point and Bahirawakanda Temple.'
+      },
+      {
+        title: 'Temple of the Tooth',
+        description: 'Visit the Temple of the Tooth, a holy Buddhist temple that draws pilgrims from all over the world. According to legend, the temple holds a relic of the tooth of Buddha.'
+      },
+      {
+        title: 'Return Journey',
+        description: 'Leave Kandy en route to Colombo, stopping in Ambepussa for dinner. Return to your hotel around 11 pm.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'All entrance tickets at mentioned sites',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
     tags: ['culture', 'religion', 'nature']
   },
   {
-    id: 'yala-safari',
-    name: 'Yala Safari Day Tour',
-    location: 'Yala National Park',
-    summary: 'Experience an exciting wildlife safari at Yala National Park, home to the world\'s highest density of leopards, elephants, and an incredible variety of bird species.',
+    id: 'galle-day-tour',
+    name: 'Private Day Tour to Galle',
+    location: 'Galle',
+    summary: 'Discover the UNESCO World Heritage Galle Fort, a Portuguese-built fortress with Dutch fortifications and rich colonial history.',
+    overview: 'Galle is a major city situated on the southwestern tip of Sri Lanka. The Galle Fort is a World Heritage Site and the largest remaining fortress in Asia built by European occupiers. Galle is the best example of a fortified city built by the Portuguese in South and Southeast Asia. Other landmarks include the natural harbor, National Maritime Museum, St. Marys Cathedral, and the historic Amangalla luxury hotel.',
     highlights: [
-      'Jeep safari in Yala National Park',
-      'Leopard and elephant spotting',
-      'Bird watching',
-      'Scenic coastal views',
-      'Expert naturalist guide'
+      'Kosgoda Sea Turtle Hatchery',
+      'Madu River Boat Ride',
+      'Batik Factory',
+      'Hand Made Lace (Beeralu)',
+      'Traditional Mask Factory',
+      'Dutch Galle Fort',
+      'Stilt Fishermen'
+    ],
+    heroImage: beachParadise,
+    galleryImages: [beachParadise, mirissaSunset, snorkeling],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Kosgoda Turtle Hatchery',
+        description: 'Meet your guide at 7 am for a 12-hour day tour. Begin at the Kosgoda Turtle Hatchery, home to seven species of marine turtles and other wild sea life.'
+      },
+      {
+        title: 'Madu River Boat Ride',
+        description: 'Experience a wonderful boat ride at Madu River, a complex wetland ecosystem protected by the Ramsar Convention, containing pristine mangrove forest.'
+      },
+      {
+        title: 'Ambalangoda Crafts',
+        description: 'Visit the Mask Factory in Ambalangoda, Batik Factory, and see the traditional Hand Made Lace (Beeralu) crafting.'
+      },
+      {
+        title: 'Galle Fort & Stilt Fishermen',
+        description: 'Explore Galle Fort, a Portuguese-built and Dutch-fortified 16th-century fortress. Continue to Weligama to see the famous stilt fishermen. Return to Colombo.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'All entrance tickets at mentioned sites',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
+    tags: ['heritage', 'beach', 'culture']
+  },
+  {
+    id: 'yala-safari-day-tour',
+    name: 'Private Day Tour to Yala National Park',
+    location: 'Yala National Park',
+    summary: 'Experience an exciting wildlife safari at Yala, the most visited national park with the highest leopard density in the world.',
+    overview: 'Yala National Park is the most visited and second largest national park in Sri Lanka. It is best known for its variety of wild animals and is important for the conservation of Sri Lankan elephants, leopards, and aquatic birds. Yala hosts a variety of ecosystems ranging from moist monsoon forests to freshwater and marine wetlands. It harbours 215 bird species including six endemic species, 44 mammal species, and has one of the highest leopard densities in the world.',
+    highlights: [
+      'Sri Lankan Lunch',
+      'Jeep Safari Adventure',
+      'Leopard Spotting',
+      'Elephants & Water Buffalos',
+      'Sloth Bears & Wild Boars',
+      'Spotted Deer & Sambars',
+      'Bird Watching'
     ],
     heroImage: yalaLeopard,
-    duration: '14 hours',
+    galleryImages: [yalaLeopard, waterfall, teaPlantation],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Leave for Tissamaharama',
+        description: 'Early morning at 6:30 am, leave for Tissamaharama (approx. 6 hours drive). Refresh upon arriving and enjoy a Sri Lankan lunch.'
+      },
+      {
+        title: 'Yala National Park Safari',
+        description: 'Around 2:30 pm, begin your safari adventure. Spot colorful storks, dozing crocodiles, fan-tailed peacocks, and monkeys. Look for Sloth Bears, Leopards, Elephants, Water Buffalos, Wild Boars, Spotted Deer, Sambars, and Golden Jackals.'
+      },
+      {
+        title: 'Leopard Spotting',
+        description: 'If youre lucky, gaze at distinct Sri Lankan leopards. Yala National Parks Block 1 has recorded the highest density of leopards among wildlife parks in Sri Lanka.'
+      },
+      {
+        title: 'Return Journey',
+        description: 'After the safari, transfer back to your hotel in Colombo/Negombo, arriving late evening.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'All entrance tickets at mentioned sites',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
     tags: ['wildlife', 'safari', 'nature']
   },
   {
-    id: 'galle-fort',
-    name: 'Galle Fort & Beaches Day Tour',
-    location: 'Galle & South Coast',
-    summary: 'Explore the UNESCO World Heritage Galle Fort with its colonial architecture, boutique shops, and art galleries. End the day relaxing on pristine southern beaches.',
+    id: 'sigiriya-day-tour',
+    name: 'Private Day Tour to Sigiriya Fortress',
+    location: 'Sigiriya & Dambulla',
+    summary: 'Climb the iconic 5th-century Sigiriya Rock Fortress and explore the ancient Dambulla Cave Temple, both UNESCO World Heritage Sites.',
+    overview: 'Sigiriya is an ancient palace located in the central Matale District. This site was selected by King Kasyapa (477-495 CE) for his new capital. He built his palace on the top of this rock nearly 200 meters high and decorated its sides with colorful frescoes. The name derives from Sihagiri, the Lion Rock, due to the enormous lion gateway. Today Sigiriya is a UNESCO World Heritage Site and one of the best preserved examples of ancient urban planning. It is the most visited historic site in Sri Lanka.',
     highlights: [
-      'UNESCO Galle Fort exploration',
-      'Colonial architecture',
-      'Boutique shopping',
-      'Unawatuna Beach visit',
-      'Sea turtle hatchery'
+      'Sigiriya Rock Fortress',
+      'Water Gardens',
+      'Boulder Gardens',
+      'Terraced Gardens',
+      'Mirror Wall',
+      'Ancient Frescoes',
+      'Dambulla Cave Temple'
     ],
-    heroImage: beachParadise,
-    duration: '10 hours',
-    tags: ['heritage', 'beach', 'shopping']
+    heroImage: sigiriyaFortress,
+    galleryImages: [sigiriyaFortress, kandyTemple, teaPlantation],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Sigiriya Rock Fortress',
+        description: 'Early morning at 6:30 am, leave for Sigiriya (approx. 4 hours drive) and climb the 5th-century Sigiriya rock fortress. Famous for its toadstool of golden-hued granite protruding into the blue sky from a wilderness transformed in rainy season to a water garden.'
+      },
+      {
+        title: 'Explore the Ancient Palace',
+        description: 'Discover the water gardens, boulder gardens, terraced gardens, the famous Mirror Wall with ancient graffiti, and the stunning frescoes of celestial maidens.'
+      },
+      {
+        title: 'Dambulla Cave Temple',
+        description: 'After lunch, visit Dambulla rock temple built by King Walagambahu in the 1st century BC. This World Heritage Site has five caves with over 2000 sq. meters of painted walls and ceilings, containing over 150 Buddha images.'
+      },
+      {
+        title: 'Return to Hotel',
+        description: 'On completion of this visit, you will be driven back to your hotel in Colombo/Negombo.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'All entrance tickets at mentioned sites',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
+    tags: ['culture', 'heritage', 'UNESCO']
   },
   {
-    id: 'ella-train',
-    name: 'Ella Scenic Train Experience',
-    location: 'Ella & Hill Country',
-    summary: 'Journey on one of the world\'s most scenic train rides through misty tea plantations, cross the famous Nine Arches Bridge, and hike to stunning viewpoints in Ella.',
+    id: 'kitulgala-rafting-tour',
+    name: 'Private White Water Rafting Day Tour',
+    location: 'Kitulgala',
+    summary: 'Experience thrilling white water rafting adventure on the Kelani River in the picturesque wet zone rain forest of Kitulgala.',
+    overview: 'Kitulgala is a small town in the west of Sri Lanka in the wet zone rain forest. It is one of the wettest places in the country. The Academy Award-winning "The Bridge on the River Kwai" was filmed on the Kelani River near Kitulgala. Kitulgala is a base for white water rafting which starts a few kilometers upstream. Large numbers of people visit to enjoy the beautiful scenery, play in the river, and have excellent rice and curry lunch.',
     highlights: [
-      'Scenic train ride',
-      'Nine Arches Bridge',
-      'Little Adam\'s Peak hike',
-      'Tea plantation visit',
-      'Ravana Falls'
+      'White Water Rafting in Kelani River',
+      'Flat Water Rafting for Kids',
+      'Jungle Walks to Waterfalls',
+      'Mountain Biking',
+      'River Bathing',
+      'Waterfall Jumps & Abseiling',
+      'Bird Watching'
     ],
-    heroImage: ellaTrain,
-    duration: '12 hours',
-    tags: ['nature', 'adventure', 'scenic']
+    heroImage: waterfall,
+    galleryImages: [waterfall, teaPlantation, ellaTrain],
+    duration: '1 Day',
+    startsEnds: 'Negombo / Colombo',
+    tourType: 'Private',
+    itinerary: [
+      {
+        title: 'Drive to Kitulgala',
+        description: 'Get out of the city and take a 2-hour drive to Kitulgala from Colombo via the Nuwara Eliya road through beautiful scenery.'
+      },
+      {
+        title: 'Safety Briefing',
+        description: 'Receive a comprehensive safety briefing from experienced instructors before your rafting adventure begins.'
+      },
+      {
+        title: 'White Water Rafting Adventure',
+        description: 'Hop in your white water raft and head out on the Kelani River for an adrenaline-filled adventure through rapids surrounded by lush rainforest.'
+      },
+      {
+        title: 'Lunch & Return',
+        description: 'Enjoy a traditional Sri Lankan rice and curry lunch at Kitulgala. In the evening, transfer back to your hotel in Colombo.'
+      }
+    ],
+    inclusions: [
+      'Transportation by A/C vehicle',
+      'Pick up to drop off at airport/hotel',
+      'English speaking chauffeur guide',
+      'White water rafting equipment & guide',
+      'Portage & service charge'
+    ],
+    exclusions: [
+      'Lunch throughout the tour',
+      'Expenses of a personal nature',
+      'Telephone calls, laundry, beverages'
+    ],
+    tags: ['adventure', 'nature', 'rafting']
   }
 ];
