@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -16,6 +17,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const Index = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const { languageChanged, resetLanguageChanged } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     // Check if user has seen welcome before in this session
@@ -24,6 +26,16 @@ const Index = () => {
       setShowWelcome(false);
     }
   }, []);
+
+  // Handle hash navigation (e.g., coming from day tour page with /#section)
+  useEffect(() => {
+    if (location.hash && !showWelcome) {
+      const sectionId = location.hash.replace('#', '');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [location.hash, showWelcome]);
 
   // Show welcome screen again when language changes
   useEffect(() => {
