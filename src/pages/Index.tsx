@@ -11,9 +11,11 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import WelcomeScreen from '@/components/WelcomeScreen';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Index = () => {
   const [showWelcome, setShowWelcome] = useState(true);
+  const { languageChanged, resetLanguageChanged } = useLanguage();
 
   useEffect(() => {
     // Check if user has seen welcome before in this session
@@ -23,9 +25,17 @@ const Index = () => {
     }
   }, []);
 
+  // Show welcome screen again when language changes
+  useEffect(() => {
+    if (languageChanged) {
+      setShowWelcome(true);
+    }
+  }, [languageChanged]);
+
   const handleWelcomeComplete = () => {
     setShowWelcome(false);
     sessionStorage.setItem('hasSeenWelcome', 'true');
+    resetLanguageChanged();
   };
 
   return (
