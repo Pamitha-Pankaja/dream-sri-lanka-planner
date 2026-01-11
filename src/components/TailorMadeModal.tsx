@@ -91,7 +91,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
       `Comments: ${formData.comments}`
     );
 
-    window.open(`https://wa.me/94771234567?text=${message}`, '_blank');
+    window.open(`https://wa.me/94777077325?text=${message}`, '_blank');
 
     toast({
       title: t('inquirySent'),

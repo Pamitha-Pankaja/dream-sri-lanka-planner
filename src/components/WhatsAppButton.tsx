@@ -1,20 +1,27 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '94771234567'; // Replace with actual number
+const DEFAULT_WHATSAPP_NUMBER = '94777077325';
 const DEFAULT_MESSAGE = 'Hello! I\'m interested in planning a trip to Sri Lanka.';
 
 interface WhatsAppButtonProps {
   floating?: boolean;
   message?: string;
+  phoneNumber?: string;
   children?: React.ReactNode;
   className?: string;
 }
 
-const WhatsAppButton = ({ floating = false, message = DEFAULT_MESSAGE, children, className = '' }: WhatsAppButtonProps) => {
+const WhatsAppButton = ({ 
+  floating = false, 
+  message = DEFAULT_MESSAGE, 
+  phoneNumber = DEFAULT_WHATSAPP_NUMBER,
+  children, 
+  className = '' 
+}: WhatsAppButtonProps) => {
   const handleClick = () => {
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
   };
 
   if (floating) {

@@ -77,6 +77,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Submit Request',
     inquirySent: 'Request Sent!',
     inquiryConfirmation: 'We will contact you within 24 hours to discuss your dream tour.',
+    selectPackage: 'Select Package',
     
     // Why Sri Lanka
     discoverParadise: 'Discover Paradise',
@@ -233,6 +234,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'שלח בקשה',
     inquirySent: 'הבקשה נשלחה!',
     inquiryConfirmation: 'ניצור איתך קשר תוך 24 שעות לדון בטיול החלומות שלך.',
+    selectPackage: 'בחר חבילה',
     
     // Why Sri Lanka
     discoverParadise: 'גלה את גן עדן',
@@ -384,6 +386,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Anfrage senden',
     inquirySent: 'Anfrage gesendet!',
     inquiryConfirmation: 'Wir werden Sie innerhalb von 24 Stunden kontaktieren.',
+    selectPackage: 'Paket auswählen',
     
     discoverParadise: 'Entdecken Sie das Paradies',
     whySriLankaTitle: 'Warum Sri Lanka?',
@@ -522,6 +525,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Envoyer la Demande',
     inquirySent: 'Demande Envoyée!',
     inquiryConfirmation: 'Nous vous contacterons dans les 24 heures.',
+    selectPackage: 'Sélectionner un forfait',
     
     discoverParadise: 'Découvrez le Paradis',
     whySriLankaTitle: 'Pourquoi le Sri Lanka?',
@@ -660,6 +664,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Enviar Solicitud',
     inquirySent: '¡Solicitud Enviada!',
     inquiryConfirmation: 'Te contactaremos dentro de 24 horas.',
+    selectPackage: 'Seleccionar paquete',
     
     discoverParadise: 'Descubre el Paraíso',
     whySriLankaTitle: '¿Por Qué Sri Lanka?',
@@ -798,6 +803,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Invia Richiesta',
     inquirySent: 'Richiesta Inviata!',
     inquiryConfirmation: 'Ti contatteremo entro 24 ore.',
+    selectPackage: 'Seleziona pacchetto',
     
     discoverParadise: 'Scopri il Paradiso',
     whySriLankaTitle: 'Perché Sri Lanka?',
@@ -936,6 +942,7 @@ export const translations: Record<Language, Record<string, string>> = {
     submitRequest: 'Verzoek Verzenden',
     inquirySent: 'Verzoek Verzonden!',
     inquiryConfirmation: 'We nemen binnen 24 uur contact met u op.',
+    selectPackage: 'Selecteer pakket',
     
     discoverParadise: 'Ontdek het Paradijs',
     whySriLankaTitle: 'Waarom Sri Lanka?',
