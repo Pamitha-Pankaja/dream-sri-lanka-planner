@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { MessageCircle, Mail } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import Logo from './Logo';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -14,7 +15,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-serif font-bold mb-2">Visit Sri Lanka</h3>
+            <Logo variant="light" className="mb-2" />
             <p className="text-primary-foreground/70 text-sm italic">
               {t('footerTagline')}
             </p>
@@ -32,11 +33,11 @@ const Footer = () => {
               <span className="text-sm">WhatsApp</span>
             </a>
             <a
-              href="mailto:info@visitsrilanka.com"
+              href="mailto:info@ceylonroundtours.com"
               className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               <Mail className="w-5 h-5" />
-              <span className="text-sm">info@visitsrilanka.com</span>
+              <span className="text-sm">info@ceylonroundtours.com</span>
             </a>
           </div>
 
@@ -48,7 +49,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © {currentYear} Visit Sri Lanka. All rights reserved.
+            © {currentYear} Ceylon Round Tours. {t('allRightsReserved')}
           </p>
         </div>
       </div>
