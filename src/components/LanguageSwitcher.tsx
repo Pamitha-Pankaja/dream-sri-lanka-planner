@@ -26,7 +26,7 @@ const LanguageSwitcher = () => {
             className="fixed inset-0 z-40" 
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute top-full mt-2 right-0 z-50 bg-card rounded-2xl shadow-elevated border border-border overflow-hidden min-w-[160px] animate-scale-in">
+          <div className="absolute top-full mt-2 right-0 z-50 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden min-w-[160px] animate-scale-in">
             {languages.map((lang) => (
               <button
                 key={lang.code}
@@ -34,8 +34,8 @@ const LanguageSwitcher = () => {
                   setLanguage(lang.code as Language);
                   setIsOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-muted transition-colors ${
-                  language === lang.code ? 'bg-primary/10 text-primary' : ''
+                className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                  language === lang.code ? 'bg-primary/10 text-primary' : 'text-gray-800 dark:text-gray-100'
                 }`}
               >
                 <span className="text-lg">{lang.flag}</span>
