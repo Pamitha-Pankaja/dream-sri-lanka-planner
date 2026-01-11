@@ -6,12 +6,15 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
   isRTL: boolean;
+  languageChanged: boolean;
+  resetLanguageChanged: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>('en');
+  const [languageChanged, setLanguageChanged] = useState(false);
 
   const isRTL = languages.find(l => l.code === language)?.rtl || false;
 
@@ -20,12 +23,23 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     document.documentElement.lang = language;
   }, [language, isRTL]);
 
+  const setLanguage = (lang: Language) => {
+    if (lang !== language) {
+      setLanguageState(lang);
+      setLanguageChanged(true);
+    }
+  };
+
+  const resetLanguageChanged = () => {
+    setLanguageChanged(false);
+  };
+
   const t = (key: string): string => {
     return translations[language][key] || translations.en[key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL, languageChanged, resetLanguageChanged }}>
       {children}
     </LanguageContext.Provider>
   );
