@@ -3,7 +3,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
 import { ArrowLeft, Calendar, MapPin, Check, Building2, Star } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
-import SriLankaMap from './SriLankaMap';
+import TourMap from './TourMap';
 
 interface TourDetailProps {
   tour: Tour;
@@ -129,71 +129,87 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
       {/* Route Map */}
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('routeMap')}</h2>
-        <div className="bg-muted rounded-2xl p-8">
-          <SriLankaMap route={tour.route} />
+        <div className="bg-card rounded-2xl p-6 md:p-8 shadow-soft">
+          <TourMap route={tour.route} />
         </div>
       </div>
 
       {/* Day-by-Day Itinerary */}
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('dayByDay')}</h2>
-        
-        <div className="space-y-8">
+
+        <div className="space-y-6">
           {tour.itinerary.map((day, idx) => (
             <div
               key={idx}
-              className="grid md:grid-cols-5 gap-6 bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300"
+              className="bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 group"
             >
-              {/* Image */}
-              <div className="md:col-span-2 h-64 md:h-auto">
-                <img
-                  src={day.image}
-                  alt={day.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <div className="flex flex-col md:flex-row md:h-[280px]">
+                {/* Image Section - Fixed width on desktop */}
+                <div className="relative h-56 md:h-full md:w-2/5 flex-shrink-0 overflow-hidden">
+                  <img
+                    src={day.image}
+                    alt={day.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
-              {/* Content */}
-              <div className="md:col-span-3 p-6 md:p-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg font-medium">
-                    {day.day}
-                  </span>
-                  <div>
-                    <span className="text-sm text-muted-foreground">{t('day')} {day.day}</span>
-                    <h3 className="text-xl font-serif font-medium">{day.title}</h3>
+                  {/* Day Badge */}
+                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground w-14 h-14 rounded-full flex flex-col items-center justify-center shadow-lg">
+                    <span className="text-[10px] uppercase font-medium leading-none">{t('day')}</span>
+                    <span className="text-xl font-serif font-bold leading-none">{day.day}</span>
+                  </div>
+
+                  {/* Location on image - mobile */}
+                  <div className="absolute bottom-4 left-4 md:hidden">
+                    <div className="flex items-center gap-2 text-white">
+                      <MapPin className="w-4 h-4" />
+                      <span className="text-sm font-medium">{day.location}</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-primary mb-4">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm font-medium">{day.location}</span>
-                </div>
-
-                <p className="text-muted-foreground mb-4">{day.description}</p>
-
-                {/* Accommodation - Enhanced */}
-                {day.accommodation && (
-                  <div className="flex items-center gap-3 mb-4 bg-gradient-to-r from-primary/10 to-accent/10 px-4 py-3 rounded-xl border border-primary/20 w-fit">
-                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                      <Building2 className="w-4 h-4 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <span className="text-xs text-muted-foreground block">{t('overnightAt')}</span>
-                      <strong className="text-foreground font-semibold">{day.accommodation}</strong>
-                    </div>
+                {/* Content Section */}
+                <div className="flex-1 p-5 md:p-6 flex flex-col justify-center">
+                  {/* Location - desktop */}
+                  <div className="hidden md:flex items-center gap-2 text-primary mb-2">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm font-medium">{day.location}</span>
                   </div>
-                )}
 
-                <div className="flex flex-wrap gap-2">
-                  {day.activities.map((activity, actIdx) => (
-                    <span
-                      key={actIdx}
-                      className="px-3 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground"
-                    >
-                      {activity}
-                    </span>
-                  ))}
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-serif font-medium mb-2 group-hover:text-primary transition-colors line-clamp-1">
+                    {day.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{day.description}</p>
+
+                  {/* Accommodation */}
+                  {day.accommodation && (
+                    <div className="flex items-center gap-2 mb-3 bg-secondary/50 px-3 py-2 rounded-lg w-fit">
+                      <Building2 className="w-4 h-4 text-primary" />
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs text-muted-foreground">{t('overnightAt')}</span>
+                        <span className="text-sm font-semibold text-foreground">{day.accommodation}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Activities */}
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                    {day.activities.slice(0, 4).map((activity, actIdx) => (
+                      <span
+                        key={actIdx}
+                        className="px-2.5 py-1 bg-secondary/80 rounded-full text-xs font-medium text-secondary-foreground border border-border/50"
+                      >
+                        {activity}
+                      </span>
+                    ))}
+                    {day.activities.length > 4 && (
+                      <span className="px-2.5 py-1 text-xs font-medium text-primary">
+                        +{day.activities.length - 4} more
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

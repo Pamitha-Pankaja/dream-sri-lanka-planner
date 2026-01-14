@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTailorMadeOpen, setIsTailorMadeOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('hero');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,36 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Intersection Observer for active section detection
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+
+    const sectionIds = ['hero', 'about', 'tours', 'day-tours', 'experiences', 'reviews', 'contact'];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the entry with the highest intersection ratio that is intersecting
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        if (visibleEntries.length > 0) {
+          // Sort by intersection ratio and get the most visible one
+          const mostVisible = visibleEntries.reduce((prev, current) =>
+            current.intersectionRatio > prev.intersectionRatio ? current : prev
+          );
+          const id = mostVisible.target.getAttribute('id');
+          if (id) setActiveSection(id);
+        }
+      },
+      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], rootMargin: '-80px 0px -20% 0px' }
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
@@ -64,11 +95,22 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isScrolled ? 'text-muted-foreground' : 'text-primary-foreground/80 hover:text-primary-foreground'
+                className={`relative text-sm font-medium transition-colors duration-300 ${
+                  activeSection === link.id
+                    ? isScrolled ? 'text-primary' : 'text-primary-foreground'
+                    : isScrolled
+                      ? 'text-muted-foreground hover:text-primary'
+                      : 'text-primary-foreground/80 hover:text-primary-foreground'
                 }`}
               >
                 {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300 ease-out ${
+                    activeSection === link.id
+                      ? isScrolled ? 'w-full bg-primary' : 'w-full bg-primary-foreground'
+                      : 'w-0 bg-transparent'
+                  }`}
+                />
               </button>
             ))}
             
@@ -109,7 +151,11 @@ const Navbar = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left py-3 px-4 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors font-medium"
+                  className={`block w-full text-left py-3 px-4 rounded-lg transition-all duration-300 font-medium ${
+                    activeSection === link.id
+                      ? 'bg-primary/10 text-primary border-l-2 border-primary'
+                      : 'text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  }`}
                 >
                   {link.label}
                 </button>
