@@ -3,7 +3,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
 import { ArrowLeft, Calendar, MapPin, Check, Building2, Star } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
-import SriLankaMap from './SriLankaMap';
+import TourMap from './TourMap';
 
 interface TourDetailProps {
   tour: Tour;
@@ -129,8 +129,8 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
       {/* Route Map */}
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('routeMap')}</h2>
-        <div className="bg-muted rounded-2xl p-8">
-          <SriLankaMap route={tour.route} />
+        <div className="bg-card rounded-2xl p-6 md:p-8 shadow-soft">
+          <TourMap route={tour.route} />
         </div>
       </div>
 
