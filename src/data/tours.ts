@@ -9,6 +9,26 @@ import teaPlantationAerial from '@/assets/tea-plantation-aerial.jpg';
 import tropicalWaterfall from '@/assets/tropical-waterfall.jpg';
 import snorkelingReef from '@/assets/snorkeling-reef.jpg';
 import sriLankanFood from '@/assets/sri-lankan-food.jpg';
+import negomboImg from '@/assets/package02/negombo.jpg';
+import millenniumElephantImg from '@/assets/package02/millenium-elephant.jpeg';
+import templeOfToothImg from '@/assets/package02/templeoftooth.jpeg';
+import nuwraEliyaImg from '@/assets/package02/nuwra-eliya.webp';
+import koslandaImg from '@/assets/package02/koslanda.jpg';
+import buduruwagalaImg from '@/assets/package02/buduruwagala.jpg';
+import yala1Img from '@/assets/package02/yala1.jpg';
+import yala2Img from '@/assets/package02/yala2.jpg';
+import yala3Img from '@/assets/package02/yala3.jpg';
+import koggalaImg from '@/assets/package02/koggala.jpg';
+import sinharajaImg from '@/assets/package02/sinharaja.jpg';
+import cyclingImg from '@/assets/package02/cycling.jpg';
+import koggala2Img from '@/assets/package02/koggala2.jpg';
+import galleFortImg from '@/assets/package02/galle-fort.jpeg';
+import turtlesImg from '@/assets/package02/turtles.jpg';
+import walawwaImg from '@/assets/package02/476230379.jpg';
+import polawatthaImg from '@/assets/package02/polawaththa.jpg';
+import livingHeritageImg from '@/assets/package02/livingHeritage.jpg';
+import ruhunuSafariImg from '@/assets/package02/ruhunusafari.jpg';
+import triLankaImg from '@/assets/package02/tri.jpg';
 
 export interface TourDay {
   day: number;
@@ -29,7 +49,7 @@ export interface Tour {
   tags: string[];
   heroImage: string;
   highlights: string[];
-  placesToStay: { location: string; hotel: string; type: string }[];
+  placesToStay: { location: string; hotel: string; type: string; image?: string }[];
   itinerary: TourDay[];
 }
 
@@ -248,18 +268,18 @@ export const tours: Tour[] = [
       'Galle Fort discovery'
     ],
     placesToStay: [
-      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
-      { location: 'Kandy', hotel: 'Polwaththa Eco Lodges', type: 'Eco Lodge' },
-      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel' },
-      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Luxury Camp' },
-      { location: 'Koggala', hotel: 'Tri Lanka', type: 'Sustainable Luxury' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor', image: walawwaImg },
+      { location: 'Kandy', hotel: 'Polwaththa Eco Lodges', type: 'Eco Lodge', image: polawatthaImg },
+      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel', image: livingHeritageImg },
+      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Luxury Camp', image: ruhunuSafariImg },
+      { location: 'Koggala', hotel: 'Tri Lanka', type: 'Sustainable Luxury', image: triLankaImg },
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa. Remainder of the day at leisure.',
-        image: kalpitiyaBeachSunset,
+        image: negomboImg,
         location: 'Negombo',
         activities: ['Airport pickup', 'Hotel check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -268,7 +288,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'From Negombo to Kandy',
         description: 'Travel into the hills via the Millennium Elephant Foundation where you can enjoy watching elephants bathing in a river. Continue to Polwaththa Eco Lodges, consisting of 14 lodges in a pristine environment, giving you a "Living-in-the-Jungle" experience. Situated 19km east of Kandy, each lodge offers comfort with great views and privacy, within reach of the stunning Knuckles Range.',
-        image: elephantsHerd,
+        image: millenniumElephantImg,
         location: 'Kandy',
         activities: ['Millennium Elephant Foundation', 'Elephant watching', 'Eco lodge check-in'],
         accommodation: 'Polwaththa Eco Lodges'
@@ -277,7 +297,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Kandy Exploration',
         description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and watching a cultural dancing show featuring traditional Kandyan dance accompanied by live music.',
-        image: buddhaReflection,
+        image: templeOfToothImg,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Royal Botanical Gardens', 'Cultural dance show', 'Hiking'],
         accommodation: 'Polwaththa Eco Lodges'
@@ -286,7 +306,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'From Kandy to Koslanda',
         description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country, named for the velveteen tea plantations that carpet the misty hills. Drive through the market town of Nuwara Eliya, and continue to Koslanda, near Haputale, to stay at Living Heritage Koslanda. This secluded boutique hotel celebrates Sri Lanka\'s traditional architectural design and is set in 80 acres, including a patch of forest known locally as "God\'s Forest", with a river and secluded waterfall.',
-        image: teaPlantationAerial,
+        image: nuwraEliyaImg,
         location: 'Koslanda',
         activities: ['Scenic drive', 'Tea country views', 'Boutique hotel check-in'],
         accommodation: 'Living Heritage Koslanda'
@@ -295,7 +315,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Koslanda',
         description: 'Elephants seasonally travel through the forest and much wildlife can be seen in the hotel grounds. Suggested activities include guided walks, visits to tea and rubber plantations, and day trips to Udawalawe National Park, famous for herds of elephants.',
-        image: tropicalWaterfall,
+        image: koslandaImg,
         location: 'Koslanda',
         activities: ['Guided forest walks', 'Tea plantation visits', 'Wildlife spotting'],
         accommodation: 'Living Heritage Koslanda'
@@ -304,7 +324,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Admiring Wildlife at Yala National Park',
         description: 'Descend the hills into the low-lying southeastern plains and to the edge of Yala National Park, stopping off en route at Buduruwagala – a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to a dense population of leopards, elephants and sloth bears.',
-        image: leopardTree,
+        image: buduruwagalaImg,
         location: 'Yala',
         activities: ['Buduruwagala Buddhist carvings', 'Camp check-in', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -313,7 +333,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Yala Safari',
         description: 'Camping at the edge of the park is a magical once-in-a-lifetime experience. Ruhunu Yala Safari Camp has comfortable family and double tents, with two game drives per day led by experienced local guides. Search for leopards, elephants, and the incredible diversity of wildlife in this premier game reserve.',
-        image: leopardTree,
+        image: yala1Img,
         location: 'Yala',
         activities: ['Morning safari', 'Leopard spotting', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -322,7 +342,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Yala Safari',
         description: 'Continue your safari adventure with more game drives through Yala\'s diverse landscapes. The park is home to over 200 bird species, making it a paradise for bird watchers as well as those seeking larger wildlife encounters.',
-        image: elephantsHerd,
+        image: yala2Img,
         location: 'Yala',
         activities: ['Safari drives', 'Bird watching', 'Wildlife photography'],
         accommodation: 'Ruhunu Safari Camping'
@@ -331,7 +351,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Koggala Lake',
         description: 'Travel west along the picturesque cove-sprinkled southern coastline to Koggala Lake, a 30-minute drive from the famed UNESCO town of Galle. Stay at Tri Lanka, a fantastic hotel celebrating local materials and luxurious yet fully sustainable architectural design on the banks of Koggala Lake, one of Sri Lanka\'s largest inland waterways.',
-        image: kalpitiyaBeachSunset,
+        image: koggalaImg,
         location: 'Koggala',
         activities: ['Coastal drive', 'Sustainable luxury hotel', 'Lake views'],
         accommodation: 'Tri Lanka'
@@ -340,7 +360,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Koggala',
         description: 'Take a boat trip on Koggala Lake to see birds, visit Sinharaja Rainforest, go whale or dolphin watching (in season) or simply relax on a nearby beach. Other suggested activities include guided bicycle rides, river kayaking, surfing and visits to local turtle hatcheries.',
-        image: snorkelingReef,
+        image: sinharajaImg,
         location: 'Koggala',
         activities: ['Lake boat trip', 'Bird watching', 'Beach relaxation'],
         accommodation: 'Tri Lanka'
@@ -349,7 +369,7 @@ export const tours: Tour[] = [
         day: 11,
         title: 'Koggala',
         description: 'Another day to explore the area around Koggala Lake. Visit the Sinharaja Rainforest, a UNESCO World Heritage Site, or spend the day kayaking, cycling, or relaxing at the sustainable luxury of Tri Lanka.',
-        image: kalpitiyaBeachSunset,
+        image: cyclingImg,
         location: 'Koggala',
         activities: ['Rainforest visit', 'Kayaking', 'Cycling'],
         accommodation: 'Tri Lanka'
@@ -358,7 +378,7 @@ export const tours: Tour[] = [
         day: 12,
         title: 'Koggala',
         description: 'Continue to enjoy the peaceful surroundings of Koggala Lake. Optional whale watching excursions, visits to turtle hatcheries, or simply relaxing by the pool with views of the lake.',
-        image: surfingWaves,
+        image: koggala2Img,
         location: 'Koggala',
         activities: ['Whale watching', 'Turtle hatchery', 'Pool relaxation'],
         accommodation: 'Tri Lanka'
@@ -367,7 +387,7 @@ export const tours: Tour[] = [
         day: 13,
         title: 'Koggala',
         description: 'Final full day to explore Galle Fort or enjoy the beaches. The UNESCO World Heritage Site of Galle Fort is just a short drive away, offering boutique shops, art galleries, and historic ramparts to explore.',
-        image: kalpitiyaBeachSunset,
+        image: galleFortImg,
         location: 'Koggala',
         activities: ['Galle Fort visit', 'Shopping', 'Beach time'],
         accommodation: 'Tri Lanka'
@@ -376,7 +396,7 @@ export const tours: Tour[] = [
         day: 14,
         title: 'Departure',
         description: 'Depart Galle and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
-        image: kalpitiyaBeachSunset,
+        image: turtlesImg,
         location: 'Colombo Airport',
         activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
       }
