@@ -14,38 +14,42 @@ import tropicalWaterfall from '@/assets/tropical-waterfall.jpg';
 
 interface SriLankaMapProps {
   route: string[];
+  locationImages?: Record<string, string>;
 }
 
 // Approximate positions of Sri Lankan destinations on an SVG map
-const destinations: Record<string, { x: number; y: number; image?: string; description?: string }> = {
-  'Colombo': { x: 75, y: 320, image: kalpitiyaBeachSunset, description: 'Commercial Capital' },
-  'Colombo Airport': { x: 65, y: 285, image: kalpitiyaBeachSunset, description: 'Bandaranaike International Airport' },
-  'Negombo': { x: 70, y: 280, image: kalpitiyaBeachSunset, description: 'Beach Town & Fishing Village' },
-  'Sigiriya': { x: 165, y: 200, image: sigiriyaSunset, description: 'Ancient Rock Fortress' },
-  'Dambulla': { x: 155, y: 215, image: buddhaReflection, description: 'Cave Temple Complex' },
-  'Kandy': { x: 145, y: 265, image: buddhaReflection, description: 'Cultural Capital & Temple of Tooth' },
-  'Nuwara Eliya': { x: 160, y: 305, image: teaPlantationAerial, description: 'Little England - Hill Country' },
-  'Tea Country': { x: 160, y: 290, image: teaPlantationAerial, description: 'Ceylon Tea Plantations' },
-  'Ella': { x: 180, y: 335, image: trainScenic, description: 'Scenic Hill Town' },
-  'Yala': { x: 230, y: 400, image: leopardTree, description: 'National Park - Wildlife Safari' },
-  'Mirissa': { x: 130, y: 435, image: surfingWaves, description: 'Whale Watching & Beaches' },
-  'Weligama': { x: 120, y: 430, image: surfingWaves, description: 'Surfing & Stilt Fishermen' },
-  'Galle': { x: 100, y: 420, image: kalpitiyaBeachSunset, description: 'UNESCO Dutch Fort' },
-  'Hikkaduwa': { x: 90, y: 405, image: snorkelingReef, description: 'Coral Reefs & Beach Town' },
-  'Bentota': { x: 80, y: 375, image: kalpitiyaBeachSunset, description: 'Beach Resort Town' },
-  'Tangalle': { x: 170, y: 425, image: kalpitiyaBeachSunset, description: 'Pristine Southern Beaches' },
-  'Arugam Bay': { x: 275, y: 340, image: surfingWaves, description: 'World-Class Surf Spot' },
-  'Trincomalee': { x: 220, y: 170, image: kalpitiyaBeachSunset, description: 'Natural Harbor & Beaches' },
-  'Polonnaruwa': { x: 200, y: 200, image: buddhaReflection, description: 'Ancient Capital Ruins' },
-  'Anuradhapura': { x: 140, y: 180, image: buddhaReflection, description: 'Sacred City & Ancient Ruins' },
-  'Pasikuda': { x: 240, y: 220, image: kalpitiyaBeachSunset, description: 'Shallow Waters & Beach Resort' },
-  'Koggala': { x: 115, y: 428, image: kalpitiyaBeachSunset, description: 'Lake & Beach Area' },
-  'Wilpattu': { x: 95, y: 200, image: leopardTree, description: 'Leopard Country - National Park' },
-  'Koslanda': { x: 170, y: 320, image: tropicalWaterfall, description: 'Tea Country & Waterfalls' },
-};
+const getDestinations = (locationImages?: Record<string, string>): Record<string, { x: number; y: number; image?: string; description?: string }> => ({
+  'Colombo': { x: 75, y: 320, image: locationImages?.['Colombo'] || kalpitiyaBeachSunset, description: 'Commercial Capital' },
+  'Colombo Airport': { x: 65, y: 285, image: locationImages?.['Colombo Airport'] || kalpitiyaBeachSunset, description: 'Bandaranaike International Airport' },
+  'Negombo': { x: 70, y: 280, image: locationImages?.['Negombo'] || kalpitiyaBeachSunset, description: 'Beach Town & Fishing Village' },
+  'Sigiriya': { x: 165, y: 200, image: locationImages?.['Sigiriya'] || sigiriyaSunset, description: 'Ancient Rock Fortress' },
+  'Dambulla': { x: 155, y: 215, image: locationImages?.['Dambulla'] || buddhaReflection, description: 'Cave Temple Complex' },
+  'Kandy': { x: 145, y: 265, image: locationImages?.['Kandy'] || buddhaReflection, description: 'Cultural Capital & Temple of Tooth' },
+  'Nuwara Eliya': { x: 160, y: 305, image: locationImages?.['Nuwara Eliya'] || teaPlantationAerial, description: 'Little England - Hill Country' },
+  'Tea Country': { x: 160, y: 290, image: locationImages?.['Tea Country'] || teaPlantationAerial, description: 'Ceylon Tea Plantations' },
+  'Ella': { x: 180, y: 335, image: locationImages?.['Ella'] || trainScenic, description: 'Scenic Hill Town' },
+  'Yala': { x: 230, y: 400, image: locationImages?.['Yala'] || leopardTree, description: 'National Park - Wildlife Safari' },
+  'Mirissa': { x: 130, y: 435, image: locationImages?.['Mirissa'] || surfingWaves, description: 'Whale Watching & Beaches' },
+  'Weligama': { x: 120, y: 430, image: locationImages?.['Weligama'] || surfingWaves, description: 'Surfing & Stilt Fishermen' },
+  'Galle': { x: 100, y: 420, image: locationImages?.['Galle'] || kalpitiyaBeachSunset, description: 'UNESCO Dutch Fort' },
+  'Hikkaduwa': { x: 90, y: 405, image: locationImages?.['Hikkaduwa'] || snorkelingReef, description: 'Coral Reefs & Beach Town' },
+  'Bentota': { x: 80, y: 375, image: locationImages?.['Bentota'] || kalpitiyaBeachSunset, description: 'Beach Resort Town' },
+  'Tangalle': { x: 170, y: 425, image: locationImages?.['Tangalle'] || kalpitiyaBeachSunset, description: 'Pristine Southern Beaches' },
+  'Arugam Bay': { x: 275, y: 340, image: locationImages?.['Arugam Bay'] || surfingWaves, description: 'World-Class Surf Spot' },
+  'Trincomalee': { x: 220, y: 170, image: locationImages?.['Trincomalee'] || kalpitiyaBeachSunset, description: 'Natural Harbor & Beaches' },
+  'Polonnaruwa': { x: 200, y: 200, image: locationImages?.['Polonnaruwa'] || buddhaReflection, description: 'Ancient Capital Ruins' },
+  'Anuradhapura': { x: 140, y: 180, image: locationImages?.['Anuradhapura'] || buddhaReflection, description: 'Sacred City & Ancient Ruins' },
+  'Pasikuda': { x: 240, y: 220, image: locationImages?.['Pasikuda'] || kalpitiyaBeachSunset, description: 'Shallow Waters & Beach Resort' },
+  'Koggala': { x: 115, y: 428, image: locationImages?.['Koggala'] || kalpitiyaBeachSunset, description: 'Lake & Beach Area' },
+  'Wilpattu': { x: 95, y: 200, image: locationImages?.['Wilpattu'] || leopardTree, description: 'Leopard Country - National Park' },
+  'Koslanda': { x: 170, y: 320, image: locationImages?.['Koslanda'] || tropicalWaterfall, description: 'Tea Country & Waterfalls' },
+});
 
-const SriLankaMap = ({ route }: SriLankaMapProps) => {
+const SriLankaMap = ({ route, locationImages }: SriLankaMapProps) => {
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  
+  // Get destinations with custom images if provided
+  const destinations = getDestinations(locationImages);
   
   const routePoints = route
     .map(place => destinations[place])

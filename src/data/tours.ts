@@ -80,6 +80,26 @@ import mirissa3 from '@/assets/Package 3/Mirissa 3.jpg';
 import mirissa4 from '@/assets/Package 3/Mirissa 4.jpg';
 import departurePkg3 from '@/assets/Package 3/Departure.webp';
 
+// Package 5 - Hotel Images
+import walawwaHotelPkg5 from '@/assets/package 5/Hotel/Walawwa-hotel.jpg';
+import ulagallaResortPkg5 from '@/assets/package 5/Hotel/ulagale-resort.png';
+import kandyHousePkg5 from '@/assets/package 5/Hotel/the-kandy-house.jpg';
+import ceylonTeaTrailsPkg5 from '@/assets/package 5/Hotel/Ceylon-Tea-Trails.png';
+import anantaraPeaceHaven from '@/assets/package 5/Hotel/Anantara Peace Haven Resort.jpg';
+import amangalla from '@/assets/package 5/Hotel/Amangalla.webp';
+
+// Package 5 - Location Images
+import arrivalPkg5 from '@/assets/package 5/Arrival.jpg';
+import thirappaneCulturalTriangle from '@/assets/package 5/Thirappane - Cultural Triangle.jpg';
+import minneriya from '@/assets/package 5/Minneriya.webp';
+import kandyPkg5 from '@/assets/package 5/Kandy.jpg';
+import hatton from '@/assets/package 5/Hatton.jpg';
+import teaCountryPkg5 from '@/assets/package 5/Tea Country.jpg';
+import tangallePkg5 from '@/assets/package 5/Tangalle.webp';
+import tangalle1 from '@/assets/package 5/Tangalle 1.jpg';
+import gallePkg5 from '@/assets/package 5/galle.jpg';
+import depaturePkg5 from '@/assets/package 5/Depature.jpg';
+
 export interface TourDay {
   day: number;
   title: string;
@@ -728,7 +748,7 @@ export const tours: Tour[] = [
     summary: 'A lush tropical island with nothing below it but the huge expanse of the Indian Ocean, Sri Lanka is a hive of energy. Visit fifth century fortresses, learn how tea is made and explore gorgeous beachfront villages, all while staying in some of our favorite hotels in the world. On this trip you\'ll be completely charmed by this little Asian nation.',
     route: ['Negombo', 'Anuradhapura', 'Kandy', 'Tea Country', 'Tangalle', 'Galle'],
     tags: ['culture', 'tea', 'beach', 'heritage'],
-    heroImage: teaPlantationAerial,
+    heroImage: teaCountryPkg5,
     highlights: [
       'Cultural Triangle exploration',
       'Elephant safari in Minneriya',
@@ -740,19 +760,19 @@ export const tours: Tour[] = [
       'UNESCO Galle Fort discovery'
     ],
     placesToStay: [
-      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
-      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique' },
-      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
-      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows' },
-      { location: 'Tangalle', hotel: 'Anantara Peace Haven Resort', type: 'Beach Resort' },
-      { location: 'Galle', hotel: 'Amangalla', type: 'Heritage Luxury' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor', image: walawwaHotelPkg5 },
+      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique', image: ulagallaResortPkg5 },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique', image: kandyHousePkg5 },
+      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows', image: ceylonTeaTrailsPkg5 },
+      { location: 'Tangalle', hotel: 'Anantara Peace Haven Resort', type: 'Beach Resort', image: anantaraPeaceHaven },
+      { location: 'Galle', hotel: 'Amangalla', type: 'Heritage Luxury', image: amangalla },
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
-        image: kalpitiyaBeachSunset,
+        image: arrivalPkg5,
         location: 'Negombo',
         activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -761,7 +781,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Thirappane - Cultural Triangle',
         description: 'Drive to the Cultural Triangle for three nights at the sun-drenched Ulagalla Resort – a retreat with thatched bungalows on stilts floating above paddy fields. By day, visit some of Sri Lanka\'s oldest historic monuments and unwind in your private plunge pool. With a wine cellar and lagoon for kayaking, you\'ll be immersed in the authentic beauty of this Sri Lankan gem.',
-        image: sigiriyaSunset,
+        image: thirappaneCulturalTriangle,
         location: 'Anuradhapura',
         activities: ['Scenic drive', 'Resort check-in', 'Private plunge pool'],
         accommodation: 'Ulagalla Resort'
@@ -770,7 +790,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Minneriya / Polonnaruwa',
         description: 'Take an elephant safari in Minneriya, see the ancient Buddhist cave temples of Dambulla or explore the city of Polonnaruwa. This UNESCO World Heritage Site features ancient wall paintings and historical significance that brings Sri Lanka\'s rich history to life.',
-        image: elephantsHerd,
+        image: minneriya,
         location: 'Cultural Triangle',
         activities: ['Elephant safari', 'Dambulla caves', 'Polonnaruwa ruins'],
         accommodation: 'Ulagalla Resort'
@@ -779,7 +799,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Kandy',
         description: 'Head to Kandy for a brief but memorable stop. Visit Buddha\'s Tooth Relic or explore the stunning Botanical Gardens, where Giant Java trees have branches so wide they need stilts to stay up. Relax by the pool at the romantic Kandy House sipping locally grown tea – quaint, colonial comfort at its best.',
-        image: buddhaReflection,
+        image: kandyPkg5,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Botanical Gardens', 'Tea tasting'],
         accommodation: 'The Kandy House'
@@ -788,7 +808,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Hatton - Tea Country',
         description: 'No trip to Sri Lanka is complete without visiting tea country. Take a train (still run on British colonial equipment) through rolling fields of tea leaves and learn how tea is processed, before sampling the freshest cuppa of your life. Rest at Tea Trails – four old planter\'s bungalows now converted into a boutique hotel.',
-        image: trainScenic,
+        image: hatton,
         location: 'Tea Country',
         activities: ['Scenic train ride', 'Tea factory tour', 'Tea tasting'],
         accommodation: 'Ceylon Tea Trails'
@@ -797,7 +817,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Tea Country',
         description: 'Enjoy evening jazz cocktail hours, discuss the next day\'s personalized menu with the chef, and sleep under a mosquito net in your colonial style room. Pastoral perfection in the misty highlands of Sri Lanka.',
-        image: teaPlantationAerial,
+        image: teaCountryPkg5,
         location: 'Tea Country',
         activities: ['Tea estate walks', 'Cocktail hours', 'Colonial dining'],
         accommodation: 'Ceylon Tea Trails'
@@ -806,7 +826,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Tangalle',
         description: 'Head to the white beaches of Tangalle for some coastline fun. Stroll along the shore, kite-surf, wakeboard, deep sea fish or simply indulge in the amazing Anantara Peace Haven hotel. Relax in your suite with uninterrupted views of the palm-studded beach.',
-        image: kalpitiyaBeachSunset,
+        image: tangallePkg5,
         location: 'Tangalle',
         activities: ['Beach arrival', 'Water sports', 'Ocean views'],
         accommodation: 'Anantara Peace Haven Resort'
@@ -815,7 +835,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Tangalle',
         description: 'Dine at the poolside restaurant overlooking golden sand beaches, perfect for reflecting on your Sri Lankan adventure. Time it right and experience both elephants in the north and blue whales in the south – nature\'s most graceful yet powerful creatures.',
-        image: surfingWaves,
+        image: tangalle1,
         location: 'Tangalle',
         activities: ['Whale watching', 'Beach relaxation', 'Poolside dining'],
         accommodation: 'Anantara Peace Haven Resort'
@@ -824,7 +844,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Galle',
         description: 'Transfer to the magical fortress town of Galle, filled with red-tiled rooftops over eclectic art galleries, cafes and boutique hotels. Visit local markets with the chef during a cookery lesson, or try delicious "wade" (street snacks) with the hotel\'s signature "Arrack sour". Unwind in Sri Lanka\'s most incredible spa before watching the sunset from Amangalla\'s top floor lounge.',
-        image: sriLankanFood,
+        image: gallePkg5,
         location: 'Galle',
         activities: ['Galle Fort tour', 'Cooking class', 'Spa experience', 'Sunset cocktails'],
         accommodation: 'Amangalla'
@@ -833,7 +853,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Departure',
         description: 'Morning you\'ll head to the airport for your flight home, taking memories of tea-scented highlands and palm-fringed beaches with you.',
-        image: kalpitiyaBeachSunset,
+        image: depaturePkg5,
         location: 'Colombo Airport',
         activities: ['Airport transfer', 'Departure']
       }
