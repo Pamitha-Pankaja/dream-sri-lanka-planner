@@ -80,7 +80,7 @@ import rawanaElla from '@/assets/Package 1/Rawana ella.jpg';
 import yalaSafariKotiya from '@/assets/Package 1/Yala safari kotiya.jpg';
 import yalaSafariWadura from '@/assets/Package 1/Yala safari wadura.jpg';
 import mathara from '@/assets/Package 1/MATARA.jpg';
-import teafactory from '@/assets/Package 1/Tea factory.jpg';
+import teafactory from '@/assets/Package 1/tea factory.jpg';
 import teafactory1 from '@/assets/Package 1/Tea factory1.jpg';
 
 // Package 3 - Hotel Images
