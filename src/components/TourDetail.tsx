@@ -109,9 +109,15 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Building2 className="w-7 h-7 text-primary-foreground" />
-                  </div>
+                  {stay.image ? (
+                    <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <img src={stay.image} alt={stay.hotel} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Building2 className="w-7 h-7 text-primary-foreground" />
+                    </div>
+                  )}
                   <div className="flex-1">
                     <p className="text-xs text-accent font-bold uppercase tracking-wide mb-1">{stay.location}</p>
                     <h4 className="font-serif font-semibold text-foreground text-lg leading-tight mb-2">{stay.hotel}</h4>
