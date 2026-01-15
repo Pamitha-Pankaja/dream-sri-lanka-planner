@@ -123,12 +123,12 @@ export const tours: Tour[] = [
       'Whale watching in Galle'
     ],
     placesToStay: [
-      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
-      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique' },
-      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
-      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows' },
-      { location: 'Yala', hotel: 'Ruhunu Yala Safari Camping', type: 'Luxury Camp' },
-      { location: 'Galle', hotel: 'Kahanda Kanda', type: 'Boutique Villa' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor', image: walawwaHotel },
+      { location: 'Anuradhapura', hotel: 'Ulagalla Resort', type: 'Eco Boutique', image: ulagallaResort },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique', image: kandyHouse },
+      { location: 'Tea Country', hotel: 'Ceylon Tea Trails', type: 'Planter Bungalows', image: ceylonTeaTrails },
+      { location: 'Yala', hotel: 'Ruhunu Yala Safari Camping', type: 'Luxury Camp', image: ruhunuYalaSafari },
+      { location: 'Galle', hotel: 'Kahanda Kanda', type: 'Boutique Villa', image: kahandaKanda },
     ],
     itinerary: [
       {
