@@ -29,6 +29,7 @@ import polawatthaImg from '@/assets/package02/polawaththa.jpg';
 import livingHeritageImg from '@/assets/package02/livingHeritage.jpg';
 import ruhunuSafariImg from '@/assets/package02/ruhunusafari.jpg';
 import triLankaImg from '@/assets/package02/tri.jpg';
+import package2MainImg from '@/assets/package02/package2.jpg';
 
 // Package 04 - Discover Luxury Secret Sri Lanka
 import airportImg from '@/assets/package04/airport.png';
@@ -46,6 +47,14 @@ import leopardTrailsImg from '@/assets/package04/LeopardTrails.jpg';
 import waterGardenImg from '@/assets/package04/waterGarden.jpg';
 import ugaBayImg from '@/assets/package04/ugaBay.jpg';
 
+// Day Tours
+import colomboDayTourImg from '@/assets/dayTours/colombodayTour.jpg';
+import kandyDayTourImg from '@/assets/dayTours/queenshotel.jpg';
+import galleDayTourImg from '@/assets/dayTours/fortday.jpeg';
+import yalaDayTourImg from '@/assets/dayTours/yaala.jpg';
+import sigiriyaDayTourImg from '@/assets/dayTours/sigiriyaDay.jpg';
+import raftingDayTourImg from '@/assets/dayTours/rafting7.jpg';
+
 // Package 1 - Hotel Images
 import walawwaHotel from '@/assets/Package 1/Hotel/Walawwa-hotel.jpg';
 import ulagallaResort from '@/assets/Package 1/Hotel/ulagale-resort.png';
@@ -59,6 +68,7 @@ import negombo from '@/assets/Package 1/Negambo.jpg';
 import negomboToAnuradhapura from '@/assets/Package 1/Negambo to anuradhapura.png';
 import anuradhapura from '@/assets/Package 1/Anuradhapura.jpg';
 import sigiriyaPkg1 from '@/assets/Package 1/sigiriya.jpg';
+import sigiriyaMainPkg1 from '@/assets/Package 1/sigiriyamain.jpg';
 import kandyPkg1 from '@/assets/Package 1/Kandy.jpg';
 import teaCountry from '@/assets/Package 1/Tea country.jpg';
 import teaFactory from '@/assets/Package 1/Tea factory1.jpg';
@@ -170,7 +180,7 @@ export const tours: Tour[] = [
     summary: 'This itinerary takes in the very best that Sri Lanka has to offer. Journey from bustling Colombo to ancient ruins and temples of the Cultural Triangle, up into the mystical Hill Country full of tea plantations, then head down south to the coast for whale watching, surfing, and incredible food. Cap off a wonderful holiday in the UNESCO World Heritage site of Galle Fort.',
     route: ['Negombo', 'Anuradhapura', 'Sigiriya', 'Kandy', 'Tea Country', 'Yala', 'Galle'],
     tags: ['culture', 'wildlife', 'nature', 'beach', 'heritage'],
-    heroImage: sigiriyaPkg1,
+    heroImage: sigiriyaMainPkg1,
     highlights: [
       'Explore magnificent Anuradhapura ancient city',
       'Climb UNESCO-listed Sigiriya Rock Fortress',
@@ -342,7 +352,7 @@ export const tours: Tour[] = [
     summary: 'Renowned for its charming colonial vibe, incredible tea country and plethora of beaches, Sri Lanka is also home to some great wilderness. During this itinerary, immerse yourself in the country and encounter exotic animals that call the Pearl of the Indian Ocean home. From elephants to whales, the ever elusive leopard and bears, there is much to be admired.',
     route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Koggala', 'Galle'],
     tags: ['wildlife', 'nature', 'safari', 'beach'],
-    heroImage: leopardTree,
+    heroImage: package2MainImg,
     highlights: [
       'Millennium Elephant Foundation experience',
       'Temple of the Tooth in Kandy',
@@ -893,8 +903,8 @@ export const dayTours: DayTour[] = [
       'Fort (Railway Station)',
       'Shopping Excursion'
     ],
-    heroImage: buddhaReflection,
-    galleryImages: [buddhaReflection, elephantsHerd, sigiriyaSunset],
+    heroImage: colomboDayTourImg,
+    galleryImages: [colomboDayTourImg, elephantsHerd, sigiriyaSunset],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -943,8 +953,8 @@ export const dayTours: DayTour[] = [
       'Bahirawakanda Temple',
       'Cultural Dance Show'
     ],
-    heroImage: buddhaReflection,
-    galleryImages: [buddhaReflection, teaPlantationAerial, tropicalWaterfall],
+    heroImage: kandyDayTourImg,
+    galleryImages: [kandyDayTourImg, teaPlantationAerial, tropicalWaterfall],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -995,8 +1005,8 @@ export const dayTours: DayTour[] = [
       'Dutch Galle Fort',
       'Stilt Fishermen'
     ],
-    heroImage: kalpitiyaBeachSunset,
-    galleryImages: [kalpitiyaBeachSunset, surfingWaves, snorkelingReef],
+    heroImage: galleDayTourImg,
+    galleryImages: [galleDayTourImg, surfingWaves, snorkelingReef],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -1047,8 +1057,8 @@ export const dayTours: DayTour[] = [
       'Spotted Deer & Sambars',
       'Bird Watching'
     ],
-    heroImage: leopardTree,
-    galleryImages: [leopardTree, elephantsHerd, teaPlantationAerial],
+    heroImage: yalaDayTourImg,
+    galleryImages: [yalaDayTourImg, elephantsHerd, teaPlantationAerial],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -1099,8 +1109,8 @@ export const dayTours: DayTour[] = [
       'Ancient Frescoes',
       'Dambulla Cave Temple'
     ],
-    heroImage: sigiriyaSunset,
-    galleryImages: [sigiriyaSunset, buddhaReflection, teaPlantationAerial],
+    heroImage: sigiriyaDayTourImg,
+    galleryImages: [sigiriyaDayTourImg, buddhaReflection, teaPlantationAerial],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
@@ -1151,8 +1161,8 @@ export const dayTours: DayTour[] = [
       'Waterfall Jumps & Abseiling',
       'Bird Watching'
     ],
-    heroImage: tropicalWaterfall,
-    galleryImages: [tropicalWaterfall, teaPlantationAerial, trainScenic],
+    heroImage: raftingDayTourImg,
+    galleryImages: [raftingDayTourImg, teaPlantationAerial, trainScenic],
     duration: '1 Day',
     startsEnds: 'Negombo / Colombo',
     tourType: 'Private',
