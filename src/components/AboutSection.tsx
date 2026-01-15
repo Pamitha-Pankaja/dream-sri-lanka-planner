@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Award, Users, MapPin, Heart } from 'lucide-react';
 import tripadvisorBadges from '@/assets/tripadvisor-badges.png';
+import logoImage from '@/assets/Logo/Logo.png';
 
 const AboutSection = () => {
   const { t } = useLanguage();
@@ -16,6 +17,15 @@ const AboutSection = () => {
   return (
     <section id="about" className="section-padding bg-muted">
       <div className="container-wide">
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <img 
+            src={logoImage} 
+            alt="Ceylon Round Tours Logo" 
+            className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain animate-fade-in"
+          />
+        </div>
+        
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-primary font-medium uppercase tracking-wider text-sm">

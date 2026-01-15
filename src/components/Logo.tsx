@@ -1,29 +1,46 @@
 import React from 'react';
-import { Compass } from 'lucide-react';
+import logoImage from '@/assets/Logo/Logo.png';
 
 interface LogoProps {
   className?: string;
   variant?: 'light' | 'dark';
-  showIcon?: boolean;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const Logo = ({ className = '', variant = 'dark', showIcon = true }: LogoProps) => {
+const Logo = ({ className = '', variant = 'dark', size = 'md' }: LogoProps) => {
   const textColor = variant === 'light' ? 'text-primary-foreground' : 'text-foreground';
-  const iconBg = variant === 'light' ? 'bg-white/20' : 'bg-primary/10';
-  const iconColor = variant === 'light' ? 'text-white' : 'text-primary';
+  
+  // Size configurations for the logo
+  const sizeClasses = {
+    sm: 'w-8 h-8 md:w-10 md:h-10',
+    md: 'w-10 h-10 md:w-12 md:h-12',
+    lg: 'w-16 h-16 md:w-20 md:h-20',
+  };
+
+  const textSizeClasses = {
+    sm: 'text-base md:text-lg',
+    md: 'text-lg md:text-xl',
+    lg: 'text-2xl md:text-3xl',
+  };
+
+  const subtextSizeClasses = {
+    sm: 'text-[0.6rem]',
+    md: 'text-xs',
+    lg: 'text-sm',
+  };
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      {showIcon && (
-        <div className={`w-9 h-9 rounded-full ${iconBg} flex items-center justify-center`}>
-          <Compass className={`w-5 h-5 ${iconColor}`} />
-        </div>
-      )}
+    <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
+      <img 
+        src={logoImage} 
+        alt="Ceylon Round Tours Logo" 
+        className={`${sizeClasses[size]} object-contain`}
+      />
       <div className="flex flex-col">
-        <span className={`text-lg md:text-xl font-serif font-bold tracking-tight leading-tight ${textColor}`}>
+        <span className={`${textSizeClasses[size]} font-serif font-bold tracking-tight leading-tight ${textColor}`}>
           Ceylon Round
         </span>
-        <span className={`text-xs font-medium uppercase tracking-widest ${variant === 'light' ? 'text-white/80' : 'text-primary'}`}>
+        <span className={`${subtextSizeClasses[size]} font-medium uppercase tracking-widest ${variant === 'light' ? 'text-white/80' : 'text-primary'}`}>
           Tours
         </span>
       </div>
