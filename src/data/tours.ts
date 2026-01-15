@@ -30,6 +30,22 @@ import livingHeritageImg from '@/assets/package02/livingHeritage.jpg';
 import ruhunuSafariImg from '@/assets/package02/ruhunusafari.jpg';
 import triLankaImg from '@/assets/package02/tri.jpg';
 
+// Package 04 - Discover Luxury Secret Sri Lanka
+import airportImg from '@/assets/package04/airport.png';
+import wilpattuImg from '@/assets/package04/wilpattu-national-park-in-sri-lanka.jpg';
+import wilpattuCampImg from '@/assets/package04/wilpattu-camp1.jpg';
+import sigiriyaP4Img from '@/assets/package04/sigiriya.jpg';
+import sigiriya2P4Img from '@/assets/package04/sigiriya2.jpg';
+import pasikudaImg from '@/assets/package04/pasikuda.jpg';
+import pasikudaBeachImg from '@/assets/package04/wmremove-transformed.jpeg';
+import waterSportsImg from '@/assets/package04/water-sports-in-sri-lanka-jpg.jpg';
+import negomboNightImg from '@/assets/package04/negombonight.jpg';
+import departureImg from '@/assets/package04/airport.jpg';
+import walawwaP4Img from '@/assets/package04/The-Walawwa-Kotugoda.jpg';
+import leopardTrailsImg from '@/assets/package04/LeopardTrails.jpg';
+import waterGardenImg from '@/assets/package04/waterGarden.jpg';
+import ugaBayImg from '@/assets/package04/ugaBay.jpg';
+
 // Package 1 - Hotel Images
 import walawwaHotel from '@/assets/Package 1/Hotel/Walawwa-hotel.jpg';
 import ulagallaResort from '@/assets/Package 1/Hotel/ulagale-resort.png';
@@ -601,17 +617,17 @@ export const tours: Tour[] = [
       'Off-the-beaten-path exploration'
     ],
     placesToStay: [
-      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
-      { location: 'Wilpattu', hotel: 'Leopard Trails Camp', type: 'Luxury Safari Camp' },
-      { location: 'Sigiriya', hotel: 'Water Garden Sigiriya', type: 'Boutique Resort' },
-      { location: 'Pasikuda', hotel: 'Uga Bay Resort', type: 'Beach Resort' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor', image: walawwaP4Img },
+      { location: 'Wilpattu', hotel: 'Leopard Trails Camp', type: 'Luxury Safari Camp', image: leopardTrailsImg },
+      { location: 'Sigiriya', hotel: 'Water Garden Sigiriya', type: 'Boutique Resort', image: waterGardenImg },
+      { location: 'Pasikuda', hotel: 'Uga Bay Resort', type: 'Beach Resort', image: ugaBayImg },
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges guests with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa.',
-        image: kalpitiyaBeachSunset,
+        image: airportImg,
         location: 'Negombo',
         activities: ['Airport pickup', 'Manor house check-in', 'Leisure time'],
         accommodation: 'The Wallawwa'
@@ -620,7 +636,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Wilpattu',
         description: 'Begin your journey north to Wilpattu National Park. Forget the bustling plains of Yala, for Wilpattu is real leopard country. Spend your nights at the luxurious Leopard Trails camp, fully immersed in the wildlife that surrounds you. Bounded by rivers and peppered with large lakes known as "villus", Wilpattu provides the perfect setting for spotting game.',
-        image: leopardTree,
+        image: wilpattuImg,
         location: 'Wilpattu',
         activities: ['Safari drive', 'Leopard spotting', 'Luxury camp dinner'],
         accommodation: 'Leopard Trails Camp'
@@ -629,7 +645,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Wilpattu Safari',
         description: 'Keep your eyes peeled for sloth bears, barking deer and Asian elephants. Join expert guides as you head out onto the plains in search of fauna – but also listen as they unveil the great archaeological and historical importance of the park. Wildlife, history, and tantalizing Sri Lankan cuisine served around a campfire.',
-        image: elephantsHerd,
+        image: wilpattuCampImg,
         location: 'Wilpattu',
         activities: ['Game drives', 'Wildlife spotting', 'Campfire dinner'],
         accommodation: 'Leopard Trails Camp'
@@ -638,7 +654,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Sigiriya',
         description: 'Continue east to the foot of Sri Lanka\'s Cultural Triangle – Sigiriya. Stay at the beautiful Water Garden Sigiriya, a peaceful retreat set amid landscaped gardens with stunning views onto Sigiriya\'s star attraction. Dust off each day with a dip in the pool, a massage at the spa and a moonlit gourmet dinner.',
-        image: sigiriyaSunset,
+        image: sigiriyaP4Img,
         location: 'Sigiriya',
         activities: ['Resort check-in', 'Pool relaxation', 'Spa treatment'],
         accommodation: 'Water Garden Sigiriya'
@@ -647,7 +663,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'Sigiriya Rock',
         description: 'Spend the day with a private guide visiting this ancient site. Climb your way to the top of Sigiriya Rock, past ancient wall paintings, to reach views that extend all the way into the horizon over dense jungle. A mythical past of feuding dynasties suits Sigiriya\'s striking setting – built in the 5th century AD by King Kasyapa as a fortress-palace.',
-        image: sigiriyaSunset,
+        image: sigiriya2P4Img,
         location: 'Sigiriya',
         activities: ['Sigiriya Rock climb', 'Ancient frescoes', 'Panoramic views'],
         accommodation: 'Water Garden Sigiriya'
@@ -656,7 +672,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Pasikuda',
         description: 'A final drive east takes you to your coastal destination where you can relax at the stylish Uga Bay Resort. Oozing luxury and relaxation, it\'s beached-out bliss all the way here. Lie back on the perfect white sands and dip your feet into the warm Indian Ocean.',
-        image: kalpitiyaBeachSunset,
+        image: pasikudaImg,
         location: 'Pasikuda',
         activities: ['Coastal drive', 'Beach resort check-in', 'Ocean swimming'],
         accommodation: 'Uga Bay Resort'
@@ -665,7 +681,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Pasikuda Beach',
         description: 'Four nights stay means plenty of time to indulge in a local Ayurvedic massage where you can listen to the calming ocean waves within Uga Bay\'s beachfront spa. Relax on the pristine white sand beaches of the east coast.',
-        image: snorkelingReef,
+        image: pasikudaBeachImg,
         location: 'Pasikuda',
         activities: ['Ayurvedic spa', 'Beach relaxation', 'Ocean activities'],
         accommodation: 'Uga Bay Resort'
@@ -674,7 +690,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Pasikuda Beach',
         description: 'Continue to enjoy the pristine beaches of Pasikuda. Snorkeling, diving, or simply lounging by the pool with views of the Indian Ocean. This less-visited east coast offers a more peaceful beach experience.',
-        image: kalpitiyaBeachSunset,
+        image: waterSportsImg,
         location: 'Pasikuda',
         activities: ['Snorkeling', 'Pool relaxation', 'Beach walks'],
         accommodation: 'Uga Bay Resort'
@@ -683,7 +699,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Negombo',
         description: 'Before returning home, stopover in Negombo for a night at the hidden oasis of The Wallawwa. Here, enjoy your last few bites of the freshest fusion in Asian cuisine whilst overlooking exquisite gardens. Authentic and chic, the rooms offer a lovely last slice of luxury before departing.',
-        image: kalpitiyaBeachSunset,
+        image: negomboNightImg,
         location: 'Negombo',
         activities: ['Scenic transfer', 'Final dinner', 'Garden relaxation'],
         accommodation: 'The Wallawwa'
@@ -692,7 +708,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Departure',
         description: 'Morning you\'ll head to the airport for your flight home, taking with you memories of Sri Lanka\'s secret corners and hidden gems.',
-        image: kalpitiyaBeachSunset,
+        image: departureImg,
         location: 'Colombo Airport',
         activities: ['Airport transfer', 'Departure']
       }
