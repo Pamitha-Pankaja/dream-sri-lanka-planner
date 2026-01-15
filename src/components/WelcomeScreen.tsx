@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Compass } from 'lucide-react';
 import sigiriyaSunset from '@/assets/sigiriya-sunset.jpg';
+import logoImage from '@/assets/Logo/Logo.png';
 
 interface WelcomeScreenProps {
   onComplete: () => void;
@@ -47,8 +47,12 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
         {/* Logo */}
-        <div className="w-28 h-28 md:w-36 md:h-36 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-8">
-          <Compass className="w-14 h-14 md:w-20 md:h-20 text-white" />
+        <div className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto mb-8 relative">
+          <img 
+            src={logoImage} 
+            alt="Ceylon Round Tours Logo" 
+            className="w-full h-full object-contain drop-shadow-2xl"
+          />
         </div>
         
         {/* Welcome Text */}
