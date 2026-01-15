@@ -57,6 +57,29 @@ import mathara from '@/assets/Package 1/MATARA.jpg';
 import teafactory from '@/assets/Package 1/Tea factory.jpg';
 import teafactory1 from '@/assets/Package 1/Tea factory1.jpg';
 
+// Package 3 - Hotel Images
+import walawwaHotelPkg3 from '@/assets/Package 3/Hotel/Walawwa-hotel.jpg';
+import kandyHousePkg3 from '@/assets/Package 3/Hotel/the-kandy-house.jpg';
+import livingHeritageKoslandaPkg3 from '@/assets/Package 3/Hotel/Living Heritage Koslanda.webp';
+import ruhunuYalaSafariPkg3 from '@/assets/Package 3/Hotel/Ruhunu yala safari.jpg';
+import lanternBoutiqueHotel from '@/assets/Package 3/Hotel/Lantern Boutique Hotel.jpg';
+
+// Package 3 - Location Images
+import arrivalPkg3 from '@/assets/Package 3/Arrival.jpg';
+import negomboPkg3 from '@/assets/Package 3/Negambo.jpg';
+import exploringKandy from '@/assets/Package 3/Exploring Kandy.jpg';
+import kandyPkg3 from '@/assets/Package 3/Kandy.jpg';
+import kandyToKoslanda from '@/assets/Package 3/From Kandy to Koslanda.jpg';
+import koslandaPkg3 from '@/assets/Package 3/Koslanda.jpg';
+import yalaNationalPark from '@/assets/Package 3/Yala National Park.jpg';
+import yalaSafari1 from '@/assets/Package 3/Yala Safari 1.jpg';
+import yalaSafari2 from '@/assets/Package 3/Yala Safari 2.jpg';
+import mirissaPkg3 from '@/assets/Package 3/Mirissa.jpg';
+import mirissa2 from '@/assets/Package 3/Mirissa 2.jpg';
+import mirissa3 from '@/assets/Package 3/Mirissa 3.jpg';
+import mirissa4 from '@/assets/Package 3/Mirissa 4.jpg';
+import departurePkg3 from '@/assets/Package 3/Departure.webp';
+
 export interface TourDay {
   day: number;
   title: string;
@@ -333,7 +356,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'From Kandy to Koslanda',
         description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country, named for the velveteen tea plantations that carpet the misty hills. Drive through the market town of Nuwara Eliya, and continue to Koslanda, near Haputale, to stay at Living Heritage Koslanda. This secluded boutique hotel celebrates Sri Lanka\'s traditional architectural design and is set in 80 acres, including a patch of forest known locally as "God\'s Forest", with a river and secluded waterfall.',
-        image: nuwraEliyaImg,
+        image: kandyToKoslanda,
         location: 'Koslanda',
         activities: ['Scenic drive', 'Tea country views', 'Boutique hotel check-in'],
         accommodation: 'Living Heritage Koslanda'
@@ -436,7 +459,7 @@ export const tours: Tour[] = [
     summary: 'Sri Lanka makes a perfect destination for newlyweds. Famed for its wonderful landscape and relaxing atmosphere, it\'s such a romantic place. There are romantic spots all over the island, simply perfect for a honeymoon. Visit a variety of romantic settings such as the misty tea plantations, historical sites and Yala National Park, while staying at the most romantic hotels.',
     route: ['Negombo', 'Kandy', 'Koslanda', 'Yala', 'Mirissa', 'Galle'],
     tags: ['honeymoon', 'romance', 'luxury', 'beach', 'wildlife'],
-    heroImage: kalpitiyaBeachSunset,
+    heroImage: mirissaPkg3,
     highlights: [
       'Romantic manor house stay at The Wallawwa',
       'Millennium Elephant Foundation experience',
@@ -448,18 +471,18 @@ export const tours: Tour[] = [
       'Galle Fort exploration'
     ],
     placesToStay: [
-      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor' },
-      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique' },
-      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel' },
-      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Honeymoon Suite' },
-      { location: 'Mirissa', hotel: 'Lantern Boutique Hotel', type: 'Beachfront Boutique' },
+      { location: 'Negombo', hotel: 'The Wallawwa', type: 'Boutique Manor', image: walawwaHotelPkg3 },
+      { location: 'Kandy', hotel: 'The Kandy House', type: 'Heritage Boutique', image: kandyHousePkg3 },
+      { location: 'Koslanda', hotel: 'Living Heritage Koslanda', type: 'Boutique Hotel', image: livingHeritageKoslandaPkg3 },
+      { location: 'Yala', hotel: 'Ruhunu Safari Camping', type: 'Honeymoon Suite', image: ruhunuYalaSafariPkg3 },
+      { location: 'Mirissa', hotel: 'Lantern Boutique Hotel', type: 'Beachfront Boutique', image: lanternBoutiqueHotel },
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival',
         description: 'Upon arrival, you will be greeted warmly by your own chauffeur and transferred from the Colombo International Airport to The Wallawwa. Set in an expansive tropical garden, this former manor house indulges couples with its chic collection of guestrooms, gourmet cuisine, discreet service and decadent spa – the venue for post- and pre-flight pampering.',
-        image: kalpitiyaBeachSunset,
+        image: arrivalPkg3,
         location: 'Negombo',
         activities: ['Airport pickup', 'Romantic check-in', 'Spa relaxation'],
         accommodation: 'The Wallawwa'
@@ -468,7 +491,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Negombo',
         description: 'Spend the day at leisure to explore the surroundings or just relax. Enjoy the tropical gardens, indulge in couples spa treatments, and savor gourmet cuisine at this romantic manor house.',
-        image: kalpitiyaBeachSunset,
+        image: negomboPkg3,
         location: 'Negombo',
         activities: ['Couples spa', 'Garden strolls', 'Romantic dinner'],
         accommodation: 'The Wallawwa'
@@ -477,7 +500,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Exploring Kandy',
         description: 'Travel to your next destination, Kandy – "City Top of the Mountain". On the way, visit the Millennium Elephant Foundation to observe and walk with elephants. Arrive at the charming and historic Kandy House, a stunning manor house that is beautifully romantic and particularly suited to honeymooners.',
-        image: elephantsHerd,
+        image: exploringKandy,
         location: 'Kandy',
         activities: ['Elephant experience', 'Scenic drive', 'Romantic hotel check-in'],
         accommodation: 'The Kandy House'
@@ -486,7 +509,7 @@ export const tours: Tour[] = [
         day: 4,
         title: 'Kandy',
         description: 'Explore Kandy at your leisure. Suggested activities include hiking at the Hantane Range, admiring Temple of the Tooth (Sri Lanka\'s most sacred shrine), visiting the Royal Botanical Gardens and a tea museum, and enjoying a traditional Kandyan dance show.',
-        image: buddhaReflection,
+        image: kandyPkg3,
         location: 'Kandy',
         activities: ['Temple of the Tooth', 'Botanical Gardens', 'Cultural show'],
         accommodation: 'The Kandy House'
@@ -495,7 +518,7 @@ export const tours: Tour[] = [
         day: 5,
         title: 'From Kandy to Koslanda',
         description: 'Travel south from Kandy into Sri Lanka\'s vertiginous Tea Country. Drive through the market town of Nuwara Eliya and continue to Koslanda to stay at Living Heritage Koslanda. This secluded boutique hotel offers three hugely spacious suites with generous living areas, courtyard with alfresco jacuzzi and open-to-the-skies shower.',
-        image: teaPlantationAerial,
+        image: kandyToKoslanda,
         location: 'Koslanda',
         activities: ['Tea country drive', 'Boutique hotel', 'Jacuzzi relaxation'],
         accommodation: 'Living Heritage Koslanda'
@@ -504,7 +527,7 @@ export const tours: Tour[] = [
         day: 6,
         title: 'Koslanda',
         description: 'Set in 80 acres, the property borders a patch of forest known locally as "God\'s Forest", which contains a river and a secluded waterfall. Suggested activities include trekking, tree planting and cooking classes together.',
-        image: tropicalWaterfall,
+        image: koslandaPkg3,
         location: 'Koslanda',
         activities: ['Waterfall visit', 'Couples cooking class', 'Forest trekking'],
         accommodation: 'Living Heritage Koslanda'
@@ -513,7 +536,7 @@ export const tours: Tour[] = [
         day: 7,
         title: 'Yala National Park',
         description: 'Travel from the hills into the low-lying southeastern plains to the edge of Yala National Park. Stop at Buduruwagala, a series of seven well-preserved Buddhist figures carved into sheer rock. Yala National Park is the island\'s premier game reserve, home to leopards, elephants and sloth bears.',
-        image: leopardTree,
+        image: yalaNationalPark,
         location: 'Yala',
         activities: ['Buddhist rock carvings', 'Safari camp arrival', 'Evening safari'],
         accommodation: 'Ruhunu Safari Camping'
@@ -522,7 +545,7 @@ export const tours: Tour[] = [
         day: 8,
         title: 'Yala Safari',
         description: 'Cozy up under canvas in the camp\'s beautifully secluded AC Honeymoon Suite, dine à deux by candlelight, shower under the stars and enjoy expertly guided game drives into the park. A magical once-in-a-lifetime experience for couples.',
-        image: leopardTree,
+        image: yalaSafari1,
         location: 'Yala',
         activities: ['Game drives', 'Romantic candlelit dinner', 'Star gazing'],
         accommodation: 'Ruhunu Safari Camping'
@@ -531,7 +554,7 @@ export const tours: Tour[] = [
         day: 9,
         title: 'Yala Safari',
         description: 'Continue your romantic safari adventure. Search for the elusive leopard together, spot elephants at waterholes, and enjoy the thrill of African-style safari in this incredible national park.',
-        image: elephantsHerd,
+        image: yalaSafari2,
         location: 'Yala',
         activities: ['Morning safari', 'Wildlife spotting', 'Sunset drinks'],
         accommodation: 'Ruhunu Safari Camping'
@@ -540,7 +563,7 @@ export const tours: Tour[] = [
         day: 10,
         title: 'Mirissa',
         description: 'Travel west along the picturesque cove-sprinkled southern coastline to Mirissa, famed for pretty beaches and surfing lessons. Check into Lantern Boutique Hotel, a blissful beach villa with swimming pool overlooking the Indian Ocean.',
-        image: surfingWaves,
+        image: mirissaPkg3,
         location: 'Mirissa',
         activities: ['Coastal drive', 'Beach check-in', 'Sunset on beach'],
         accommodation: 'Lantern Boutique Hotel'
@@ -549,7 +572,7 @@ export const tours: Tour[] = [
         day: 11,
         title: 'Mirissa',
         description: 'Enjoy alfresco dining, relax poolside, indulge in spa treatments together. Optional whale watching trip to see blue whales and dolphins, or take a city tour of Matara.',
-        image: kalpitiyaBeachSunset,
+        image: mirissa2,
         location: 'Mirissa',
         activities: ['Whale watching', 'Couples spa', 'Poolside relaxation'],
         accommodation: 'Lantern Boutique Hotel'
@@ -558,7 +581,7 @@ export const tours: Tour[] = [
         day: 12,
         title: 'Mirissa',
         description: 'Another day of beachfront bliss. Surfing lessons, sunset walks along the beach, or simply enjoying the romantic atmosphere of this beautiful southern coast.',
-        image: surfingWaves,
+        image: mirissa3,
         location: 'Mirissa',
         activities: ['Surfing lessons', 'Beach walks', 'Romantic dinner'],
         accommodation: 'Lantern Boutique Hotel'
@@ -567,7 +590,7 @@ export const tours: Tour[] = [
         day: 13,
         title: 'Mirissa',
         description: 'Final full day to enjoy the paradise beaches of Mirissa. Snorkeling, paddleboarding, or simply lounging on the golden sand before your journey home tomorrow.',
-        image: snorkelingReef,
+        image: mirissa4,
         location: 'Mirissa',
         activities: ['Snorkeling', 'Beach relaxation', 'Farewell dinner'],
         accommodation: 'Lantern Boutique Hotel'
@@ -576,7 +599,7 @@ export const tours: Tour[] = [
         day: 14,
         title: 'Departure',
         description: 'Depart Mirissa and transfer to Colombo Airport for your return flight home. Visit Galle Dutch Fort and Sea Turtle Hatchery en route to the airport.',
-        image: kalpitiyaBeachSunset,
+        image: departurePkg3,
         location: 'Colombo Airport',
         activities: ['Galle Fort visit', 'Turtle hatchery', 'Airport transfer']
       }
