@@ -27,7 +27,7 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname !== '/') return;
 
-    const sectionIds = ['hero', 'about', 'tours', 'day-tours', 'experiences', 'reviews', 'contact'];
+    const sectionIds = ['hero', 'about', 'tours', 'day-tours', 'memories', 'reviews', 'contact'];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -69,7 +69,7 @@ const Navbar = () => {
     { id: 'about', label: t('aboutUs') },
     { id: 'tours', label: t('tours') },
     { id: 'day-tours', label: t('dayTours') },
-    { id: 'experiences', label: t('experiences') },
+    { id: 'memories', label: t('memories') },
     { id: 'reviews', label: t('reviews') },
     { id: 'contact', label: t('contact') },
   ];

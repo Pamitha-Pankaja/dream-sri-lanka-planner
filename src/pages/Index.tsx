@@ -6,7 +6,7 @@ import AboutSection from '@/components/AboutSection';
 import WhySriLanka from '@/components/WhySriLanka';
 import ToursSection from '@/components/ToursSection';
 import DayToursSection from '@/components/DayToursSection';
-import ExperiencesSection from '@/components/ExperiencesSection';
+import MemoriesSection from '@/components/MemoriesSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -61,7 +61,7 @@ const Index = () => {
         <WhySriLanka />
         <ToursSection />
         <DayToursSection />
-        <ExperiencesSection />
+        <MemoriesSection />
         <ReviewsSection />
         <ContactSection />
         <Footer />
