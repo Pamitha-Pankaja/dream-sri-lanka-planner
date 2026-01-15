@@ -16,35 +16,36 @@ import tropicalWaterfall from '@/assets/tropical-waterfall.jpg';
 
 interface TourMapProps {
   route: string[];
+  locationImages?: Record<string, string>;
 }
 
 // Real GPS coordinates for Sri Lankan destinations
-const destinations: Record<string, { lat: number; lng: number; description?: string; image?: string }> = {
-  'Colombo': { lat: 6.9271, lng: 79.8612, description: 'Commercial Capital', image: kalpitiyaBeachSunset },
-  'Colombo Airport': { lat: 7.1808, lng: 79.8841, description: 'Bandaranaike International Airport', image: kalpitiyaBeachSunset },
-  'Negombo': { lat: 7.2008, lng: 79.8737, description: 'Beach Town & Fishing Village', image: kalpitiyaBeachSunset },
-  'Sigiriya': { lat: 7.9570, lng: 80.7603, description: 'Ancient Rock Fortress', image: sigiriyaSunset },
-  'Dambulla': { lat: 7.8742, lng: 80.6511, description: 'Cave Temple Complex', image: buddhaReflection },
-  'Kandy': { lat: 7.2906, lng: 80.6337, description: 'Cultural Capital & Temple of Tooth', image: buddhaReflection },
-  'Nuwara Eliya': { lat: 6.9497, lng: 80.7891, description: 'Little England - Hill Country', image: teaPlantationAerial },
-  'Tea Country': { lat: 6.9270, lng: 80.6150, description: 'Ceylon Tea Plantations', image: teaPlantationAerial },
-  'Ella': { lat: 6.8667, lng: 81.0466, description: 'Scenic Hill Town', image: trainScenic },
-  'Yala': { lat: 6.3728, lng: 81.5088, description: 'National Park - Wildlife Safari', image: leopardTree },
-  'Mirissa': { lat: 5.9483, lng: 80.4716, description: 'Whale Watching & Beaches', image: surfingWaves },
-  'Weligama': { lat: 5.9747, lng: 80.4297, description: 'Surfing & Stilt Fishermen', image: surfingWaves },
-  'Galle': { lat: 6.0535, lng: 80.2210, description: 'UNESCO Dutch Fort', image: kalpitiyaBeachSunset },
-  'Hikkaduwa': { lat: 6.1395, lng: 80.1010, description: 'Coral Reefs & Beach Town', image: snorkelingReef },
-  'Bentota': { lat: 6.4213, lng: 79.9977, description: 'Beach Resort Town', image: kalpitiyaBeachSunset },
-  'Tangalle': { lat: 6.0241, lng: 80.7945, description: 'Pristine Southern Beaches', image: kalpitiyaBeachSunset },
-  'Arugam Bay': { lat: 6.8406, lng: 81.8364, description: 'World-Class Surf Spot', image: surfingWaves },
-  'Trincomalee': { lat: 8.5874, lng: 81.2152, description: 'Natural Harbor & Beaches', image: kalpitiyaBeachSunset },
-  'Polonnaruwa': { lat: 7.9403, lng: 81.0188, description: 'Ancient Capital Ruins', image: buddhaReflection },
-  'Anuradhapura': { lat: 8.3114, lng: 80.4037, description: 'Sacred City & Ancient Ruins', image: buddhaReflection },
-  'Pasikuda': { lat: 7.9241, lng: 81.5614, description: 'Shallow Waters & Beach Resort', image: kalpitiyaBeachSunset },
-  'Koggala': { lat: 5.9892, lng: 80.3285, description: 'Lake & Beach Area', image: kalpitiyaBeachSunset },
-  'Wilpattu': { lat: 8.4892, lng: 80.0325, description: 'Leopard Country - National Park', image: leopardTree },
-  'Koslanda': { lat: 6.8350, lng: 81.0000, description: 'Tea Country & Waterfalls', image: tropicalWaterfall },
-};
+const getDestinations = (locationImages?: Record<string, string>): Record<string, { lat: number; lng: number; description?: string; image?: string }> => ({
+  'Colombo': { lat: 6.9271, lng: 79.8612, description: 'Commercial Capital', image: locationImages?.['Colombo'] || kalpitiyaBeachSunset },
+  'Colombo Airport': { lat: 7.1808, lng: 79.8841, description: 'Bandaranaike International Airport', image: locationImages?.['Colombo Airport'] || kalpitiyaBeachSunset },
+  'Negombo': { lat: 7.2008, lng: 79.8737, description: 'Beach Town & Fishing Village', image: locationImages?.['Negombo'] || kalpitiyaBeachSunset },
+  'Sigiriya': { lat: 7.9570, lng: 80.7603, description: 'Ancient Rock Fortress', image: locationImages?.['Sigiriya'] || sigiriyaSunset },
+  'Dambulla': { lat: 7.8742, lng: 80.6511, description: 'Cave Temple Complex', image: locationImages?.['Dambulla'] || buddhaReflection },
+  'Kandy': { lat: 7.2906, lng: 80.6337, description: 'Cultural Capital & Temple of Tooth', image: locationImages?.['Kandy'] || buddhaReflection },
+  'Nuwara Eliya': { lat: 6.9497, lng: 80.7891, description: 'Little England - Hill Country', image: locationImages?.['Nuwara Eliya'] || teaPlantationAerial },
+  'Tea Country': { lat: 6.9270, lng: 80.6150, description: 'Ceylon Tea Plantations', image: locationImages?.['Tea Country'] || teaPlantationAerial },
+  'Ella': { lat: 6.8667, lng: 81.0466, description: 'Scenic Hill Town', image: locationImages?.['Ella'] || trainScenic },
+  'Yala': { lat: 6.3728, lng: 81.5088, description: 'National Park - Wildlife Safari', image: locationImages?.['Yala'] || leopardTree },
+  'Mirissa': { lat: 5.9483, lng: 80.4716, description: 'Whale Watching & Beaches', image: locationImages?.['Mirissa'] || surfingWaves },
+  'Weligama': { lat: 5.9747, lng: 80.4297, description: 'Surfing & Stilt Fishermen', image: locationImages?.['Weligama'] || surfingWaves },
+  'Galle': { lat: 6.0535, lng: 80.2210, description: 'UNESCO Dutch Fort', image: locationImages?.['Galle'] || kalpitiyaBeachSunset },
+  'Hikkaduwa': { lat: 6.1395, lng: 80.1010, description: 'Coral Reefs & Beach Town', image: locationImages?.['Hikkaduwa'] || snorkelingReef },
+  'Bentota': { lat: 6.4213, lng: 79.9977, description: 'Beach Resort Town', image: locationImages?.['Bentota'] || kalpitiyaBeachSunset },
+  'Tangalle': { lat: 6.0241, lng: 80.7945, description: 'Pristine Southern Beaches', image: locationImages?.['Tangalle'] || kalpitiyaBeachSunset },
+  'Arugam Bay': { lat: 6.8406, lng: 81.8364, description: 'World-Class Surf Spot', image: locationImages?.['Arugam Bay'] || surfingWaves },
+  'Trincomalee': { lat: 8.5874, lng: 81.2152, description: 'Natural Harbor & Beaches', image: locationImages?.['Trincomalee'] || kalpitiyaBeachSunset },
+  'Polonnaruwa': { lat: 7.9403, lng: 81.0188, description: 'Ancient Capital Ruins', image: locationImages?.['Polonnaruwa'] || buddhaReflection },
+  'Anuradhapura': { lat: 8.3114, lng: 80.4037, description: 'Sacred City & Ancient Ruins', image: locationImages?.['Anuradhapura'] || buddhaReflection },
+  'Pasikuda': { lat: 7.9241, lng: 81.5614, description: 'Shallow Waters & Beach Resort', image: locationImages?.['Pasikuda'] || kalpitiyaBeachSunset },
+  'Koggala': { lat: 5.9892, lng: 80.3285, description: 'Lake & Beach Area', image: locationImages?.['Koggala'] || kalpitiyaBeachSunset },
+  'Wilpattu': { lat: 8.4892, lng: 80.0325, description: 'Leopard Country - National Park', image: locationImages?.['Wilpattu'] || leopardTree },
+  'Koslanda': { lat: 6.8350, lng: 81.0000, description: 'Tea Country & Waterfalls', image: locationImages?.['Koslanda'] || tropicalWaterfall },
+});
 
 const mapContainerStyle = {
   width: '100%',
@@ -87,7 +88,7 @@ const mapOptions: google.maps.MapOptions = {
   ],
 };
 
-const TourMap = ({ route }: TourMapProps) => {
+const TourMap = ({ route, locationImages }: TourMapProps) => {
   const { t } = useLanguage();
   const [selectedMarker, setSelectedMarker] = React.useState<number | null>(null);
 
@@ -95,12 +96,15 @@ const TourMap = ({ route }: TourMapProps) => {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
   });
 
+  // Get destinations with custom images if provided
+  const destinations = useMemo(() => getDestinations(locationImages), [locationImages]);
+
   // Get coordinates for route destinations
   const routeCoords = useMemo(() => {
     return route
       .map((place) => destinations[place])
-      .filter((coord): coord is { lat: number; lng: number; description?: string } => coord !== undefined);
-  }, [route]);
+      .filter((coord): coord is { lat: number; lng: number; description?: string; image?: string } => coord !== undefined);
+  }, [route, destinations]);
 
   // Calculate map center based on route
   const center = useMemo(() => {

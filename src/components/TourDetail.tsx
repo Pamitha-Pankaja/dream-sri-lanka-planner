@@ -1,20 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
-import { ArrowLeft, Calendar, MapPin, Check, Building2, Star } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, Star, X } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface TourDetailProps {
   tour: Tour;
   onBack: () => void;
 }
 
+interface HotelImageModal {
+  isOpen: boolean;
+  hotel: string;
+  location: string;
+  type: string;
+  image: string;
+}
+
 const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   const { t } = useLanguage();
+  const [hotelModal, setHotelModal] = useState<HotelImageModal>({
+    isOpen: false,
+    hotel: '',
+    location: '',
+    type: '',
+    image: '',
+  });
+
+  // Extract location images from itinerary
+  const getLocationImages = () => {
+    const locationImages: Record<string, string> = {};
+    
+    // Map locations from itinerary to their images
+    tour.itinerary.forEach((day) => {
+      if (day.location && day.image) {
+        locationImages[day.location] = day.image;
+      }
+    });
+    
+    return locationImages;
+  };
+
+  const locationImages = getLocationImages();
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openHotelModal = (hotel: string, location: string, type: string, image: string) => {
+    setHotelModal({
+      isOpen: true,
+      hotel,
+      location,
+      type,
+      image,
+    });
+  };
+
+  const closeHotelModal = () => {
+    setHotelModal({
+      isOpen: false,
+      hotel: '',
+      location: '',
+      type: '',
+      image: '',
+    });
   };
 
   return (
@@ -110,7 +167,11 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                 
                 <div className="flex items-start gap-4">
                   {stay.image ? (
-                    <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div 
+                      className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300 cursor-pointer hover:ring-2 hover:ring-primary"
+                      onClick={() => openHotelModal(stay.hotel, stay.location, stay.type, stay.image)}
+                      title="Click to view larger image"
+                    >
                       <img src={stay.image} alt={stay.hotel} className="w-full h-full object-cover" />
                     </div>
                   ) : (
@@ -136,7 +197,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('routeMap')}</h2>
         <div className="bg-card rounded-2xl p-6 md:p-8 shadow-soft">
-          <TourMap route={tour.route} />
+          <TourMap route={tour.route} locationImages={locationImages} />
         </div>
       </div>
 
@@ -240,6 +301,33 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
           </WhatsAppButton>
         </div>
       </div>
+
+      {/* Hotel Image Modal */}
+      <Dialog open={hotelModal.isOpen} onOpenChange={closeHotelModal}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-serif mb-2">
+              {hotelModal.hotel}
+            </DialogTitle>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                <span>{hotelModal.location}</span>
+              </div>
+              <span className="px-3 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground">
+                {hotelModal.type}
+              </span>
+            </div>
+          </DialogHeader>
+          <div className="mt-4">
+            <img
+              src={hotelModal.image}
+              alt={hotelModal.hotel}
+              className="w-full h-auto rounded-lg object-cover shadow-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
