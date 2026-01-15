@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/data/tours';
-import { ArrowLeft, Calendar, MapPin, Check, Building2, Star, X } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, Star, X, ArrowUp } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';
 import {
@@ -33,6 +33,17 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
     type: '',
     image: '',
   });
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Track scroll position to show/hide scroll to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Extract location images from itinerary
   const getLocationImages = () => {
@@ -49,6 +60,10 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   };
 
   const locationImages = getLocationImages();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -76,13 +91,13 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
   return (
     <div className="container-wide">
-      {/* Back Button */}
+      {/* Enhanced Back Button - More Visible */}
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
+        className="inline-flex items-center gap-2 mb-8 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary font-semibold rounded-lg border-2 border-primary/30 hover:border-primary transition-all duration-300 shadow-sm hover:shadow-md group"
       >
-        <ArrowLeft className="w-5 h-5" />
-        {t('backToTours')}
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+        <span>{t('backToTours')}</span>
       </button>
 
       {/* Hero Section */}
@@ -328,6 +343,18 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Scroll to Top Button - Positioned above WhatsApp button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-24 right-6 z-[60] p-3.5 bg-primary text-primary-foreground rounded-full shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 animate-fade-in group"
+          aria-label="Scroll to top"
+          title="Scroll to top"
+        >
+          <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+        </button>
+      )}
     </div>
   );
 };
