@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © {currentYear} Ceylon Round Tours. {t('allRightsReserved')}
+            © {currentYear} Explore Lanka Travels. {t('allRightsReserved')}
           </p>
         </div>
       </div>

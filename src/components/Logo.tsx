@@ -33,15 +33,15 @@ const Logo = ({ className = '', variant = 'dark', size = 'md' }: LogoProps) => {
     <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
       <img 
         src={logoImage} 
-        alt="Ceylon Round Tours Logo" 
+        alt="Explore Lanka Travels Logo" 
         className={`${sizeClasses[size]} object-contain`}
       />
       <div className="flex flex-col">
         <span className={`${textSizeClasses[size]} font-serif font-bold tracking-tight leading-tight ${textColor}`}>
-          Ceylon Round
+          Explore Lanka
         </span>
         <span className={`${subtextSizeClasses[size]} font-medium uppercase tracking-widest ${variant === 'light' ? 'text-white/80' : 'text-primary'}`}>
-          Tours
+          Travels
         </span>
       </div>
     </div>
