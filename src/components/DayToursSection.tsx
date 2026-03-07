@@ -1,16 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
-import { dayTours, DayTour } from '@/data/tours';
-import { Clock, MapPin, ChevronRight } from 'lucide-react';
+import { DayTour } from '@/lib/api';
+import { useDayTours } from '@/hooks/useTours';
+import { Clock, MapPin, ChevronRight, Loader2 } from 'lucide-react';
 
 const DayToursSection = () => {
   const { t } = useLanguage();
+  const { data: dayTours = [], isLoading } = useDayTours();
 
   return (
     <section id="day-tours" className="section-padding bg-muted">
       <div className="container-wide">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-medium tracking-widest uppercase text-sm mb-4 block">
             {t('exploreSriLanka')}
@@ -23,12 +24,17 @@ const DayToursSection = () => {
           </p>
         </div>
 
-        {/* Day Tour Cards - Grid Layout like Absolute Lanka */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {dayTours.map((tour) => (
-            <DayTourCard key={tour.id} tour={tour} t={t} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex justify-center py-20">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {dayTours.map((tour) => (
+              <DayTourCard key={tour.id} tour={tour} t={t} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,88 @@
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+async function fetchJSON<T>(endpoint: string): Promise<T> {
+  const res = await fetch(`${API_URL}${endpoint}`);
+  if (!res.ok) {
+    throw new Error(`API error: ${res.status}`);
+  }
+  return res.json();
+}
+
+async function postJSON<T>(endpoint: string, body: unknown): Promise<T> {
+  const res = await fetch(`${API_URL}${endpoint}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    throw new Error(`API error: ${res.status}`);
+  }
+  return res.json();
+}
+
+export interface Tour {
+  id: string;
+  name: string;
+  duration: { days: number; nights: number };
+  summary: string;
+  route: string[];
+  tags: string[];
+  heroImage: string;
+  highlights: string[];
+  placesToStay: { location: string; hotel: string; type: string; image?: string }[];
+  itinerary: {
+    day: number;
+    title: string;
+    description: string;
+    image: string;
+    location: string;
+    activities: string[];
+    accommodation?: string;
+  }[];
+  published?: boolean;
+}
+
+export interface DayTour {
+  id: string;
+  name: string;
+  location: string;
+  summary: string;
+  overview: string;
+  highlights: string[];
+  heroImage: string;
+  galleryImages: string[];
+  duration: string;
+  startsEnds: string;
+  tourType: string;
+  itinerary: { title: string; description: string }[];
+  inclusions: string[];
+  exclusions: string[];
+  tags: string[];
+  published?: boolean;
+}
+
+export const api = {
+  getTours: () => fetchJSON<Tour[]>("/api/tours?published=true"),
+  getTour: (id: string) => fetchJSON<Tour>(`/api/tours/${id}`),
+  getDayTours: () => fetchJSON<DayTour[]>("/api/day-tours?published=true"),
+  getDayTour: (id: string) => fetchJSON<DayTour>(`/api/day-tours/${id}`),
+
+  submitContact: (data: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    phone?: string;
+  }) => postJSON("/api/contacts", data),
+
+  submitBooking: (data: {
+    tourId: string;
+    tourName: string;
+    customerName: string;
+    customerEmail: string;
+    customerPhone: string;
+    numberOfGuests: number;
+    preferredDate: string;
+    specialRequests?: string;
+  }) => postJSON("/api/bookings", data),
+};

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Tour } from '@/data/tours';
+import { Tour } from '@/lib/api';
 import { ArrowLeft, Calendar, MapPin, Check, Building2, Star, X, ArrowUp } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Tour } from '@/data/tours';
+import { Tour } from '@/lib/api';
 import { Calendar, ChevronRight, Waves, TreePine, Compass, Palmtree, Heart, Camera, Sparkles } from 'lucide-react';
 
 interface TourCardProps {
