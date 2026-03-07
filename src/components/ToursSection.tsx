@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { useTours } from '@/hooks/useTours';
+import { useTours, useSubPackages } from '@/hooks/useTours';
 import TourCard from './TourCard';
 import TourDetail from './TourDetail';
 import { Loader2 } from 'lucide-react';
 
+const EXPANDABLE_TOUR_NAME = 'Cultural and Classic';
+
 const ToursSection = () => {
   const { t } = useLanguage();
   const [selectedTour, setSelectedTour] = useState<string | null>(null);
+  const [expandedTourId, setExpandedTourId] = useState<string | null>(null);
   const { data: tours = [], isLoading } = useTours();
+  const { data: subPackages = [] } = useSubPackages(EXPANDABLE_TOUR_NAME);
 
-  const activeTour = tours.find(tour => tour.id === selectedTour);
+  const activeTour = tours.find(tour => tour.id === selectedTour)
+    || subPackages.find(tour => tour.id === selectedTour);
 
   if (activeTour) {
     return (
       <section id="tours" className="section-padding bg-background">
-        <TourDetail tour={activeTour} onBack={() => setSelectedTour(null)} />
+        <TourDetail
+          tour={activeTour}
+          onBack={() => {
+            const wasSubPackage = subPackages.some(sp => sp.id === selectedTour);
+            const expandableTour = tours.find(t => t.name === EXPANDABLE_TOUR_NAME);
+            setSelectedTour(null);
+            if (wasSubPackage && expandableTour) {
+              setExpandedTourId(expandableTour.id);
+            }
+          }}
+        />
       </section>
     );
   }
@@ -41,14 +56,26 @@ const ToursSection = () => {
           </div>
         ) : (
           <div className="space-y-8">
-            {tours.map((tour, index) => (
-              <TourCard
-                key={tour.id}
-                tour={tour}
-                index={index}
-                onSelect={() => setSelectedTour(tour.id)}
-              />
-            ))}
+            {tours.map((tour, index) => {
+              const isExpandable = tour.name === EXPANDABLE_TOUR_NAME;
+              return (
+                <TourCard
+                  key={tour.id}
+                  tour={tour}
+                  index={index}
+                  onSelect={() => {
+                    if (isExpandable) {
+                      setExpandedTourId(prev => prev === tour.id ? null : tour.id);
+                    } else {
+                      setSelectedTour(tour.id);
+                    }
+                  }}
+                  isExpanded={expandedTourId === tour.id}
+                  subPackages={isExpandable && subPackages.length > 0 ? subPackages : undefined}
+                  onSubPackageSelect={(subTour) => setSelectedTour(subTour.id)}
+                />
+              );
+            })}
           </div>
         )}
       </div>

@@ -18,6 +18,15 @@ export function useTour(id: string | undefined) {
   });
 }
 
+export function useSubPackages(parentTourName: string | null) {
+  return useQuery({
+    queryKey: ["subPackages", parentTourName],
+    queryFn: () => api.getSubPackages(parentTourName!),
+    enabled: !!parentTourName,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export function useDayTours() {
   return useQuery({
     queryKey: ["dayTours"],
