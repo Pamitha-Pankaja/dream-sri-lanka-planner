@@ -39,6 +39,7 @@ export interface Tour {
     activities: string[];
     accommodation?: string;
   }[];
+  parentTourName?: string;
   published?: boolean;
 }
 
@@ -64,6 +65,8 @@ export interface DayTour {
 export const api = {
   getTours: () => fetchJSON<Tour[]>("/api/tours?published=true"),
   getTour: (id: string) => fetchJSON<Tour>(`/api/tours/${id}`),
+  getSubPackages: (parentTourName: string) =>
+    fetchJSON<Tour[]>(`/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}`),
   getDayTours: () => fetchJSON<DayTour[]>("/api/day-tours?published=true"),
   getDayTour: (id: string) => fetchJSON<DayTour>(`/api/day-tours/${id}`),
 
