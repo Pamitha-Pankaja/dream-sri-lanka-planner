@@ -21,7 +21,7 @@ const AboutSection = () => {
         <div className="flex justify-center mb-8">
           <img 
             src={logoImage} 
-            alt="Ceylon Round Tours Logo" 
+            alt="Anvil Lanka Travels Logo" 
             className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain animate-fade-in"
           />
         </div>

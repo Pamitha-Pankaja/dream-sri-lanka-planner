@@ -99,7 +99,7 @@ const ContactSection = () => {
             </div>
 
             <div className="text-muted-foreground">
-              <p className="mb-2">📧 info@visitsrilanka.com</p>
+              <p className="mb-2">📧 info@anvillankatravels.com</p>
               <p>📱 +94 777 077 325</p>
             </div>
           </div>

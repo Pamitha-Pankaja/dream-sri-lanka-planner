@@ -50,7 +50,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         <div className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto mb-8 relative">
           <img 
             src={logoImage} 
-            alt="Ceylon Round Tours Logo" 
+            alt="Anvil Lanka Travels Logo" 
             className="w-full h-full object-contain drop-shadow-2xl"
           />
         </div>
@@ -62,7 +62,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         
         {/* Company Name */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white drop-shadow-2xl">
-          Ceylon Round Tours
+          Anvil Lanka Travels
         </h1>
       </div>
     </div>
