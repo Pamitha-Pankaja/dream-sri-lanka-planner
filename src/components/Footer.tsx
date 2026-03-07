@@ -33,11 +33,11 @@ const Footer = () => {
               <span className="text-sm">WhatsApp</span>
             </a>
             <a
-              href="mailto:info@ceylonroundtours.com"
+              href="mailto:info@anvillankatravels.com"
               className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               <Mail className="w-5 h-5" />
-              <span className="text-sm">info@ceylonroundtours.com</span>
+              <span className="text-sm">info@anvillankatravels.com</span>
             </a>
           </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © {currentYear} Explore Lanka Travels. {t('allRightsReserved')}
+            © {currentYear} Anvil Lanka Travels. {t('allRightsReserved')}
           </p>
         </div>
       </div>

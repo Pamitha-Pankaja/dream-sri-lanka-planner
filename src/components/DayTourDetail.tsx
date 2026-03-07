@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
-import { dayTours } from '@/data/tours';
-import { Clock, MapPin, Users, ArrowLeft, Check, X } from 'lucide-react';
+import { useDayTour } from '@/hooks/useTours';
+import { Clock, MapPin, Users, ArrowLeft, Check, X, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import WhatsAppButton from './WhatsAppButton';
 import Navbar from './Navbar';
@@ -12,13 +12,19 @@ const DayTourDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { data: tour, isLoading } = useDayTour(id);
   
-  // Scroll to top when component mounts
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
   
-  const tour = dayTours.find(t => t.id === id);
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
   
   if (!tour) {
     return (

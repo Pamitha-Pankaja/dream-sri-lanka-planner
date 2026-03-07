@@ -17,14 +17,14 @@ const ReviewsSection = () => {
       name: 'David Cohen',
       country: 'Israel',
       rating: 5,
-      text: 'Third time using Visit Sri Lanka and they never disappoint. The surf spots they took us to were incredible - some of the best waves I\'ve ever ridden. Can\'t wait to come back!',
+      text: 'Third time using Anvil Lanka Travels and they never disappoint. The surf spots they took us to were incredible - some of the best waves I\'ve ever ridden. Can\'t wait to come back!',
       tour: 'Surf & Beach Adventure',
     },
     {
       name: 'Emma & James',
       country: 'UK',
       rating: 5,
-      text: 'We wanted a romantic getaway and Visit Sri Lanka delivered beyond our expectations. The private beach dinners, the luxury resorts, the personal touches - pure perfection.',
+      text: 'We wanted a romantic getaway and Anvil Lanka Travels delivered beyond our expectations. The private beach dinners, the luxury resorts, the personal touches - pure perfection.',
       tour: 'Tropical Coastal Luxury',
     },
   ];

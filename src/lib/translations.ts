@@ -13,8 +13,8 @@ export const languages: { code: Language; name: string; flag: string; rtl?: bool
 export const translations: Record<Language, Record<string, string>> = {
   en: {
     // Welcome Screen
-    welcomeTagline: 'Discover the Pearl of the Indian Ocean',
-    welcomeMessage: 'Welcome to Explore Lanka Travels',
+    welcomeTagline: 'Inspire to Explore',
+    welcomeMessage: 'Welcome to Anvil Lanka Travels',
     selectLanguage: 'Please select your preferred language',
     enterSite: 'Enter Site',
     skipIntro: 'Skip intro',
@@ -43,7 +43,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Years Experience',
     satisfaction: 'Satisfaction',
     aboutWhoWeAre: 'Who We Are',
-    aboutParagraph1: 'Explore Lanka Travels is a premier travel company specializing in luxury, customized tours across Sri Lanka. Founded by passionate local experts who know every corner of this beautiful island.',
+    aboutParagraph1: 'Anvil Lanka Travels is a premier travel company specializing in luxury, customized tours across Sri Lanka. Founded by passionate local experts who know every corner of this beautiful island.',
     aboutParagraph2: 'We believe travel should be transformative. Our carefully curated experiences go beyond typical tourism, offering authentic encounters with local culture, nature, and adventure.',
     aboutParagraph3: 'From the moment you contact us until you return home with unforgettable memories, our dedicated team ensures every detail is perfect.',
     whyChooseUs: 'Why Choose Us?',
@@ -171,7 +171,7 @@ export const translations: Record<Language, Record<string, string>> = {
   he: {
     // Welcome Screen
     welcomeTagline: 'גלה את פנינת האוקיינוס ההודי',
-    welcomeMessage: 'ברוכים הבאים ל-Explore Lanka Travels',
+    welcomeMessage: 'ברוכים הבאים ל-Anvil Lanka Travels',
     selectLanguage: 'אנא בחר את השפה המועדפת עליך',
     enterSite: 'כניסה לאתר',
     skipIntro: 'דלג על הקדמה',
@@ -200,7 +200,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'שנות ניסיון',
     satisfaction: 'שביעות רצון',
     aboutWhoWeAre: 'מי אנחנו',
-    aboutParagraph1: 'Explore Lanka Travels היא חברת תיירות מובילה המתמחה בטיולי יוקרה מותאמים אישית ברחבי סרי לנקה. נוסדה על ידי מומחים מקומיים נלהבים שמכירים כל פינה באי היפהפה הזה.',
+    aboutParagraph1: 'Anvil Lanka Travels היא חברת תיירות מובילה המתמחה בטיולי יוקרה מותאמים אישית ברחבי סרי לנקה. נוסדה על ידי מומחים מקומיים נלהבים שמכירים כל פינה באי היפהפה הזה.',
     aboutParagraph2: 'אנו מאמינים שנסיעות צריכות להיות משנות חיים. החוויות שלנו חורגות מתיירות רגילה, ומציעות מפגשים אותנטיים עם תרבות מקומית, טבע והרפתקה.',
     aboutParagraph3: 'מהרגע שתיצור איתנו קשר ועד שתחזור הביתה עם זיכרונות בלתי נשכחים, הצוות המסור שלנו מוודא שכל פרט מושלם.',
     whyChooseUs: 'למה לבחור בנו?',
@@ -326,7 +326,7 @@ export const translations: Record<Language, Record<string, string>> = {
   de: {
     // Welcome Screen
     welcomeTagline: 'Entdecken Sie die Perle des Indischen Ozeans',
-    welcomeMessage: 'Willkommen bei Explore Lanka Travels',
+    welcomeMessage: 'Willkommen bei Anvil Lanka Travels',
     selectLanguage: 'Bitte wählen Sie Ihre bevorzugte Sprache',
     enterSite: 'Seite betreten',
     skipIntro: 'Intro überspringen',
@@ -352,7 +352,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Jahre Erfahrung',
     satisfaction: 'Zufriedenheit',
     aboutWhoWeAre: 'Wer wir sind',
-    aboutParagraph1: 'Explore Lanka Travels ist ein führendes Reiseunternehmen, das sich auf Luxus- und maßgeschneiderte Touren in Sri Lanka spezialisiert hat.',
+    aboutParagraph1: 'Anvil Lanka Travels ist ein führendes Reiseunternehmen, das sich auf Luxus- und maßgeschneiderte Touren in Sri Lanka spezialisiert hat.',
     aboutParagraph2: 'Wir glauben, dass Reisen transformativ sein sollte. Unsere sorgfältig kuratierten Erlebnisse gehen über typischen Tourismus hinaus.',
     aboutParagraph3: 'Vom ersten Kontakt bis zur Heimkehr mit unvergesslichen Erinnerungen sorgt unser engagiertes Team dafür, dass jedes Detail perfekt ist.',
     whyChooseUs: 'Warum uns wählen?',
@@ -465,7 +465,7 @@ export const translations: Record<Language, Record<string, string>> = {
   fr: {
     // Welcome Screen
     welcomeTagline: 'Découvrez la Perle de l\'Océan Indien',
-    welcomeMessage: 'Bienvenue chez Explore Lanka Travels',
+    welcomeMessage: 'Bienvenue chez Anvil Lanka Travels',
     selectLanguage: 'Veuillez sélectionner votre langue préférée',
     enterSite: 'Entrer sur le site',
     skipIntro: 'Passer l\'intro',
@@ -491,7 +491,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Ans d\'Expérience',
     satisfaction: 'Satisfaction',
     aboutWhoWeAre: 'Qui Sommes-Nous',
-    aboutParagraph1: 'Explore Lanka Travels est une entreprise de voyage de premier plan spécialisée dans les circuits de luxe personnalisés au Sri Lanka.',
+    aboutParagraph1: 'Anvil Lanka Travels est une entreprise de voyage de premier plan spécialisée dans les circuits de luxe personnalisés au Sri Lanka.',
     aboutParagraph2: 'Nous croyons que les voyages devraient être transformateurs. Nos expériences soigneusement organisées vont au-delà du tourisme typique.',
     aboutParagraph3: 'Du premier contact jusqu\'à votre retour avec des souvenirs inoubliables, notre équipe dévouée veille à ce que chaque détail soit parfait.',
     whyChooseUs: 'Pourquoi Nous Choisir?',
@@ -604,7 +604,7 @@ export const translations: Record<Language, Record<string, string>> = {
   es: {
     // Welcome Screen
     welcomeTagline: 'Descubre la Perla del Océano Índico',
-    welcomeMessage: 'Bienvenido a Explore Lanka Travels',
+    welcomeMessage: 'Bienvenido a Anvil Lanka Travels',
     selectLanguage: 'Por favor seleccione su idioma preferido',
     enterSite: 'Entrar al Sitio',
     skipIntro: 'Saltar intro',
@@ -630,7 +630,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Años de Experiencia',
     satisfaction: 'Satisfacción',
     aboutWhoWeAre: 'Quiénes Somos',
-    aboutParagraph1: 'Explore Lanka Travels es una empresa de viajes líder especializada en tours de lujo personalizados en Sri Lanka.',
+    aboutParagraph1: 'Anvil Lanka Travels es una empresa de viajes líder especializada en tours de lujo personalizados en Sri Lanka.',
     aboutParagraph2: 'Creemos que viajar debe ser transformador. Nuestras experiencias cuidadosamente seleccionadas van más allá del turismo típico.',
     aboutParagraph3: 'Desde el primer contacto hasta que regresas a casa con recuerdos inolvidables, nuestro equipo dedicado asegura que cada detalle sea perfecto.',
     whyChooseUs: '¿Por Qué Elegirnos?',
@@ -743,7 +743,7 @@ export const translations: Record<Language, Record<string, string>> = {
   it: {
     // Welcome Screen
     welcomeTagline: 'Scopri la Perla dell\'Oceano Indiano',
-    welcomeMessage: 'Benvenuto a Explore Lanka Travels',
+    welcomeMessage: 'Benvenuto a Anvil Lanka Travels',
     selectLanguage: 'Seleziona la tua lingua preferita',
     enterSite: 'Entra nel Sito',
     skipIntro: 'Salta intro',
@@ -769,7 +769,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Anni di Esperienza',
     satisfaction: 'Soddisfazione',
     aboutWhoWeAre: 'Chi Siamo',
-    aboutParagraph1: 'Explore Lanka Travels è un\'azienda di viaggi leader specializzata in tour di lusso personalizzati in Sri Lanka.',
+    aboutParagraph1: 'Anvil Lanka Travels è un\'azienda di viaggi leader specializzata in tour di lusso personalizzati in Sri Lanka.',
     aboutParagraph2: 'Crediamo che il viaggio debba essere trasformativo. Le nostre esperienze accuratamente curate vanno oltre il turismo tipico.',
     aboutParagraph3: 'Dal primo contatto fino al ritorno a casa con ricordi indimenticabili, il nostro team dedicato assicura che ogni dettaglio sia perfetto.',
     whyChooseUs: 'Perché Sceglierci?',
@@ -882,7 +882,7 @@ export const translations: Record<Language, Record<string, string>> = {
   nl: {
     // Welcome Screen
     welcomeTagline: 'Ontdek de Parel van de Indische Oceaan',
-    welcomeMessage: 'Welkom bij Explore Lanka Travels',
+    welcomeMessage: 'Welkom bij Anvil Lanka Travels',
     selectLanguage: 'Selecteer uw voorkeurstaal',
     enterSite: 'Betreed de Site',
     skipIntro: 'Intro overslaan',
@@ -908,7 +908,7 @@ export const translations: Record<Language, Record<string, string>> = {
     yearsExperience: 'Jaar Ervaring',
     satisfaction: 'Tevredenheid',
     aboutWhoWeAre: 'Wie Wij Zijn',
-    aboutParagraph1: 'Explore Lanka Travels is een toonaangevend reisbedrijf gespecialiseerd in luxe, op maat gemaakte tours in Sri Lanka.',
+    aboutParagraph1: 'Anvil Lanka Travels is een toonaangevend reisbedrijf gespecialiseerd in luxe, op maat gemaakte tours in Sri Lanka.',
     aboutParagraph2: 'Wij geloven dat reizen transformerend moet zijn. Onze zorgvuldig samengestelde ervaringen gaan verder dan typisch toerisme.',
     aboutParagraph3: 'Van het eerste contact tot uw thuiskomst met onvergetelijke herinneringen, ons toegewijde team zorgt ervoor dat elk detail perfect is.',
     whyChooseUs: 'Waarom Ons Kiezen?',

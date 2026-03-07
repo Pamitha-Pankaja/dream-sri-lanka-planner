@@ -19,11 +19,13 @@ const AboutSection = () => {
       <div className="container-wide">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <img 
-            src={logoImage} 
-            alt="Explore Lanka Travels Logo" 
-            className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain animate-fade-in"
-          />
+          <div className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-white flex items-center justify-center animate-fade-in shadow-lg">
+            <img 
+              src={logoImage} 
+              alt="Anvil Lanka Travels Logo" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
         
         {/* Section Header */}

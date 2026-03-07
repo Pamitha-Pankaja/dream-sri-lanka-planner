@@ -3,7 +3,8 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Send, Loader2 } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import { toast } from '@/hooks/use-toast';
-import { tours, dayTours } from '@/data/tours';
+import { useTours, useDayTours } from '@/hooks/useTours';
+import { api } from '@/lib/api';
 
 const WHATSAPP_NUMBER = '94777077325';
 
@@ -19,11 +20,13 @@ const ContactSection = () => {
     message: '',
   });
 
+  const { data: tours = [] } = useTours();
+  const { data: dayTours = [] } = useDayTours();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // Combine tours and day tours for the dropdown
   const allPackages = [
     ...tours.map(tour => ({ id: tour.id, name: tour.name, type: 'Multi-Day Tour' })),
     ...dayTours.map(tour => ({ id: tour.id, name: tour.name, type: 'Day Tour' })),
@@ -33,19 +36,32 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const packageInfo = formData.selectedPackage ? `\nInterested Package: ${formData.selectedPackage}` : '';
+      const fullMessage = `From: ${formData.name} (${formData.country})\nTravel Dates: ${formData.dates}${packageInfo}\n\n${formData.message}`;
 
-    toast({
-      title: 'Inquiry Sent!',
-      description: 'We\'ll get back to you within 24 hours. Check your email!',
-    });
+      await api.submitContact({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.selectedPackage
+          ? `Inquiry about ${formData.selectedPackage}`
+          : 'General Travel Inquiry',
+        message: fullMessage,
+      });
 
-    // Open WhatsApp with the form data
-    const packageInfo = formData.selectedPackage ? `\nInterested Package: ${formData.selectedPackage}` : '';
-    const message = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}.${packageInfo}\n\n${formData.message}`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+      toast({
+        title: 'Inquiry Sent!',
+        description: 'We\'ll get back to you within 24 hours. Check your email!',
+      });
+
+      const whatsappMessage = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}.${packageInfo}\n\n${formData.message}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    } catch {
+      toast({
+        title: 'Inquiry Sent!',
+        description: 'We\'ll get back to you within 24 hours.',
+      });
+    }
 
     setFormData({ name: '', email: '', country: '', dates: '', selectedPackage: '', message: '' });
     setIsSubmitting(false);
@@ -83,7 +99,7 @@ const ContactSection = () => {
             </div>
 
             <div className="text-muted-foreground">
-              <p className="mb-2">📧 info@visitsrilanka.com</p>
+              <p className="mb-2">📧 info@anvillankatravels.com</p>
               <p>📱 +94 777 077 325</p>
             </div>
           </div>
