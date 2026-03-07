@@ -48,12 +48,13 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
         {/* Logo */}
         <div className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto mb-8 relative">
-          <img 
-            src={logoImage} 
-            alt="Anvil Lanka Travels Logo" 
-            className="w-full h-full object-contain drop-shadow-2xl bg-transparent"
-            style={{ mixBlendMode: 'screen' }}
-          />
+          <div className="w-full h-full rounded-full overflow-hidden bg-white/10 backdrop-blur-sm flex items-center justify-center">
+            <img 
+              src={logoImage} 
+              alt="Anvil Lanka Travels Logo" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
         
         {/* Welcome Text */}
@@ -62,9 +63,14 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         </p>
         
         {/* Company Name */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white drop-shadow-2xl">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white drop-shadow-2xl mb-4">
           Anvil Lanka Travels
         </h1>
+        
+        {/* Tagline */}
+        <p className="text-2xl md:text-3xl lg:text-4xl text-white/80 font-light italic tracking-wide animate-fade-up">
+          Inspire to Explore
+        </p>
       </div>
     </div>
   );

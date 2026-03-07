@@ -31,12 +31,13 @@ const Logo = ({ className = '', variant = 'dark', size = 'md' }: LogoProps) => {
 
   return (
     <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
-      <img 
-        src={logoImage} 
-        alt="Anvil Lanka Travels Logo" 
-        className={`${sizeClasses[size]} object-contain bg-transparent`}
-        style={{ mixBlendMode: 'multiply' }}
-      />
+      <div className={`${sizeClasses[size]} rounded-full overflow-hidden bg-white flex items-center justify-center`}>
+        <img 
+          src={logoImage} 
+          alt="Anvil Lanka Travels Logo" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="flex flex-col">
         <span className={`${textSizeClasses[size]} font-serif font-bold tracking-tight leading-tight ${textColor}`}>
           Anvil Lanka
