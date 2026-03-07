@@ -51,7 +51,8 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           <img 
             src={logoImage} 
             alt="Anvil Lanka Travels Logo" 
-            className="w-full h-full object-contain drop-shadow-2xl"
+            className="w-full h-full object-contain drop-shadow-2xl bg-transparent"
+            style={{ mixBlendMode: 'screen' }}
           />
         </div>
         

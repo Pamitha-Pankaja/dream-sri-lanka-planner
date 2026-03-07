@@ -34,7 +34,8 @@ const Logo = ({ className = '', variant = 'dark', size = 'md' }: LogoProps) => {
       <img 
         src={logoImage} 
         alt="Anvil Lanka Travels Logo" 
-        className={`${sizeClasses[size]} object-contain`}
+        className={`${sizeClasses[size]} object-contain bg-transparent`}
+        style={{ mixBlendMode: 'multiply' }}
       />
       <div className="flex flex-col">
         <span className={`${textSizeClasses[size]} font-serif font-bold tracking-tight leading-tight ${textColor}`}>
