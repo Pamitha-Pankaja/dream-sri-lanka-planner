@@ -50,9 +50,12 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   };
 
   const handleHotelClick = async (hotelId: string) => {
+    const scrollToHotel = () => {
+      document.getElementById('tours')?.scrollIntoView({ behavior: 'smooth' });
+    };
     if (hotelCache[hotelId]) {
       setSelectedHotel(hotelCache[hotelId]);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(scrollToHotel, 50);
       return;
     }
     setLoadingHotel(hotelId);
@@ -60,7 +63,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
       const hotel = await api.getHotel(hotelId);
       setHotelCache((prev) => ({ ...prev, [hotelId]: hotel }));
       setSelectedHotel(hotel);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(scrollToHotel, 50);
     } catch (error) {
       console.error('Failed to load hotel:', error);
     } finally {
