@@ -1,39 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Tour } from '@/lib/api';
-import { ArrowLeft, Calendar, MapPin, Check, Building2, Star, X, ArrowUp } from 'lucide-react';
+import { Tour, Hotel, api } from '@/lib/api';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, ArrowUp, ChevronRight } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import HotelDetail from './HotelDetail';
 
 interface TourDetailProps {
   tour: Tour;
   onBack: () => void;
 }
 
-interface HotelImageModal {
-  isOpen: boolean;
-  hotel: string;
-  location: string;
-  type: string;
-  image: string;
-}
-
 const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   const { t } = useLanguage();
-  const [hotelModal, setHotelModal] = useState<HotelImageModal>({
-    isOpen: false,
-    hotel: '',
-    location: '',
-    type: '',
-    image: '',
-  });
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
+  const [hotelCache, setHotelCache] = useState<Record<string, Hotel>>({});
+  const [loadingHotel, setLoadingHotel] = useState<string | null>(null);
 
   // Track scroll position to show/hide scroll to top button
   useEffect(() => {
@@ -48,14 +31,11 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   // Extract location images from itinerary
   const getLocationImages = () => {
     const locationImages: Record<string, string> = {};
-    
-    // Map locations from itinerary to their images
     tour.itinerary.forEach((day) => {
       if (day.location && day.image) {
         locationImages[day.location] = day.image;
       }
     });
-    
     return locationImages;
   };
 
@@ -69,25 +49,34 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const openHotelModal = (hotel: string, location: string, type: string, image: string) => {
-    setHotelModal({
-      isOpen: true,
-      hotel,
-      location,
-      type,
-      image,
-    });
+  const handleHotelClick = async (hotelId: string) => {
+    if (hotelCache[hotelId]) {
+      setSelectedHotel(hotelCache[hotelId]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    setLoadingHotel(hotelId);
+    try {
+      const hotel = await api.getHotel(hotelId);
+      setHotelCache((prev) => ({ ...prev, [hotelId]: hotel }));
+      setSelectedHotel(hotel);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error('Failed to load hotel:', error);
+    } finally {
+      setLoadingHotel(null);
+    }
   };
 
-  const closeHotelModal = () => {
-    setHotelModal({
-      isOpen: false,
-      hotel: '',
-      location: '',
-      type: '',
-      image: '',
-    });
-  };
+  // If viewing a hotel detail, show it
+  if (selectedHotel) {
+    return (
+      <HotelDetail
+        hotel={selectedHotel}
+        onBack={() => setSelectedHotel(null)}
+      />
+    );
+  }
 
   return (
     <div className="container-wide">
@@ -160,54 +149,6 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
         </div>
       </div>
 
-      {/* Places to Stay - Enhanced */}
-      {tour.placesToStay && tour.placesToStay.length > 0 && (
-        <div className="mb-16">
-          <div className="text-center mb-8">
-            <span className="text-primary font-medium uppercase tracking-wider text-sm">
-              {t('placesToStay')}
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif mt-2">Where You'll Stay</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {tour.placesToStay.map((stay, idx) => (
-              <div
-                key={idx}
-                className="relative bg-gradient-to-br from-primary/5 via-card to-accent/5 rounded-2xl p-6 shadow-soft hover:shadow-elevated transition-all duration-300 border-2 border-primary/20 hover:border-primary/40 group"
-              >
-                {/* Star Badge */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-accent rounded-full flex items-center justify-center shadow-lg">
-                  <Star className="w-4 h-4 text-accent-foreground fill-current" />
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  {stay.image ? (
-                    <div 
-                      className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300 cursor-pointer hover:ring-2 hover:ring-primary"
-                      onClick={() => openHotelModal(stay.hotel, stay.location, stay.type, stay.image)}
-                      title="Click to view larger image"
-                    >
-                      <img src={stay.image} alt={stay.hotel} className="w-full h-full object-cover" />
-                    </div>
-                  ) : (
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Building2 className="w-7 h-7 text-primary-foreground" />
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <p className="text-xs text-accent font-bold uppercase tracking-wide mb-1">{stay.location}</p>
-                    <h4 className="font-serif font-semibold text-foreground text-lg leading-tight mb-2">{stay.hotel}</h4>
-                    <span className="inline-block px-3 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground">
-                      {stay.type}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Route Map */}
       <div className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-serif mb-8 text-center">{t('routeMap')}</h2>
@@ -265,14 +206,24 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
                   <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{day.description}</p>
 
-                  {/* Accommodation */}
-                  {day.accommodation && (
-                    <div className="flex items-center gap-2 mb-3 bg-secondary/50 px-3 py-2 rounded-lg w-fit">
-                      <Building2 className="w-4 h-4 text-primary" />
+                  {/* Accommodation / Hotel */}
+                  {(day.accommodation || day.hotelId) && (
+                    <div
+                      className={`flex items-center gap-2 mb-3 bg-secondary/50 px-3 py-2 rounded-lg w-fit ${
+                        day.hotelId ? 'cursor-pointer hover:bg-primary/10 hover:border-primary/30 border border-transparent transition-all group/hotel' : ''
+                      }`}
+                      onClick={() => day.hotelId && handleHotelClick(day.hotelId)}
+                    >
+                      <Building2 className={`w-4 h-4 ${day.hotelId ? 'text-primary' : 'text-primary'}`} />
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs text-muted-foreground">{t('overnightAt')}</span>
-                        <span className="text-sm font-semibold text-foreground">{day.accommodation}</span>
+                        <span className={`text-sm font-semibold ${day.hotelId ? 'text-primary group-hover/hotel:underline' : 'text-foreground'}`}>
+                          {loadingHotel === day.hotelId ? 'Loading...' : day.accommodation}
+                        </span>
                       </div>
+                      {day.hotelId && (
+                        <ChevronRight className="w-4 h-4 text-primary/60 group-hover/hotel:translate-x-0.5 transition-transform" />
+                      )}
                     </div>
                   )}
 
@@ -316,33 +267,6 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
           </WhatsAppButton>
         </div>
       </div>
-
-      {/* Hotel Image Modal */}
-      <Dialog open={hotelModal.isOpen} onOpenChange={closeHotelModal}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-serif mb-2">
-              {hotelModal.hotel}
-            </DialogTitle>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <MapPin className="w-4 h-4" />
-                <span>{hotelModal.location}</span>
-              </div>
-              <span className="px-3 py-1 bg-secondary rounded-full text-xs font-medium text-secondary-foreground">
-                {hotelModal.type}
-              </span>
-            </div>
-          </DialogHeader>
-          <div className="mt-4">
-            <img
-              src={hotelModal.image}
-              alt={hotelModal.hotel}
-              className="w-full h-auto rounded-lg object-cover shadow-lg"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
 
       {/* Scroll to Top Button - Positioned above WhatsApp button */}
       {showScrollTop && (

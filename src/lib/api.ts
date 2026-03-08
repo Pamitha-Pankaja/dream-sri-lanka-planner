@@ -20,6 +20,33 @@ async function postJSON<T>(endpoint: string, body: unknown): Promise<T> {
   return res.json();
 }
 
+export interface HotelRoomType {
+  name: string;
+  description: string;
+  image?: string;
+}
+
+export interface HotelDistance {
+  place: string;
+  distance: string;
+  duration: string;
+}
+
+export interface Hotel {
+  id: string;
+  name: string;
+  location: string;
+  description: string;
+  heroImage: string;
+  galleryImages: string[];
+  features: string[];
+  roomTypes: HotelRoomType[];
+  distances: HotelDistance[];
+  mapCoordinates?: { lat: number; lng: number };
+  starRating?: number;
+  category?: string;
+}
+
 export interface Tour {
   id: string;
   name: string;
@@ -38,6 +65,7 @@ export interface Tour {
     location: string;
     activities: string[];
     accommodation?: string;
+    hotelId?: string;
   }[];
   parentTourName?: string;
   published?: boolean;
@@ -69,6 +97,7 @@ export const api = {
     fetchJSON<Tour[]>(`/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}`),
   getDayTours: () => fetchJSON<DayTour[]>("/api/day-tours?published=true"),
   getDayTour: (id: string) => fetchJSON<DayTour>(`/api/day-tours/${id}`),
+  getHotel: (id: string) => fetchJSON<Hotel>(`/api/hotels/${id}`),
 
   submitContact: (data: {
     name: string;
