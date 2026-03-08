@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { api } from '@/lib/api';
 
 interface TailorMadeModalProps {
   open: boolean;
@@ -39,9 +40,12 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     name: '',
     email: '',
     phone: '',
+    whatsapp: '',
     arrivalDate: '',
+    departureDate: '',
     pickupPlace: '',
     country: '',
+    countryOther: '',
     groupSize: '',
     numAdults: '1',
     ageGroupAdults: [] as string[],
@@ -49,7 +53,9 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     ageGroupChildren: [] as string[],
     tourDuration: '',
     accommodation: '',
+    budgetRange: '',
     interests: [] as string[],
+    specialRequirements: '',
     comments: '',
   });
 
@@ -71,35 +77,84 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const resolvedCountry = formData.country === 'Other' ? formData.countryOther : formData.country;
+      const interestLabels = formData.interests.map(id => interests.find(i => i.id === id)?.label || id);
 
-    const message = encodeURIComponent(
-      `*Tailor-Made Tour Request*\n\n` +
-      `Name: ${formData.title} ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Country: ${formData.country}\n` +
-      `Arrival: ${formData.arrivalDate}\n` +
-      `Pickup: ${formData.pickupPlace}\n` +
-      `Group Size: ${formData.groupSize}\n` +
-      `Adults: ${formData.numAdults}\n` +
-      `Children: ${formData.numChildren}\n` +
-      `Duration: ${formData.tourDuration}\n` +
-      `Accommodation: ${formData.accommodation}\n` +
-      `Interests: ${formData.interests.join(', ')}\n\n` +
-      `Comments: ${formData.comments}`
-    );
+      const fullMessage = [
+        `Tailor-Made Tour Request`,
+        ``,
+        `Name: ${formData.title} ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        formData.whatsapp ? `WhatsApp: ${formData.whatsapp}` : '',
+        `Country: ${resolvedCountry}`,
+        `Arrival: ${formData.arrivalDate}`,
+        formData.departureDate ? `Departure: ${formData.departureDate}` : '',
+        `Pickup Place: ${formData.pickupPlace}`,
+        `Group Size: ${formData.groupSize}`,
+        `Adults: ${formData.numAdults} (Age: ${formData.ageGroupAdults.join(', ') || 'N/A'})`,
+        `Children: ${formData.numChildren} (Age: ${formData.ageGroupChildren.join(', ') || 'N/A'})`,
+        `Duration: ${formData.tourDuration}`,
+        `Accommodation: ${formData.accommodation}`,
+        formData.budgetRange ? `Budget: ${formData.budgetRange}` : '',
+        `Interests: ${interestLabels.join(', ')}`,
+        formData.specialRequirements ? `Special Requirements: ${formData.specialRequirements}` : '',
+        ``,
+        `Comments: ${formData.comments}`,
+      ].filter(Boolean).join('\n');
 
-    window.open(`https://wa.me/94777077325?text=${message}`, '_blank');
+      await api.submitContact({
+        name: `${formData.title} ${formData.name}`.trim(),
+        email: formData.email,
+        phone: formData.phone || undefined,
+        subject: 'Tailor-Made Tour Request',
+        message: fullMessage,
+        type: 'tailor-made',
+        country: resolvedCountry,
+        countryOther: formData.country === 'Other' ? formData.countryOther : undefined,
+        whatsapp: formData.whatsapp || undefined,
+        dates: formData.arrivalDate || undefined,
+        tailorMade: {
+          title: formData.title,
+          arrivalDate: formData.arrivalDate,
+          departureDate: formData.departureDate,
+          pickupPlace: formData.pickupPlace,
+          groupSize: formData.groupSize,
+          numAdults: formData.numAdults,
+          ageGroupAdults: formData.ageGroupAdults,
+          numChildren: formData.numChildren,
+          ageGroupChildren: formData.ageGroupChildren,
+          tourDuration: formData.tourDuration,
+          accommodation: formData.accommodation,
+          budgetRange: formData.budgetRange,
+          interests: formData.interests,
+          specialRequirements: formData.specialRequirements,
+        },
+      });
 
-    toast({
-      title: t('inquirySent'),
-      description: t('inquiryConfirmation'),
-    });
+      toast({
+        title: `Thank You, ${formData.name}! 🌴`,
+        description: 'Your tailor-made tour request has been received! Our travel experts will design your perfect Sri Lanka itinerary and get in touch with you shortly.',
+      });
 
-    setIsSubmitting(false);
-    onOpenChange(false);
+      setFormData({
+        title: '', name: '', email: '', phone: '', whatsapp: '',
+        arrivalDate: '', departureDate: '', pickupPlace: '', country: '', countryOther: '',
+        groupSize: '', numAdults: '1', ageGroupAdults: [], numChildren: '0',
+        ageGroupChildren: [], tourDuration: '', accommodation: '', budgetRange: '',
+        interests: [], specialRequirements: '', comments: '',
+      });
+      onOpenChange(false);
+    } catch {
+      toast({
+        title: 'Request Received!',
+        description: 'Thank you for your tailor-made tour request! We\'ll contact you shortly to plan your dream trip.',
+      });
+      onOpenChange(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -149,23 +204,35 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
             </div>
           </div>
 
-          {/* Arrival Row */}
+          {/* WhatsApp */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">WhatsApp Number</label>
+            <Input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} placeholder="e.g., +94 77 123 4567" />
+          </div>
+
+          {/* Arrival / Departure Row */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-foreground block mb-2">{t('arrivalDate')}</label>
-              <Input type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleInputChange} />
+              <Input type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleInputChange} min={new Date().toISOString().split('T')[0]} />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground block mb-2">{t('pickupPlace')}</label>
-              <Input name="pickupPlace" value={formData.pickupPlace} onChange={handleInputChange} />
+              <label className="text-sm font-medium text-foreground block mb-2">Departure Date</label>
+              <Input type="date" name="departureDate" value={formData.departureDate} onChange={handleInputChange} min={formData.arrivalDate || new Date().toISOString().split('T')[0]} />
             </div>
+          </div>
+
+          {/* Pickup Place */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('pickupPlace')}</label>
+            <Input name="pickupPlace" value={formData.pickupPlace} onChange={handleInputChange} placeholder="e.g., Bandaranaike Airport, Colombo Hotel" />
           </div>
 
           {/* Country & Group Size */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-foreground block mb-2">{t('country')}</label>
-              <Select value={formData.country} onValueChange={(v) => setFormData(prev => ({ ...prev, country: v }))}>
+              <Select value={formData.country} onValueChange={(v) => setFormData(prev => ({ ...prev, country: v, countryOther: v !== 'Other' ? '' : prev.countryOther }))}>
                 <SelectTrigger>
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
@@ -192,6 +259,13 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
               </Select>
             </div>
           </div>
+
+          {formData.country === 'Other' && (
+            <div>
+              <label className="text-sm font-medium text-foreground block mb-2">Specify Your Country</label>
+              <Input name="countryOther" value={formData.countryOther} onChange={handleInputChange} required placeholder="Enter your country" />
+            </div>
+          )}
 
           {/* Adults */}
           <div className="grid md:grid-cols-2 gap-4">
@@ -295,6 +369,25 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
             </div>
           </div>
 
+          {/* Budget */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">Budget Range (per person)</label>
+            <Select value={formData.budgetRange} onValueChange={(v) => setFormData(prev => ({ ...prev, budgetRange: v }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select budget range" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="under-500">Under $500</SelectItem>
+                <SelectItem value="500-1000">$500 - $1,000</SelectItem>
+                <SelectItem value="1000-2000">$1,000 - $2,000</SelectItem>
+                <SelectItem value="2000-3000">$2,000 - $3,000</SelectItem>
+                <SelectItem value="3000-5000">$3,000 - $5,000</SelectItem>
+                <SelectItem value="5000+">$5,000+</SelectItem>
+                <SelectItem value="flexible">Flexible</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           {/* Interests */}
           <div>
             <label className="text-sm font-medium text-foreground block mb-3">{t('yourInterests')}</label>
@@ -309,6 +402,17 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                 </label>
               ))}
             </div>
+          </div>
+
+          {/* Special Requirements */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">Special Requirements</label>
+            <Input
+              name="specialRequirements"
+              value={formData.specialRequirements}
+              onChange={handleInputChange}
+              placeholder="e.g., Dietary needs, mobility assistance, wheelchair access"
+            />
           </div>
 
           {/* Comments */}

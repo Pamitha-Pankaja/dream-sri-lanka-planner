@@ -67,6 +67,7 @@ export interface Tour {
     accommodation?: string;
     hotelId?: string;
   }[];
+  faqs?: { question: string; answer: string }[];
   parentTourName?: string;
   published?: boolean;
 }
@@ -105,6 +106,28 @@ export const api = {
     subject: string;
     message: string;
     phone?: string;
+    country?: string;
+    countryOther?: string;
+    whatsapp?: string;
+    dates?: string;
+    selectedPackage?: string;
+    type?: string;
+    tailorMade?: {
+      title?: string;
+      arrivalDate?: string;
+      departureDate?: string;
+      pickupPlace?: string;
+      groupSize?: string;
+      numAdults?: string;
+      ageGroupAdults?: string[];
+      numChildren?: string;
+      ageGroupChildren?: string[];
+      tourDuration?: string;
+      accommodation?: string;
+      budgetRange?: string;
+      interests?: string[];
+      specialRequirements?: string;
+    };
   }) => postJSON("/api/contacts", data),
 
   submitBooking: (data: {

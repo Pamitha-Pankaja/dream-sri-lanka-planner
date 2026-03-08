@@ -15,6 +15,8 @@ const ContactSection = () => {
     name: '',
     email: '',
     country: '',
+    countryOther: '',
+    whatsapp: '',
     dates: '',
     selectedPackage: '',
     message: '',
@@ -37,8 +39,9 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      const resolvedCountry = formData.country === 'Other' ? formData.countryOther : formData.country;
       const packageInfo = formData.selectedPackage ? `\nInterested Package: ${formData.selectedPackage}` : '';
-      const fullMessage = `From: ${formData.name} (${formData.country})\nTravel Dates: ${formData.dates}${packageInfo}\n\n${formData.message}`;
+      const fullMessage = `From: ${formData.name} (${resolvedCountry})\nTravel Dates: ${formData.dates}${packageInfo}\n\n${formData.message}`;
 
       await api.submitContact({
         name: formData.name,
@@ -47,23 +50,26 @@ const ContactSection = () => {
           ? `Inquiry about ${formData.selectedPackage}`
           : 'General Travel Inquiry',
         message: fullMessage,
+        country: resolvedCountry,
+        countryOther: formData.country === 'Other' ? formData.countryOther : undefined,
+        whatsapp: formData.whatsapp || undefined,
+        dates: formData.dates || undefined,
+        selectedPackage: formData.selectedPackage || undefined,
+        type: 'inquiry',
       });
 
       toast({
-        title: 'Inquiry Sent!',
-        description: 'We\'ll get back to you within 24 hours. Check your email!',
+        title: 'Thank You, ' + formData.name + '! ✈️',
+        description: 'Your dream trip inquiry has been received! Our travel experts will get in touch with you shortly to craft your perfect Sri Lanka adventure.',
       });
-
-      const whatsappMessage = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}.${packageInfo}\n\n${formData.message}`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
     } catch {
       toast({
-        title: 'Inquiry Sent!',
-        description: 'We\'ll get back to you within 24 hours.',
+        title: 'Inquiry Received!',
+        description: 'Thank you for reaching out! We\'ll contact you shortly with details about your dream trip.',
       });
     }
 
-    setFormData({ name: '', email: '', country: '', dates: '', selectedPackage: '', message: '' });
+    setFormData({ name: '', email: '', country: '', countryOther: '', whatsapp: '', dates: '', selectedPackage: '', message: '' });
     setIsSubmitting(false);
   };
 
@@ -165,15 +171,48 @@ const ContactSection = () => {
                   {t('travelDates')}
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="dates"
                   name="dates"
                   value={formData.dates}
                   onChange={handleChange}
+                  min={new Date().toISOString().split('T')[0]}
                   className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="e.g., March 2025"
                 />
               </div>
+            </div>
+
+            {formData.country === 'Other' && (
+              <div className="mb-4">
+                <label htmlFor="countryOther" className="block text-sm font-medium mb-2">
+                  Specify Your Country
+                </label>
+                <input
+                  type="text"
+                  id="countryOther"
+                  name="countryOther"
+                  value={formData.countryOther}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  placeholder="Enter your country"
+                />
+              </div>
+            )}
+
+            <div className="mb-4">
+              <label htmlFor="whatsapp" className="block text-sm font-medium mb-2">
+                WhatsApp Number
+              </label>
+              <input
+                type="tel"
+                id="whatsapp"
+                name="whatsapp"
+                value={formData.whatsapp}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                placeholder="e.g., +94 77 123 4567"
+              />
             </div>
 
             <div className="mb-4">

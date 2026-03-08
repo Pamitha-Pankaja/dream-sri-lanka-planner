@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour, Hotel, api } from '@/lib/api';
-import { ArrowLeft, Calendar, MapPin, Check, Building2, ArrowUp, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, ArrowUp, ChevronRight, ChevronDown, HelpCircle } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';
 import HotelDetail from './HotelDetail';
@@ -17,6 +17,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
   const [hotelCache, setHotelCache] = useState<Record<string, Hotel>>({});
   const [loadingHotel, setLoadingHotel] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   // Track scroll position to show/hide scroll to top button
   useEffect(() => {
@@ -252,6 +253,49 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
           ))}
         </div>
       </div>
+
+      {/* FAQs */}
+      {tour.faqs && tour.faqs.length > 0 && (
+        <div className="mb-16">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <HelpCircle className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl sm:text-3xl font-serif text-center">Frequently Asked Questions</h2>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {tour.faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-card rounded-2xl shadow-soft overflow-hidden border border-border/50 transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-5 md:p-6 text-left group"
+                >
+                  <span className="font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${
+                      openFaqIndex === idx ? 'rotate-180 text-primary' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openFaqIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
+                    <div className="border-t border-border/50 pt-4">
+                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Bottom CTA */}
       <div className="bg-primary rounded-3xl p-8 md:p-12 text-center text-primary-foreground">
