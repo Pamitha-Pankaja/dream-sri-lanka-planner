@@ -59,13 +59,13 @@ const ContactSection = () => {
       });
 
       toast({
-        title: 'Thank You, ' + formData.name + '! ✈️',
-        description: 'Your dream trip inquiry has been received! Our travel experts will get in touch with you shortly to craft your perfect Sri Lanka adventure.',
+        title: `${t('thankYou')}, ${formData.name}! ✈️`,
+        description: t('inquiryReceivedDesc'),
       });
     } catch {
       toast({
-        title: 'Inquiry Received!',
-        description: 'Thank you for reaching out! We\'ll contact you shortly with details about your dream trip.',
+        title: t('inquiryFallbackTitle'),
+        description: t('inquiryFallbackDesc'),
       });
     }
 
@@ -159,7 +159,7 @@ const ContactSection = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                 >
-                  <option value="">Select country</option>
+                  <option value="">{t('selectCountry')}</option>
                   {countries.map(country => (
                     <option key={country} value={country}>{country}</option>
                   ))}
@@ -185,7 +185,7 @@ const ContactSection = () => {
             {formData.country === 'Other' && (
               <div className="mb-4">
                 <label htmlFor="countryOther" className="block text-sm font-medium mb-2">
-                  Specify Your Country
+                  {t('specifyCountry')}
                 </label>
                 <input
                   type="text"
@@ -195,14 +195,14 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="Enter your country"
+                  placeholder={t('enterYourCountry')}
                 />
               </div>
             )}
 
             <div className="mb-4">
               <label htmlFor="whatsapp" className="block text-sm font-medium mb-2">
-                WhatsApp Number
+                {t('whatsappNumber')}
               </label>
               <input
                 type="tel"
@@ -226,13 +226,13 @@ const ContactSection = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               >
-                <option value="">Select a package (optional)</option>
-                <optgroup label="Multi-Day Tours">
+                <option value="">{t('selectPackageOptional')}</option>
+                <optgroup label={t('multiDayTours')}>
                   {allPackages.filter(p => p.type === 'Multi-Day Tour').map(pkg => (
                     <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
                   ))}
                 </optgroup>
-                <optgroup label="Day Tours">
+                <optgroup label={t('dayTours')}>
                   {allPackages.filter(p => p.type === 'Day Tour').map(pkg => (
                     <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
                   ))}
@@ -251,7 +251,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 rows={4}
                 className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                placeholder="Tell us about your dream Sri Lanka trip..."
+                placeholder={t('tellUsMore')}
               />
             </div>
 
@@ -263,7 +263,7 @@ const ContactSection = () => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending...
+                  {t('sending')}
                 </>
               ) : (
                 <>

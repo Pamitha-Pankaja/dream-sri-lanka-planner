@@ -123,7 +123,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
       {/* Highlights & CTA */}
       <div className="grid lg:grid-cols-3 gap-8 mb-16">
         <div className="lg:col-span-2 bg-muted rounded-2xl p-8">
-          <h2 className="text-2xl font-serif mb-6">Highlights</h2>
+          <h2 className="text-2xl font-serif mb-6">{t('highlights')}</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {tour.highlights.map((highlight, idx) => (
               <div key={idx} className="flex items-start gap-3">
@@ -137,9 +137,9 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
         </div>
 
         <div className="bg-card rounded-2xl p-8 shadow-elevated flex flex-col gap-4">
-          <h3 className="text-xl font-serif mb-2">Ready to Book?</h3>
+          <h3 className="text-xl font-serif mb-2">{t('readyToBook')}</h3>
           <p className="text-muted-foreground text-sm mb-4">
-            Contact us to customize this itinerary and get a personalized quote.
+            {t('contactToCustomize')}
           </p>
           <button onClick={scrollToContact} className="btn-primary w-full">
             {t('inquireNow')}
@@ -222,7 +222,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs text-muted-foreground">{t('overnightAt')}</span>
                         <span className={`text-sm font-semibold ${day.hotelId ? 'text-primary group-hover/hotel:underline' : 'text-foreground'}`}>
-                          {loadingHotel === day.hotelId ? 'Loading...' : day.accommodation}
+                          {loadingHotel === day.hotelId ? t('loading') : day.accommodation}
                         </span>
                       </div>
                       {day.hotelId && (
@@ -243,7 +243,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                     ))}
                     {day.activities.length > 4 && (
                       <span className="px-2.5 py-1 text-xs font-medium text-primary">
-                        +{day.activities.length - 4} more
+                        +{day.activities.length - 4} {t('more')}
                       </span>
                     )}
                   </div>
@@ -259,7 +259,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
         <div className="mb-16">
           <div className="flex items-center justify-center gap-3 mb-8">
             <HelpCircle className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl sm:text-3xl font-serif text-center">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-3xl font-serif text-center">{t('faqTitle')}</h2>
           </div>
           <div className="max-w-3xl mx-auto space-y-3">
             {tour.faqs.map((faq, idx) => (
@@ -299,9 +299,9 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
       {/* Bottom CTA */}
       <div className="bg-primary rounded-3xl p-8 md:p-12 text-center text-primary-foreground">
-        <h2 className="text-2xl sm:text-3xl font-serif mb-4">Ready to Experience {tour.name}?</h2>
+        <h2 className="text-2xl sm:text-3xl font-serif mb-4">{t('readyToExperience')} {tour.name}?</h2>
         <p className="mb-8 opacity-90 max-w-2xl mx-auto">
-          Let us help you plan the perfect Sri Lankan adventure. Every journey is customized to your preferences.
+          {t('letUsHelpPlan')}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button onClick={scrollToContact} className="btn-secondary">

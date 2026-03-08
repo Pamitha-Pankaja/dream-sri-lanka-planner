@@ -91,13 +91,23 @@ export interface DayTour {
   published?: boolean;
 }
 
+function langParam(lang?: string): string {
+  return lang && lang !== "en" ? `&lang=${lang}` : "";
+}
+
 export const api = {
-  getTours: () => fetchJSON<Tour[]>("/api/tours?published=true"),
-  getTour: (id: string) => fetchJSON<Tour>(`/api/tours/${id}`),
-  getSubPackages: (parentTourName: string) =>
-    fetchJSON<Tour[]>(`/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}`),
-  getDayTours: () => fetchJSON<DayTour[]>("/api/day-tours?published=true"),
-  getDayTour: (id: string) => fetchJSON<DayTour>(`/api/day-tours/${id}`),
+  getTours: (lang?: string) =>
+    fetchJSON<Tour[]>(`/api/tours?published=true${langParam(lang)}`),
+  getTour: (id: string, lang?: string) =>
+    fetchJSON<Tour>(`/api/tours/${id}?_=1${langParam(lang)}`),
+  getSubPackages: (parentTourName: string, lang?: string) =>
+    fetchJSON<Tour[]>(
+      `/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}${langParam(lang)}`
+    ),
+  getDayTours: (lang?: string) =>
+    fetchJSON<DayTour[]>(`/api/day-tours?published=true${langParam(lang)}`),
+  getDayTour: (id: string, lang?: string) =>
+    fetchJSON<DayTour>(`/api/day-tours/${id}?_=1${langParam(lang)}`),
   getHotel: (id: string) => fetchJSON<Hotel>(`/api/hotels/${id}`),
 
   submitContact: (data: {

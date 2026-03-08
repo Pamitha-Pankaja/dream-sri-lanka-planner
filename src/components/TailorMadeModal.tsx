@@ -20,15 +20,15 @@ const countries = [
   'India', 'Japan', 'China', 'Other'
 ];
 
-const interests = [
-  { id: 'history', label: 'History and Culture' },
-  { id: 'wildlife', label: 'Wildlife' },
-  { id: 'beach', label: 'Beach Escapes' },
-  { id: 'nature', label: 'Nature and Scenic' },
-  { id: 'hillCountry', label: 'Hill Country' },
-  { id: 'family', label: 'Family Travel' },
-  { id: 'adventure', label: 'Adventure Activities' },
-  { id: 'honeymoon', label: 'Perfect Honeymoon' },
+const interestKeys = [
+  { id: 'history', key: 'interestHistory' },
+  { id: 'wildlife', key: 'interestWildlife' },
+  { id: 'beach', key: 'interestBeach' },
+  { id: 'nature', key: 'interestNature' },
+  { id: 'hillCountry', key: 'interestHillCountry' },
+  { id: 'family', key: 'interestFamily' },
+  { id: 'adventure', key: 'interestAdventure' },
+  { id: 'honeymoon', key: 'interestHoneymoon' },
 ];
 
 const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
@@ -79,7 +79,10 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
 
     try {
       const resolvedCountry = formData.country === 'Other' ? formData.countryOther : formData.country;
-      const interestLabels = formData.interests.map(id => interests.find(i => i.id === id)?.label || id);
+      const interestLabels = formData.interests.map(id => {
+        const key = interestKeys.find(i => i.id === id);
+        return key ? t(key.key) : id;
+      });
 
       const fullMessage = [
         `Tailor-Made Tour Request`,
@@ -134,8 +137,8 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
       });
 
       toast({
-        title: `Thank You, ${formData.name}! 🌴`,
-        description: 'Your tailor-made tour request has been received! Our travel experts will design your perfect Sri Lanka itinerary and get in touch with you shortly.',
+        title: `${t('thankYou')}, ${formData.name}! 🌴`,
+        description: t('tailorMadeReceivedDesc'),
       });
 
       setFormData({
@@ -148,8 +151,8 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
       onOpenChange(false);
     } catch {
       toast({
-        title: 'Request Received!',
-        description: 'Thank you for your tailor-made tour request! We\'ll contact you shortly to plan your dream trip.',
+        title: t('tailorMadeFallbackTitle'),
+        description: t('tailorMadeFallbackDesc'),
       });
       onOpenChange(false);
     } finally {
@@ -206,7 +209,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
 
           {/* WhatsApp */}
           <div>
-            <label className="text-sm font-medium text-foreground block mb-2">WhatsApp Number</label>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('whatsappNumber')}</label>
             <Input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} placeholder="e.g., +94 77 123 4567" />
           </div>
 
@@ -217,7 +220,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
               <Input type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleInputChange} min={new Date().toISOString().split('T')[0]} />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground block mb-2">Departure Date</label>
+              <label className="text-sm font-medium text-foreground block mb-2">{t('departureDate')}</label>
               <Input type="date" name="departureDate" value={formData.departureDate} onChange={handleInputChange} min={formData.arrivalDate || new Date().toISOString().split('T')[0]} />
             </div>
           </div>
@@ -250,11 +253,11 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="solo">Solo</SelectItem>
-                  <SelectItem value="couple">Couple</SelectItem>
-                  <SelectItem value="small">Small Group (3-5)</SelectItem>
-                  <SelectItem value="medium">Medium Group (6-10)</SelectItem>
-                  <SelectItem value="large">Large Group (10+)</SelectItem>
+                  <SelectItem value="solo">{t('groupSolo')}</SelectItem>
+                  <SelectItem value="couple">{t('groupCouple')}</SelectItem>
+                  <SelectItem value="small">{t('groupSmall')}</SelectItem>
+                  <SelectItem value="medium">{t('groupMedium')}</SelectItem>
+                  <SelectItem value="large">{t('groupLarge')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -262,8 +265,8 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
 
           {formData.country === 'Other' && (
             <div>
-              <label className="text-sm font-medium text-foreground block mb-2">Specify Your Country</label>
-              <Input name="countryOther" value={formData.countryOther} onChange={handleInputChange} required placeholder="Enter your country" />
+              <label className="text-sm font-medium text-foreground block mb-2">{t('specifyCountry')}</label>
+              <Input name="countryOther" value={formData.countryOther} onChange={handleInputChange} required placeholder={t('enterYourCountry')} />
             </div>
           )}
 
@@ -297,7 +300,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                     checked={formData.ageGroupAdults.includes('65+')}
                     onCheckedChange={(c) => handleCheckboxChange('65+', !!c, 'ageGroupAdults')}
                   />
-                  <span className="text-sm">65 or Above</span>
+                  <span className="text-sm">{t('age65Above')}</span>
                 </label>
               </div>
             </div>
@@ -359,11 +362,11 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="budget">Budget</SelectItem>
-                  <SelectItem value="3star">3 Star</SelectItem>
-                  <SelectItem value="4star">4 Star</SelectItem>
-                  <SelectItem value="5star">5 Star Luxury</SelectItem>
-                  <SelectItem value="boutique">Boutique Hotels</SelectItem>
+                  <SelectItem value="budget">{t('accomBudget')}</SelectItem>
+                  <SelectItem value="3star">{t('accom3Star')}</SelectItem>
+                  <SelectItem value="4star">{t('accom4Star')}</SelectItem>
+                  <SelectItem value="5star">{t('accom5Star')}</SelectItem>
+                  <SelectItem value="boutique">{t('accomBoutique')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -371,10 +374,10 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
 
           {/* Budget */}
           <div>
-            <label className="text-sm font-medium text-foreground block mb-2">Budget Range (per person)</label>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('budgetRange')}</label>
             <Select value={formData.budgetRange} onValueChange={(v) => setFormData(prev => ({ ...prev, budgetRange: v }))}>
               <SelectTrigger>
-                <SelectValue placeholder="Select budget range" />
+                <SelectValue placeholder={t('selectBudgetRange')} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="under-500">Under $500</SelectItem>
@@ -383,7 +386,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                 <SelectItem value="2000-3000">$2,000 - $3,000</SelectItem>
                 <SelectItem value="3000-5000">$3,000 - $5,000</SelectItem>
                 <SelectItem value="5000+">$5,000+</SelectItem>
-                <SelectItem value="flexible">Flexible</SelectItem>
+                <SelectItem value="flexible">{t('budgetFlexible')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -392,13 +395,13 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
           <div>
             <label className="text-sm font-medium text-foreground block mb-3">{t('yourInterests')}</label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {interests.map(interest => (
+              {interestKeys.map(interest => (
                 <label key={interest.id} className="flex items-center gap-2">
                   <Checkbox 
                     checked={formData.interests.includes(interest.id)}
                     onCheckedChange={(c) => handleCheckboxChange(interest.id, !!c, 'interests')}
                   />
-                  <span className="text-sm">{interest.label}</span>
+                  <span className="text-sm">{t(interest.key)}</span>
                 </label>
               ))}
             </div>
@@ -406,12 +409,12 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
 
           {/* Special Requirements */}
           <div>
-            <label className="text-sm font-medium text-foreground block mb-2">Special Requirements</label>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('specialRequirements')}</label>
             <Input
               name="specialRequirements"
               value={formData.specialRequirements}
               onChange={handleInputChange}
-              placeholder="e.g., Dietary needs, mobility assistance, wheelchair access"
+              placeholder={t('specialRequirementsPlaceholder')}
             />
           </div>
 

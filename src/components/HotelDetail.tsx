@@ -105,7 +105,7 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
           className="absolute top-6 left-6 z-10 inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 backdrop-blur-md hover:bg-white/25 text-white font-medium rounded-full border border-white/20 transition-all duration-300 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm">Back to Itinerary</span>
+          <span className="text-sm">{t('backToItinerary')}</span>
         </button>
 
         {/* Gallery Button */}
@@ -115,7 +115,7 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
             className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 backdrop-blur-md hover:bg-white/25 text-white font-medium rounded-full border border-white/20 transition-all duration-300"
           >
             <Camera className="w-4 h-4" />
-            <span className="text-sm">View All Photos ({allImages.length})</span>
+            <span className="text-sm">{t('viewAllPhotos')} ({allImages.length})</span>
           </button>
         )}
 
@@ -171,10 +171,10 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
             <div className="lg:col-span-3">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
-                <span className="text-primary font-semibold text-sm uppercase tracking-widest">About This Hotel</span>
+                <span className="text-primary font-semibold text-sm uppercase tracking-widest">{t('aboutThisHotel')}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-6 leading-snug">
-                Welcome to {hotel.name}
+                {t('welcomeTo')} {hotel.name}
               </h2>
               <div className="text-muted-foreground leading-[1.85] text-[15px] whitespace-pre-line space-y-4">
                 {hotel.description.split('\n\n').map((paragraph, idx) => (
@@ -191,19 +191,19 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
                         <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
                       ))}
                     </div>
-                    <span className="text-xs font-medium text-amber-700 dark:text-amber-400 uppercase tracking-wider">Star Rating</span>
+                    <span className="text-xs font-medium text-amber-700 dark:text-amber-400 uppercase tracking-wider">{t('starRating')}</span>
                   </div>
                 )}
                 {hotel.roomTypes && hotel.roomTypes.length > 0 && (
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/20 dark:to-blue-900/10 rounded-2xl p-4 text-center border border-blue-200/50 dark:border-blue-800/30">
                     <div className="text-2xl font-serif font-bold text-primary mb-1">{hotel.roomTypes.length}</div>
-                    <span className="text-xs font-medium text-primary uppercase tracking-wider">Room Types</span>
+                    <span className="text-xs font-medium text-primary uppercase tracking-wider">{t('roomTypes')}</span>
                   </div>
                 )}
                 {hotel.features && hotel.features.length > 0 && (
                   <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/20 dark:to-emerald-900/10 rounded-2xl p-4 text-center border border-emerald-200/50 dark:border-emerald-800/30">
                     <div className="text-2xl font-serif font-bold text-emerald-600 dark:text-emerald-400 mb-1">{hotel.features.length}+</div>
-                    <span className="text-xs font-medium text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Amenities</span>
+                    <span className="text-xs font-medium text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">{t('amenities')}</span>
                   </div>
                 )}
               </div>
@@ -217,7 +217,7 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Sparkles className="w-5 h-5 text-primary" />
                     </div>
-                    Features & Amenities
+                    {t('featuresAmenities')}
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
                     {hotel.features.map((feature, idx) => (
@@ -245,11 +245,11 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
-                <span className="text-primary font-semibold text-sm uppercase tracking-widest">Gallery</span>
+                <span className="text-primary font-semibold text-sm uppercase tracking-widest">{t('gallery')}</span>
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
               </div>
               <h2 className="text-3xl md:text-4xl font-serif text-foreground">
-                Explore {hotel.name}
+                {t('explore')} {hotel.name}
               </h2>
             </div>
 
@@ -298,11 +298,11 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
-                <span className="text-primary font-semibold text-sm uppercase tracking-widest">Accommodation</span>
+                <span className="text-primary font-semibold text-sm uppercase tracking-widest">{t('accommodation')}</span>
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
               </div>
               <h2 className="text-3xl md:text-4xl font-serif text-foreground">
-                Room Types
+                {t('roomTypes')}
               </h2>
             </div>
 
@@ -351,11 +351,11 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
-                <span className="text-primary font-semibold text-sm uppercase tracking-widest">Location</span>
+                <span className="text-primary font-semibold text-sm uppercase tracking-widest">{t('location')}</span>
                 <div className="w-12 h-[3px] rounded-full bg-primary" />
               </div>
               <h2 className="text-3xl md:text-4xl font-serif text-foreground">
-                Distances & Directions
+                {t('distancesDirections')}
               </h2>
             </div>
 
