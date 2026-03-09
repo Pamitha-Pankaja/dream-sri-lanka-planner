@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { api } from '@/lib/api';
 
 interface TailorMadeModalProps {
   open: boolean;
@@ -19,15 +20,15 @@ const countries = [
   'India', 'Japan', 'China', 'Other'
 ];
 
-const interests = [
-  { id: 'history', label: 'History and Culture' },
-  { id: 'wildlife', label: 'Wildlife' },
-  { id: 'beach', label: 'Beach Escapes' },
-  { id: 'nature', label: 'Nature and Scenic' },
-  { id: 'hillCountry', label: 'Hill Country' },
-  { id: 'family', label: 'Family Travel' },
-  { id: 'adventure', label: 'Adventure Activities' },
-  { id: 'honeymoon', label: 'Perfect Honeymoon' },
+const interestKeys = [
+  { id: 'history', key: 'interestHistory' },
+  { id: 'wildlife', key: 'interestWildlife' },
+  { id: 'beach', key: 'interestBeach' },
+  { id: 'nature', key: 'interestNature' },
+  { id: 'hillCountry', key: 'interestHillCountry' },
+  { id: 'family', key: 'interestFamily' },
+  { id: 'adventure', key: 'interestAdventure' },
+  { id: 'honeymoon', key: 'interestHoneymoon' },
 ];
 
 const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
@@ -39,9 +40,12 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     name: '',
     email: '',
     phone: '',
+    whatsapp: '',
     arrivalDate: '',
+    departureDate: '',
     pickupPlace: '',
     country: '',
+    countryOther: '',
     groupSize: '',
     numAdults: '1',
     ageGroupAdults: [] as string[],
@@ -49,7 +53,9 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     ageGroupChildren: [] as string[],
     tourDuration: '',
     accommodation: '',
+    budgetRange: '',
     interests: [] as string[],
+    specialRequirements: '',
     comments: '',
   });
 
@@ -71,35 +77,87 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const resolvedCountry = formData.country === 'Other' ? formData.countryOther : formData.country;
+      const interestLabels = formData.interests.map(id => {
+        const key = interestKeys.find(i => i.id === id);
+        return key ? t(key.key) : id;
+      });
 
-    const message = encodeURIComponent(
-      `*Tailor-Made Tour Request*\n\n` +
-      `Name: ${formData.title} ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Country: ${formData.country}\n` +
-      `Arrival: ${formData.arrivalDate}\n` +
-      `Pickup: ${formData.pickupPlace}\n` +
-      `Group Size: ${formData.groupSize}\n` +
-      `Adults: ${formData.numAdults}\n` +
-      `Children: ${formData.numChildren}\n` +
-      `Duration: ${formData.tourDuration}\n` +
-      `Accommodation: ${formData.accommodation}\n` +
-      `Interests: ${formData.interests.join(', ')}\n\n` +
-      `Comments: ${formData.comments}`
-    );
+      const fullMessage = [
+        `Tailor-Made Tour Request`,
+        ``,
+        `Name: ${formData.title} ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        formData.whatsapp ? `WhatsApp: ${formData.whatsapp}` : '',
+        `Country: ${resolvedCountry}`,
+        `Arrival: ${formData.arrivalDate}`,
+        formData.departureDate ? `Departure: ${formData.departureDate}` : '',
+        `Pickup Place: ${formData.pickupPlace}`,
+        `Group Size: ${formData.groupSize}`,
+        `Adults: ${formData.numAdults} (Age: ${formData.ageGroupAdults.join(', ') || 'N/A'})`,
+        `Children: ${formData.numChildren} (Age: ${formData.ageGroupChildren.join(', ') || 'N/A'})`,
+        `Duration: ${formData.tourDuration}`,
+        `Accommodation: ${formData.accommodation}`,
+        formData.budgetRange ? `Budget: ${formData.budgetRange}` : '',
+        `Interests: ${interestLabels.join(', ')}`,
+        formData.specialRequirements ? `Special Requirements: ${formData.specialRequirements}` : '',
+        ``,
+        `Comments: ${formData.comments}`,
+      ].filter(Boolean).join('\n');
 
-    window.open(`https://wa.me/94777077325?text=${message}`, '_blank');
+      await api.submitContact({
+        name: `${formData.title} ${formData.name}`.trim(),
+        email: formData.email,
+        phone: formData.phone || undefined,
+        subject: 'Tailor-Made Tour Request',
+        message: fullMessage,
+        type: 'tailor-made',
+        country: resolvedCountry,
+        countryOther: formData.country === 'Other' ? formData.countryOther : undefined,
+        whatsapp: formData.whatsapp || undefined,
+        dates: formData.arrivalDate || undefined,
+        tailorMade: {
+          title: formData.title,
+          arrivalDate: formData.arrivalDate,
+          departureDate: formData.departureDate,
+          pickupPlace: formData.pickupPlace,
+          groupSize: formData.groupSize,
+          numAdults: formData.numAdults,
+          ageGroupAdults: formData.ageGroupAdults,
+          numChildren: formData.numChildren,
+          ageGroupChildren: formData.ageGroupChildren,
+          tourDuration: formData.tourDuration,
+          accommodation: formData.accommodation,
+          budgetRange: formData.budgetRange,
+          interests: formData.interests,
+          specialRequirements: formData.specialRequirements,
+        },
+      });
 
-    toast({
-      title: t('inquirySent'),
-      description: t('inquiryConfirmation'),
-    });
+      toast({
+        title: `${t('thankYou')}, ${formData.name}! 🌴`,
+        description: t('tailorMadeReceivedDesc'),
+      });
 
-    setIsSubmitting(false);
-    onOpenChange(false);
+      setFormData({
+        title: '', name: '', email: '', phone: '', whatsapp: '',
+        arrivalDate: '', departureDate: '', pickupPlace: '', country: '', countryOther: '',
+        groupSize: '', numAdults: '1', ageGroupAdults: [], numChildren: '0',
+        ageGroupChildren: [], tourDuration: '', accommodation: '', budgetRange: '',
+        interests: [], specialRequirements: '', comments: '',
+      });
+      onOpenChange(false);
+    } catch {
+      toast({
+        title: t('tailorMadeFallbackTitle'),
+        description: t('tailorMadeFallbackDesc'),
+      });
+      onOpenChange(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -149,23 +207,35 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
             </div>
           </div>
 
-          {/* Arrival Row */}
+          {/* WhatsApp */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('whatsappNumber')}</label>
+            <Input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} placeholder="e.g., +94 77 123 4567" />
+          </div>
+
+          {/* Arrival / Departure Row */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-foreground block mb-2">{t('arrivalDate')}</label>
-              <Input type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleInputChange} />
+              <Input type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleInputChange} min={new Date().toISOString().split('T')[0]} />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground block mb-2">{t('pickupPlace')}</label>
-              <Input name="pickupPlace" value={formData.pickupPlace} onChange={handleInputChange} />
+              <label className="text-sm font-medium text-foreground block mb-2">{t('departureDate')}</label>
+              <Input type="date" name="departureDate" value={formData.departureDate} onChange={handleInputChange} min={formData.arrivalDate || new Date().toISOString().split('T')[0]} />
             </div>
+          </div>
+
+          {/* Pickup Place */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('pickupPlace')}</label>
+            <Input name="pickupPlace" value={formData.pickupPlace} onChange={handleInputChange} placeholder="e.g., Bandaranaike Airport, Colombo Hotel" />
           </div>
 
           {/* Country & Group Size */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-foreground block mb-2">{t('country')}</label>
-              <Select value={formData.country} onValueChange={(v) => setFormData(prev => ({ ...prev, country: v }))}>
+              <Select value={formData.country} onValueChange={(v) => setFormData(prev => ({ ...prev, country: v, countryOther: v !== 'Other' ? '' : prev.countryOther }))}>
                 <SelectTrigger>
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
@@ -183,15 +253,22 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="solo">Solo</SelectItem>
-                  <SelectItem value="couple">Couple</SelectItem>
-                  <SelectItem value="small">Small Group (3-5)</SelectItem>
-                  <SelectItem value="medium">Medium Group (6-10)</SelectItem>
-                  <SelectItem value="large">Large Group (10+)</SelectItem>
+                  <SelectItem value="solo">{t('groupSolo')}</SelectItem>
+                  <SelectItem value="couple">{t('groupCouple')}</SelectItem>
+                  <SelectItem value="small">{t('groupSmall')}</SelectItem>
+                  <SelectItem value="medium">{t('groupMedium')}</SelectItem>
+                  <SelectItem value="large">{t('groupLarge')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
+
+          {formData.country === 'Other' && (
+            <div>
+              <label className="text-sm font-medium text-foreground block mb-2">{t('specifyCountry')}</label>
+              <Input name="countryOther" value={formData.countryOther} onChange={handleInputChange} required placeholder={t('enterYourCountry')} />
+            </div>
+          )}
 
           {/* Adults */}
           <div className="grid md:grid-cols-2 gap-4">
@@ -223,7 +300,7 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                     checked={formData.ageGroupAdults.includes('65+')}
                     onCheckedChange={(c) => handleCheckboxChange('65+', !!c, 'ageGroupAdults')}
                   />
-                  <span className="text-sm">65 or Above</span>
+                  <span className="text-sm">{t('age65Above')}</span>
                 </label>
               </div>
             </div>
@@ -285,30 +362,60 @@ const TailorMadeModal = ({ open, onOpenChange }: TailorMadeModalProps) => {
                   <SelectValue placeholder={t('select')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="budget">Budget</SelectItem>
-                  <SelectItem value="3star">3 Star</SelectItem>
-                  <SelectItem value="4star">4 Star</SelectItem>
-                  <SelectItem value="5star">5 Star Luxury</SelectItem>
-                  <SelectItem value="boutique">Boutique Hotels</SelectItem>
+                  <SelectItem value="budget">{t('accomBudget')}</SelectItem>
+                  <SelectItem value="3star">{t('accom3Star')}</SelectItem>
+                  <SelectItem value="4star">{t('accom4Star')}</SelectItem>
+                  <SelectItem value="5star">{t('accom5Star')}</SelectItem>
+                  <SelectItem value="boutique">{t('accomBoutique')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
+          </div>
+
+          {/* Budget */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('budgetRange')}</label>
+            <Select value={formData.budgetRange} onValueChange={(v) => setFormData(prev => ({ ...prev, budgetRange: v }))}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('selectBudgetRange')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="under-500">Under $500</SelectItem>
+                <SelectItem value="500-1000">$500 - $1,000</SelectItem>
+                <SelectItem value="1000-2000">$1,000 - $2,000</SelectItem>
+                <SelectItem value="2000-3000">$2,000 - $3,000</SelectItem>
+                <SelectItem value="3000-5000">$3,000 - $5,000</SelectItem>
+                <SelectItem value="5000+">$5,000+</SelectItem>
+                <SelectItem value="flexible">{t('budgetFlexible')}</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Interests */}
           <div>
             <label className="text-sm font-medium text-foreground block mb-3">{t('yourInterests')}</label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {interests.map(interest => (
+              {interestKeys.map(interest => (
                 <label key={interest.id} className="flex items-center gap-2">
                   <Checkbox 
                     checked={formData.interests.includes(interest.id)}
                     onCheckedChange={(c) => handleCheckboxChange(interest.id, !!c, 'interests')}
                   />
-                  <span className="text-sm">{interest.label}</span>
+                  <span className="text-sm">{t(interest.key)}</span>
                 </label>
               ))}
             </div>
+          </div>
+
+          {/* Special Requirements */}
+          <div>
+            <label className="text-sm font-medium text-foreground block mb-2">{t('specialRequirements')}</label>
+            <Input
+              name="specialRequirements"
+              value={formData.specialRequirements}
+              onChange={handleInputChange}
+              placeholder={t('specialRequirementsPlaceholder')}
+            />
           </div>
 
           {/* Comments */}

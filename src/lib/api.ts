@@ -72,6 +72,7 @@ export interface Tour {
     hotelId?: string;
     hotelIds?: string[];
   }[];
+  faqs?: { question: string; answer: string }[];
   parentTourName?: string;
   published?: boolean;
 }
@@ -95,13 +96,23 @@ export interface DayTour {
   published?: boolean;
 }
 
+function langParam(lang?: string): string {
+  return lang && lang !== "en" ? `&lang=${lang}` : "";
+}
+
 export const api = {
-  getTours: () => fetchJSON<Tour[]>("/api/tours?published=true"),
-  getTour: (id: string) => fetchJSON<Tour>(`/api/tours/${id}`),
-  getSubPackages: (parentTourName: string) =>
-    fetchJSON<Tour[]>(`/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}`),
-  getDayTours: () => fetchJSON<DayTour[]>("/api/day-tours?published=true"),
-  getDayTour: (id: string) => fetchJSON<DayTour>(`/api/day-tours/${id}`),
+  getTours: (lang?: string) =>
+    fetchJSON<Tour[]>(`/api/tours?published=true${langParam(lang)}`),
+  getTour: (id: string, lang?: string) =>
+    fetchJSON<Tour>(`/api/tours/${id}?_=1${langParam(lang)}`),
+  getSubPackages: (parentTourName: string, lang?: string) =>
+    fetchJSON<Tour[]>(
+      `/api/tours?published=true&parentTourName=${encodeURIComponent(parentTourName)}${langParam(lang)}`
+    ),
+  getDayTours: (lang?: string) =>
+    fetchJSON<DayTour[]>(`/api/day-tours?published=true${langParam(lang)}`),
+  getDayTour: (id: string, lang?: string) =>
+    fetchJSON<DayTour>(`/api/day-tours/${id}?_=1${langParam(lang)}`),
   getHotel: (id: string) => fetchJSON<Hotel>(`/api/hotels/${id}`),
 
   submitContact: (data: {
@@ -110,6 +121,28 @@ export const api = {
     subject: string;
     message: string;
     phone?: string;
+    country?: string;
+    countryOther?: string;
+    whatsapp?: string;
+    dates?: string;
+    selectedPackage?: string;
+    type?: string;
+    tailorMade?: {
+      title?: string;
+      arrivalDate?: string;
+      departureDate?: string;
+      pickupPlace?: string;
+      groupSize?: string;
+      numAdults?: string;
+      ageGroupAdults?: string[];
+      numChildren?: string;
+      ageGroupChildren?: string[];
+      tourDuration?: string;
+      accommodation?: string;
+      budgetRange?: string;
+      interests?: string[];
+      specialRequirements?: string;
+    };
   }) => postJSON("/api/contacts", data),
 
   submitBooking: (data: {

@@ -30,8 +30,8 @@ const DayTourDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-serif mb-4">Tour not found</h1>
-          <Button onClick={() => navigate('/')}>Return Home</Button>
+          <h1 className="text-2xl font-serif mb-4">{t('tourNotFound')}</h1>
+          <Button onClick={() => navigate('/')}>{t('returnHome')}</Button>
         </div>
       </div>
     );

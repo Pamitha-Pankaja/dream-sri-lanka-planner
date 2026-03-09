@@ -15,6 +15,8 @@ const ContactSection = () => {
     name: '',
     email: '',
     country: '',
+    countryOther: '',
+    whatsapp: '',
     dates: '',
     selectedPackage: '',
     message: '',
@@ -37,8 +39,9 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      const resolvedCountry = formData.country === 'Other' ? formData.countryOther : formData.country;
       const packageInfo = formData.selectedPackage ? `\nInterested Package: ${formData.selectedPackage}` : '';
-      const fullMessage = `From: ${formData.name} (${formData.country})\nTravel Dates: ${formData.dates}${packageInfo}\n\n${formData.message}`;
+      const fullMessage = `From: ${formData.name} (${resolvedCountry})\nTravel Dates: ${formData.dates}${packageInfo}\n\n${formData.message}`;
 
       await api.submitContact({
         name: formData.name,
@@ -47,23 +50,26 @@ const ContactSection = () => {
           ? `Inquiry about ${formData.selectedPackage}`
           : 'General Travel Inquiry',
         message: fullMessage,
+        country: resolvedCountry,
+        countryOther: formData.country === 'Other' ? formData.countryOther : undefined,
+        whatsapp: formData.whatsapp || undefined,
+        dates: formData.dates || undefined,
+        selectedPackage: formData.selectedPackage || undefined,
+        type: 'inquiry',
       });
 
       toast({
-        title: 'Inquiry Sent!',
-        description: 'We\'ll get back to you within 24 hours. Check your email!',
+        title: `${t('thankYou')}, ${formData.name}! ✈️`,
+        description: t('inquiryReceivedDesc'),
       });
-
-      const whatsappMessage = `Hello! I'm ${formData.name} from ${formData.country}. I'm interested in visiting Sri Lanka around ${formData.dates}.${packageInfo}\n\n${formData.message}`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
     } catch {
       toast({
-        title: 'Inquiry Sent!',
-        description: 'We\'ll get back to you within 24 hours.',
+        title: t('inquiryFallbackTitle'),
+        description: t('inquiryFallbackDesc'),
       });
     }
 
-    setFormData({ name: '', email: '', country: '', dates: '', selectedPackage: '', message: '' });
+    setFormData({ name: '', email: '', country: '', countryOther: '', whatsapp: '', dates: '', selectedPackage: '', message: '' });
     setIsSubmitting(false);
   };
 
@@ -153,7 +159,7 @@ const ContactSection = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                 >
-                  <option value="">Select country</option>
+                  <option value="">{t('selectCountry')}</option>
                   {countries.map(country => (
                     <option key={country} value={country}>{country}</option>
                   ))}
@@ -165,15 +171,48 @@ const ContactSection = () => {
                   {t('travelDates')}
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="dates"
                   name="dates"
                   value={formData.dates}
                   onChange={handleChange}
+                  min={new Date().toISOString().split('T')[0]}
                   className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="e.g., March 2025"
                 />
               </div>
+            </div>
+
+            {formData.country === 'Other' && (
+              <div className="mb-4">
+                <label htmlFor="countryOther" className="block text-sm font-medium mb-2">
+                  {t('specifyCountry')}
+                </label>
+                <input
+                  type="text"
+                  id="countryOther"
+                  name="countryOther"
+                  value={formData.countryOther}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  placeholder={t('enterYourCountry')}
+                />
+              </div>
+            )}
+
+            <div className="mb-4">
+              <label htmlFor="whatsapp" className="block text-sm font-medium mb-2">
+                {t('whatsappNumber')}
+              </label>
+              <input
+                type="tel"
+                id="whatsapp"
+                name="whatsapp"
+                value={formData.whatsapp}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                placeholder="e.g., +94 77 123 4567"
+              />
             </div>
 
             <div className="mb-4">
@@ -187,13 +226,13 @@ const ContactSection = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               >
-                <option value="">Select a package (optional)</option>
-                <optgroup label="Multi-Day Tours">
+                <option value="">{t('selectPackageOptional')}</option>
+                <optgroup label={t('multiDayTours')}>
                   {allPackages.filter(p => p.type === 'Multi-Day Tour').map(pkg => (
                     <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
                   ))}
                 </optgroup>
-                <optgroup label="Day Tours">
+                <optgroup label={t('dayTours')}>
                   {allPackages.filter(p => p.type === 'Day Tour').map(pkg => (
                     <option key={pkg.id} value={pkg.name}>{pkg.name}</option>
                   ))}
@@ -212,7 +251,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 rows={4}
                 className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                placeholder="Tell us about your dream Sri Lanka trip..."
+                placeholder={t('tellUsMore')}
               />
             </div>
 
@@ -224,7 +263,7 @@ const ContactSection = () => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending...
+                  {t('sending')}
                 </>
               ) : (
                 <>

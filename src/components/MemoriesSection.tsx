@@ -8,7 +8,6 @@ import {
 
 // Import memory photos
 import memory1 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.52 (1).jpeg';
-import memory2 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.52.jpeg';
 import memory3 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53 (1).jpeg';
 import memory4 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53 (2).jpeg';
 import memory5 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53.jpeg';
@@ -27,7 +26,7 @@ const MemoriesSection = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   const memories = [
-    memory1, memory2, memory3, memory4, memory5, memory6, memory7,
+    memory1, memory3, memory4, memory5, memory6, memory7,
     memory8, memory9, memory10, memory11, memory12, memory13
   ];
 
@@ -60,14 +59,14 @@ const MemoriesSection = () => {
           <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-2 rounded-full mb-6">
             <Camera className="w-5 h-5 text-primary" />
             <span className="text-primary font-semibold uppercase tracking-wider text-sm">
-              Captured Moments
+              {t('capturedMoments')}
             </span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-            Travel Memories
+            {t('travelMemories')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Real moments from real travelers. Experience the magic of Sri Lanka through their eyes.
+            {t('travelMemoriesDesc')}
           </p>
         </div>
 
@@ -114,16 +113,16 @@ const MemoriesSection = () => {
         <div className="mt-16 text-center">
           <div className="inline-block bg-card rounded-3xl p-8 md:p-12 shadow-elevated max-w-2xl">
             <h3 className="text-2xl md:text-3xl font-serif mb-4">
-              Create Your Own Memories
+              {t('createYourMemories')}
             </h3>
             <p className="text-muted-foreground mb-6">
-              Join thousands of travelers who've discovered the beauty of Sri Lanka
+              {t('createYourMemoriesDesc')}
             </p>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="btn-primary"
             >
-              Start Your Journey
+              {t('startYourJourney')}
             </button>
           </div>
         </div>

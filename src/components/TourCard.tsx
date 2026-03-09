@@ -99,7 +99,7 @@ const TourCard = ({ tour, index, onSelect, isExpanded, subPackages, onSubPackage
             <button className="self-start btn-primary flex items-center gap-2 group/btn mt-auto">
               {subPackages ? (
                 <>
-                  {isExpanded ? 'Hide Packages' : 'View Packages'}
+                  {isExpanded ? t('hidePackages') : t('viewPackages')}
                   <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                 </>
               ) : (
@@ -118,10 +118,10 @@ const TourCard = ({ tour, index, onSelect, isExpanded, subPackages, onSubPackage
         <div className="border-t border-border/50 bg-muted/30 p-5 md:p-6 lg:p-8 animate-fade-in">
           <div className="mb-5">
             <h4 className="text-lg md:text-xl font-serif font-medium text-foreground">
-              Choose Your Package
+              {t('choosePackage')}
             </h4>
             <p className="text-sm text-muted-foreground mt-1">
-              Select a duration that suits your travel plans
+              {t('selectDuration')}
             </p>
           </div>
 

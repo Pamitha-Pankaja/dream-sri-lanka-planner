@@ -1,6 +1,20 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Language, translations, languages } from '@/lib/translations';
 
+const STORAGE_KEY = 'anvil-lanka-language';
+
+function getStoredLanguage(): Language {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && ['en', 'he', 'de', 'fr', 'es', 'it', 'nl'].includes(stored)) {
+      return stored as Language;
+    }
+  } catch {
+    // localStorage not available
+  }
+  return 'en';
+}
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
@@ -13,7 +27,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(getStoredLanguage);
   const [languageChanged, setLanguageChanged] = useState(false);
 
   const isRTL = languages.find(l => l.code === language)?.rtl || false;
@@ -27,6 +41,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     if (lang !== language) {
       setLanguageState(lang);
       setLanguageChanged(true);
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch {
+        // localStorage not available
+      }
     }
   };
 
