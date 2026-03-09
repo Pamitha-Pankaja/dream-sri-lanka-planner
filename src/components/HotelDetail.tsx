@@ -207,6 +207,89 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
                   </div>
                 )}
               </div>
+
+              {/* TripAdvisor & Booking.com Ratings */}
+              {(hotel.tripAdvisorRating || hotel.bookingComRating) && (
+                <div className="flex flex-wrap gap-4 mt-8">
+                  {/* TripAdvisor */}
+                  {hotel.tripAdvisorRating && (
+                    <div className="flex items-center gap-4 bg-white dark:bg-card rounded-2xl p-5 border border-border/50 flex-1 min-w-[250px]" style={{ boxShadow: 'var(--shadow-soft)' }}>
+                      <div className="flex-shrink-0">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="20" cy="20" r="20" fill="#34E0A1"/>
+                          <circle cx="13.5" cy="20" r="5.5" stroke="white" strokeWidth="1.5" fill="none"/>
+                          <circle cx="26.5" cy="20" r="5.5" stroke="white" strokeWidth="1.5" fill="none"/>
+                          <circle cx="13.5" cy="20" r="2.5" fill="white"/>
+                          <circle cx="26.5" cy="20" r="2.5" fill="white"/>
+                          <path d="M20 14L17 17H23L20 14Z" fill="white"/>
+                          <path d="M8 17C8 17 10 13 13.5 13" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                          <path d="M32 17C32 17 30 13 26.5 13" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-2xl font-bold text-foreground">{hotel.tripAdvisorRating}</span>
+                          <span className="text-sm text-muted-foreground font-medium">/ 5</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs font-semibold text-[#00aa6c] uppercase tracking-wider">Tripadvisor</span>
+                          {hotel.tripAdvisorReviews && (
+                            <span className="text-xs text-muted-foreground">({hotel.tripAdvisorReviews.toLocaleString()} reviews)</span>
+                          )}
+                        </div>
+                        {/* Rating dots */}
+                        <div className="flex gap-1 mt-1.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <div
+                              key={i}
+                              className={`w-4 h-4 rounded-full ${
+                                i < Math.floor(hotel.tripAdvisorRating!)
+                                  ? 'bg-[#00aa6c]'
+                                  : i < hotel.tripAdvisorRating!
+                                    ? 'bg-[#00aa6c]/50'
+                                    : 'bg-gray-200 dark:bg-gray-700'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Booking.com */}
+                  {hotel.bookingComRating && (
+                    <div className="flex items-center gap-4 bg-white dark:bg-card rounded-2xl p-5 border border-border/50 flex-1 min-w-[250px]" style={{ boxShadow: 'var(--shadow-soft)' }}>
+                      <div className="flex-shrink-0">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="40" height="40" rx="8" fill="#003580"/>
+                          <text x="7" y="28" fill="white" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="20">B.</text>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <div className="bg-[#003580] text-white text-lg font-bold px-2.5 py-0.5 rounded-tl-lg rounded-tr-lg rounded-br-lg">
+                            {hotel.bookingComRating}
+                          </div>
+                          <span className="text-sm text-muted-foreground font-medium">/ 10</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs font-semibold text-[#003580] uppercase tracking-wider">Booking.com</span>
+                          {hotel.bookingComReviews && (
+                            <span className="text-xs text-muted-foreground">({hotel.bookingComReviews.toLocaleString()} reviews)</span>
+                          )}
+                        </div>
+                        {/* Rating bar */}
+                        <div className="mt-1.5 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden w-full max-w-[120px]">
+                          <div
+                            className="h-full bg-[#003580] rounded-full transition-all duration-500"
+                            style={{ width: `${(hotel.bookingComRating / 10) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Features - Right Side */}
