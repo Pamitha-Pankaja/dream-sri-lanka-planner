@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour, Hotel, api } from '@/lib/api';
-import { ArrowLeft, Calendar, MapPin, Check, Building2, ArrowUp, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Check, Building2, ArrowUp, ChevronRight, ChevronDown, HelpCircle } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import TourMap from './TourMap';
 import HotelDetail from './HotelDetail';
@@ -18,6 +18,7 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
   const [hotelCache, setHotelCache] = useState<Record<string, Hotel>>({});
   const [loadingHotel, setLoadingHotel] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     onHotelDetailChange?.(!!selectedHotel);
@@ -146,7 +147,7 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
       {/* Highlights & CTA */}
       <div className="grid lg:grid-cols-3 gap-8 mb-16">
         <div className="lg:col-span-2 bg-muted rounded-2xl p-8">
-          <h2 className="text-2xl font-serif mb-6">Highlights</h2>
+          <h2 className="text-2xl font-serif mb-6">{t('highlights')}</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {tour.highlights.map((highlight, idx) => (
               <div key={idx} className="flex items-start gap-3">
@@ -160,9 +161,9 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
         </div>
 
         <div className="bg-card rounded-2xl p-8 shadow-elevated flex flex-col gap-4">
-          <h3 className="text-xl font-serif mb-2">Ready to Book?</h3>
+          <h3 className="text-xl font-serif mb-2">{t('readyToBook')}</h3>
           <p className="text-muted-foreground text-sm mb-4">
-            Contact us to customize this itinerary and get a personalized quote.
+            {t('contactToCustomize')}
           </p>
           <button onClick={scrollToContact} className="btn-primary w-full">
             {t('inquireNow')}
@@ -287,11 +288,54 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
         </div>
       </div>
 
+      {/* FAQs */}
+      {tour.faqs && tour.faqs.length > 0 && (
+        <div className="mb-16">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <HelpCircle className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl sm:text-3xl font-serif text-center">{t('faqTitle')}</h2>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {tour.faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-card rounded-2xl shadow-soft overflow-hidden border border-border/50 transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-5 md:p-6 text-left group"
+                >
+                  <span className="font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${
+                      openFaqIndex === idx ? 'rotate-180 text-primary' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openFaqIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
+                    <div className="border-t border-border/50 pt-4">
+                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Bottom CTA */}
       <div className="bg-primary rounded-3xl p-8 md:p-12 text-center text-primary-foreground">
-        <h2 className="text-2xl sm:text-3xl font-serif mb-4">Ready to Experience {tour.name}?</h2>
+        <h2 className="text-2xl sm:text-3xl font-serif mb-4">{t('readyToExperience')} {tour.name}?</h2>
         <p className="mb-8 opacity-90 max-w-2xl mx-auto">
-          Let us help you plan the perfect Sri Lankan adventure. Every journey is customized to your preferences.
+          {t('letUsHelpPlan')}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button onClick={scrollToContact} className="btn-secondary">
