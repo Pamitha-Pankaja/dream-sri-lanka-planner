@@ -28,6 +28,25 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Preload hotel names for all referenced hotel IDs
+  useEffect(() => {
+    const allHotelIds = new Set<string>();
+    tour.itinerary.forEach((day) => {
+      if (day.hotelIds) day.hotelIds.forEach((id) => allHotelIds.add(id));
+      else if (day.hotelId) allHotelIds.add(day.hotelId);
+    });
+    const idsToFetch = [...allHotelIds].filter((id) => !hotelCache[id]);
+    if (idsToFetch.length === 0) return;
+    idsToFetch.forEach(async (id) => {
+      try {
+        const hotel = await api.getHotel(id);
+        setHotelCache((prev) => ({ ...prev, [id]: hotel }));
+      } catch (e) {
+        // silently skip
+      }
+    });
+  }, [tour]);
+
   // Extract location images from itinerary
   const getLocationImages = () => {
     const locationImages: Record<string, string> = {};
@@ -209,26 +228,41 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
                   <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{day.description}</p>
 
-                  {/* Accommodation / Hotel */}
-                  {(day.accommodation || day.hotelId) && (
-                    <div
-                      className={`flex items-center gap-2 mb-3 bg-secondary/50 px-3 py-2 rounded-lg w-fit ${
-                        day.hotelId ? 'cursor-pointer hover:bg-primary/10 hover:border-primary/30 border border-transparent transition-all group/hotel' : ''
-                      }`}
-                      onClick={() => day.hotelId && handleHotelClick(day.hotelId)}
-                    >
-                      <Building2 className={`w-4 h-4 ${day.hotelId ? 'text-primary' : 'text-primary'}`} />
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs text-muted-foreground">{t('overnightAt')}</span>
-                        <span className={`text-sm font-semibold ${day.hotelId ? 'text-primary group-hover/hotel:underline' : 'text-foreground'}`}>
-                          {loadingHotel === day.hotelId ? 'Loading...' : day.accommodation}
-                        </span>
+                  {/* Accommodation / Hotels */}
+                  {(() => {
+                    const dayHotelIds = day.hotelIds || (day.hotelId ? [day.hotelId] : []);
+                    const hasHotels = dayHotelIds.length > 0 || day.accommodation;
+                    if (!hasHotels) return null;
+                    return (
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {dayHotelIds.length > 0 ? (
+                          dayHotelIds.map((hId) => {
+                            const cached = hotelCache[hId];
+                            const hotelName = cached?.name || day.accommodation || 'Hotel';
+                            return (
+                              <div
+                                key={hId}
+                                className="flex items-center gap-2 bg-secondary/50 px-3 py-2 rounded-lg cursor-pointer hover:bg-primary/10 hover:border-primary/30 border border-transparent transition-all group/hotel"
+                                onClick={() => handleHotelClick(hId)}
+                              >
+                                <Building2 className="w-4 h-4 text-primary flex-shrink-0" />
+                                <span className="text-sm font-semibold text-primary group-hover/hotel:underline">
+                                  {loadingHotel === hId ? 'Loading...' : hotelName}
+                                </span>
+                                <ChevronRight className="w-4 h-4 text-primary/60 group-hover/hotel:translate-x-0.5 transition-transform" />
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div className="flex items-center gap-2 bg-secondary/50 px-3 py-2 rounded-lg">
+                            <Building2 className="w-4 h-4 text-primary" />
+                            <span className="text-xs text-muted-foreground">{t('overnightAt')}</span>
+                            <span className="text-sm font-semibold text-foreground">{day.accommodation}</span>
+                          </div>
+                        )}
                       </div>
-                      {day.hotelId && (
-                        <ChevronRight className="w-4 h-4 text-primary/60 group-hover/hotel:translate-x-0.5 transition-transform" />
-                      )}
-                    </div>
-                  )}
+                    );
+                  })()}
 
                   {/* Activities */}
                   <div className="flex flex-wrap gap-1.5 mt-auto">

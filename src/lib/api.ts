@@ -70,6 +70,7 @@ export interface Tour {
     activities: string[];
     accommodation?: string;
     hotelId?: string;
+    hotelIds?: string[];
   }[];
   parentTourName?: string;
   published?: boolean;
