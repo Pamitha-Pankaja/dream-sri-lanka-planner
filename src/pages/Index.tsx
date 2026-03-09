@@ -16,6 +16,8 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const Index = () => {
   const [showWelcome, setShowWelcome] = useState(true);
+  const [tourDetailMode, setTourDetailMode] = useState(false);
+  const [hotelDetailMode, setHotelDetailMode] = useState(false);
   const { languageChanged, resetLanguageChanged } = useLanguage();
   const location = useLocation();
 
@@ -55,16 +57,24 @@ const Index = () => {
       {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
       
       <div className={`min-h-screen ${showWelcome ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <WhySriLanka />
-        <ToursSection />
-        <DayToursSection />
-        <MemoriesSection />
-        <ReviewsSection />
-        <ContactSection />
-        <Footer />
+        <Navbar hidden={hotelDetailMode} forceScrolled={tourDetailMode} />
+        {!tourDetailMode && (
+          <>
+            <HeroSection />
+            <AboutSection />
+            <WhySriLanka />
+          </>
+        )}
+        <ToursSection onDetailModeChange={setTourDetailMode} onHotelDetailChange={setHotelDetailMode} />
+        {!tourDetailMode && (
+          <>
+            <DayToursSection />
+            <MemoriesSection />
+            <ReviewsSection />
+            <ContactSection />
+            <Footer />
+          </>
+        )}
         
         {/* Floating WhatsApp Button */}
         <WhatsAppButton floating />

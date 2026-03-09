@@ -45,6 +45,10 @@ export interface Hotel {
   mapCoordinates?: { lat: number; lng: number };
   starRating?: number;
   category?: string;
+  tripAdvisorRating?: number;
+  tripAdvisorReviews?: number;
+  bookingComRating?: number;
+  bookingComReviews?: number;
 }
 
 export interface Tour {
@@ -66,6 +70,7 @@ export interface Tour {
     activities: string[];
     accommodation?: string;
     hotelId?: string;
+    hotelIds?: string[];
   }[];
   faqs?: { question: string; answer: string }[];
   parentTourName?: string;

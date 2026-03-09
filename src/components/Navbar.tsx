@@ -6,18 +6,24 @@ import Logo from './Logo';
 import TailorMadeModal from './TailorMadeModal';
 import { Menu, X, Sparkles } from 'lucide-react';
 
-const Navbar = () => {
+interface NavbarProps {
+  hidden?: boolean;
+  forceScrolled?: boolean;
+}
+
+const Navbar = ({ hidden, forceScrolled }: NavbarProps) => {
   const { t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isScrolled = forceScrolled || scrolled;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTailorMadeOpen, setIsTailorMadeOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -78,9 +84,11 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-background/95 backdrop-blur-md shadow-soft py-3'
-            : 'bg-transparent py-5'
+          hidden
+            ? '-translate-y-full opacity-0 pointer-events-none'
+            : isScrolled
+              ? 'bg-background/95 backdrop-blur-md shadow-soft py-3'
+              : 'bg-transparent py-5'
         }`}
       >
         <div className="container-wide flex items-center justify-between px-4 sm:px-6 lg:px-8">

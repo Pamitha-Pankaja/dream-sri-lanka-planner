@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useTours, useSubPackages } from '@/hooks/useTours';
 import TourCard from './TourCard';
@@ -7,7 +7,12 @@ import { Loader2 } from 'lucide-react';
 
 const EXPANDABLE_TOUR_NAME = 'Cultural and Classic';
 
-const ToursSection = () => {
+interface ToursSectionProps {
+  onDetailModeChange?: (isDetailMode: boolean) => void;
+  onHotelDetailChange?: (isHotelDetail: boolean) => void;
+}
+
+const ToursSection = ({ onDetailModeChange, onHotelDetailChange }: ToursSectionProps) => {
   const { t } = useLanguage();
   const [selectedTour, setSelectedTour] = useState<string | null>(null);
   const [expandedTourId, setExpandedTourId] = useState<string | null>(null);
@@ -17,11 +22,16 @@ const ToursSection = () => {
   const activeTour = tours.find(tour => tour.id === selectedTour)
     || subPackages.find(tour => tour.id === selectedTour);
 
+  useEffect(() => {
+    onDetailModeChange?.(!!activeTour);
+  }, [!!activeTour]);
+
   if (activeTour) {
     return (
       <section id="tours" className="section-padding bg-background">
         <TourDetail
           tour={activeTour}
+          onHotelDetailChange={onHotelDetailChange}
           onBack={() => {
             const wasSubPackage = subPackages.some(sp => sp.id === selectedTour);
             const expandableTour = tours.find(t => t.name === EXPANDABLE_TOUR_NAME);
