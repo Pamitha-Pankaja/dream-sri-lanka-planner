@@ -26,7 +26,7 @@ const MemoriesSection = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   const memories = [
-    memory1, memory2, memory3, memory4, memory5, memory6, memory7,
+    memory1, memory3, memory4, memory5, memory6, memory7,
     memory8, memory9, memory10, memory11, memory12, memory13
   ];
 
