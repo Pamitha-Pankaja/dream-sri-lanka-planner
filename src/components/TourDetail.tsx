@@ -9,14 +9,19 @@ import HotelDetail from './HotelDetail';
 interface TourDetailProps {
   tour: Tour;
   onBack: () => void;
+  onHotelDetailChange?: (isHotelDetail: boolean) => void;
 }
 
-const TourDetail = ({ tour, onBack }: TourDetailProps) => {
+const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
   const { t } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
   const [hotelCache, setHotelCache] = useState<Record<string, Hotel>>({});
   const [loadingHotel, setLoadingHotel] = useState<string | null>(null);
+
+  useEffect(() => {
+    onHotelDetailChange?.(!!selectedHotel);
+  }, [!!selectedHotel]);
 
   // Track scroll position to show/hide scroll to top button
   useEffect(() => {
@@ -266,7 +271,7 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
 
                   {/* Activities */}
                   <div className="flex flex-wrap gap-1.5 mt-auto">
-                    {day.activities.slice(0, 4).map((activity, actIdx) => (
+                    {day.activities.map((activity, actIdx) => (
                       <span
                         key={actIdx}
                         className="px-2.5 py-1 bg-secondary/80 rounded-full text-xs font-medium text-secondary-foreground border border-border/50"
@@ -274,11 +279,6 @@ const TourDetail = ({ tour, onBack }: TourDetailProps) => {
                         {activity}
                       </span>
                     ))}
-                    {day.activities.length > 4 && (
-                      <span className="px-2.5 py-1 text-xs font-medium text-primary">
-                        +{day.activities.length - 4} more
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>

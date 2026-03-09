@@ -102,7 +102,7 @@ const HotelDetail = ({ hotel, onBack }: HotelDetailProps) => {
         {/* Back Button - Floating */}
         <button
           onClick={onBack}
-          className="absolute top-6 left-6 z-10 inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 backdrop-blur-md hover:bg-white/25 text-white font-medium rounded-full border border-white/20 transition-all duration-300 group"
+          className="absolute top-6 left-6 z-[60] inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 backdrop-blur-md hover:bg-white/25 text-white font-medium rounded-full border border-white/20 transition-all duration-300 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-sm">Back to Itinerary</span>
