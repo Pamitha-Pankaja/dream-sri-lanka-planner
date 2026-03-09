@@ -8,7 +8,6 @@ import {
 
 // Import memory photos
 import memory1 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.52 (1).jpeg';
-import memory2 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.52.jpeg';
 import memory3 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53 (1).jpeg';
 import memory4 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53 (2).jpeg';
 import memory5 from '@/assets/Memories/WhatsApp Image 2026-01-13 at 18.58.53.jpeg';
