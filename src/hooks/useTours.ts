@@ -11,6 +11,15 @@ export function useTours() {
   });
 }
 
+export function useAllPublishedTours() {
+  const { language } = useLanguage();
+  return useQuery({
+    queryKey: ["tours", "all-published", language],
+    queryFn: () => api.getAllPublishedTours(language),
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export function useTour(id: string | undefined) {
   const { language } = useLanguage();
   return useQuery({

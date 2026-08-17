@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { useTours, useSubPackages } from '@/hooks/useTours';
+import { useAllPublishedTours } from '@/hooks/useTours';
+import { Tour } from '@/lib/api';
 import TourCard from './TourCard';
 import TourDetail from './TourDetail';
 import { Loader2 } from 'lucide-react';
-
-const EXPANDABLE_TOUR_NAME = 'Cultural and Classic';
 
 interface ToursSectionProps {
   onDetailModeChange?: (isDetailMode: boolean) => void;
@@ -16,15 +15,31 @@ const ToursSection = ({ onDetailModeChange, onHotelDetailChange }: ToursSectionP
   const { t } = useLanguage();
   const [selectedTour, setSelectedTour] = useState<string | null>(null);
   const [expandedTourId, setExpandedTourId] = useState<string | null>(null);
-  const { data: tours = [], isLoading } = useTours();
-  const { data: subPackages = [] } = useSubPackages(EXPANDABLE_TOUR_NAME);
+  const { data: allTours = [], isLoading } = useAllPublishedTours();
 
-  const activeTour = tours.find(tour => tour.id === selectedTour)
-    || subPackages.find(tour => tour.id === selectedTour);
+  const tours = useMemo(
+    () => allTours.filter((tour) => !tour.parentTourName),
+    [allTours]
+  );
+
+  const childrenByParent = useMemo(() => {
+    const map: Record<string, Tour[]> = {};
+    for (const tour of allTours) {
+      if (!tour.parentTourName) continue;
+      if (!map[tour.parentTourName]) map[tour.parentTourName] = [];
+      map[tour.parentTourName].push(tour);
+    }
+    for (const children of Object.values(map)) {
+      children.sort((a, b) => (a.duration?.days || 0) - (b.duration?.days || 0));
+    }
+    return map;
+  }, [allTours]);
+
+  const activeTour = allTours.find((tour) => tour.id === selectedTour);
 
   useEffect(() => {
     onDetailModeChange?.(!!activeTour);
-  }, [!!activeTour]);
+  }, [activeTour, onDetailModeChange]);
 
   if (activeTour) {
     return (
@@ -33,11 +48,10 @@ const ToursSection = ({ onDetailModeChange, onHotelDetailChange }: ToursSectionP
           tour={activeTour}
           onHotelDetailChange={onHotelDetailChange}
           onBack={() => {
-            const wasSubPackage = subPackages.some(sp => sp.id === selectedTour);
-            const expandableTour = tours.find(t => t.name === EXPANDABLE_TOUR_NAME);
+            const parent = tours.find((item) => item.name === activeTour.parentTourName);
             setSelectedTour(null);
-            if (wasSubPackage && expandableTour) {
-              setExpandedTourId(expandableTour.id);
+            if (parent) {
+              setExpandedTourId(parent.id);
             }
           }}
         />
@@ -67,7 +81,8 @@ const ToursSection = ({ onDetailModeChange, onHotelDetailChange }: ToursSectionP
         ) : (
           <div className="space-y-8">
             {tours.map((tour, index) => {
-              const isExpandable = tour.name === EXPANDABLE_TOUR_NAME;
+              const subPackages = childrenByParent[tour.name];
+              const isExpandable = !!subPackages?.length;
               return (
                 <TourCard
                   key={tour.id}
@@ -75,13 +90,13 @@ const ToursSection = ({ onDetailModeChange, onHotelDetailChange }: ToursSectionP
                   index={index}
                   onSelect={() => {
                     if (isExpandable) {
-                      setExpandedTourId(prev => prev === tour.id ? null : tour.id);
+                      setExpandedTourId((prev) => (prev === tour.id ? null : tour.id));
                     } else {
                       setSelectedTour(tour.id);
                     }
                   }}
                   isExpanded={expandedTourId === tour.id}
-                  subPackages={isExpandable && subPackages.length > 0 ? subPackages : undefined}
+                  subPackages={isExpandable ? subPackages : undefined}
                   onSubPackageSelect={(subTour) => setSelectedTour(subTour.id)}
                 />
               );

@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Polyline, InfoWindow } from '@react-google-maps/api';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
+import { useLocations } from '@/hooks/useLocations';
 
 // Import location images
 import kalpitiyaBeachSunset from '@/assets/kalpitiya-beach-sunset.jpg';
@@ -90,7 +92,9 @@ const mapOptions: google.maps.MapOptions = {
 
 const TourMap = ({ route, locationImages }: TourMapProps) => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [selectedMarker, setSelectedMarker] = React.useState<number | null>(null);
+  const { data: dbLocations } = useLocations();
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
@@ -98,6 +102,28 @@ const TourMap = ({ route, locationImages }: TourMapProps) => {
 
   // Get destinations with custom images if provided
   const destinations = useMemo(() => getDestinations(locationImages), [locationImages]);
+
+  // Create a lookup map from location names to their slugs
+  const locationSlugMap = useMemo(() => {
+    const map: Record<string, string> = {};
+    dbLocations?.forEach((loc) => {
+      map[loc.name.toLowerCase()] = loc.slug;
+    });
+    return map;
+  }, [dbLocations]);
+
+  // Get the slug for a place name (for navigation)
+  const getLocationSlug = (placeName: string): string | null => {
+    return locationSlugMap[placeName.toLowerCase()] || null;
+  };
+
+  // Navigate to location detail page
+  const handleViewDetails = (placeName: string) => {
+    const slug = getLocationSlug(placeName);
+    if (slug) {
+      navigate(`/locations/${slug}`);
+    }
+  };
 
   // Get coordinates for route destinations
   const routeCoords = useMemo(() => {
@@ -214,9 +240,17 @@ const TourMap = ({ route, locationImages }: TourMapProps) => {
                 {selectedMarker + 1}. {route[selectedMarker]}
               </h4>
               {destinations[route[selectedMarker]].description && (
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 mb-2">
                   {destinations[route[selectedMarker]].description}
                 </p>
+              )}
+              {getLocationSlug(route[selectedMarker]) && (
+                <button
+                  onClick={() => handleViewDetails(route[selectedMarker])}
+                  className="w-full mt-2 px-3 py-1.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  View Details
+                </button>
               )}
             </div>
           </InfoWindow>
@@ -225,18 +259,32 @@ const TourMap = ({ route, locationImages }: TourMapProps) => {
 
       {/* Route legend */}
       <div className="flex flex-wrap justify-center gap-4 text-sm">
-        {route.map((place, idx) => (
-          <div
-            key={place}
-            className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors"
-            onClick={() => setSelectedMarker(idx)}
-          >
-            <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow-md">
-              {idx + 1}
-            </span>
-            <span className="text-muted-foreground hover:text-foreground">{place}</span>
-          </div>
-        ))}
+        {route.map((place, idx) => {
+          const hasLocationPage = !!getLocationSlug(place);
+          return (
+            <div
+              key={place}
+              className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors group"
+              onClick={() => setSelectedMarker(idx)}
+            >
+              <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow-md">
+                {idx + 1}
+              </span>
+              <span className="text-muted-foreground group-hover:text-foreground">{place}</span>
+              {hasLocationPage && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleViewDetails(place);
+                  }}
+                  className="ml-1 px-2 py-0.5 text-xs bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+                >
+                  Details
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

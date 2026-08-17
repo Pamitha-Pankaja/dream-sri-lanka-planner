@@ -96,6 +96,58 @@ export interface DayTour {
   published?: boolean;
 }
 
+export interface TravelMemory {
+  id: string;
+  imageUrl: string;
+  title?: string;
+  location?: string;
+  caption?: string;
+  order: number;
+  published: boolean;
+}
+
+export interface LocationAttraction {
+  name: string;
+  description: string;
+  distance?: string;
+  duration?: string;
+  image?: string;
+}
+
+export interface LocationOpeningHours {
+  day: string;
+  openTime: string;
+  closeTime: string;
+  isClosed?: boolean;
+}
+
+export interface Location {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  briefDescription: string;
+  heroImage: string;
+  galleryImages: string[];
+  mapCoordinates: { lat: number; lng: number };
+  attractions: LocationAttraction[];
+  openingHours: LocationOpeningHours[];
+  dressCode?: string;
+  entranceFee?: {
+    local?: string;
+    foreign?: string;
+    children?: string;
+  };
+  bestTimeToVisit?: string;
+  tips?: string[];
+  facilities?: string[];
+  accessibility?: string;
+  averageVisitDuration?: string;
+  category: "cultural" | "natural" | "beach" | "wildlife" | "adventure" | "historical" | "religious";
+  tags: string[];
+  published: boolean;
+}
+
 function langParam(lang?: string): string {
   return lang && lang !== "en" ? `&lang=${lang}` : "";
 }
@@ -103,6 +155,8 @@ function langParam(lang?: string): string {
 export const api = {
   getTours: (lang?: string) =>
     fetchJSON<Tour[]>(`/api/tours?published=true${langParam(lang)}`),
+  getAllPublishedTours: (lang?: string) =>
+    fetchJSON<Tour[]>(`/api/tours?published=true&all=true${langParam(lang)}`),
   getTour: (id: string, lang?: string) =>
     fetchJSON<Tour>(`/api/tours/${id}?_=1${langParam(lang)}`),
   getSubPackages: (parentTourName: string, lang?: string) =>
@@ -155,4 +209,22 @@ export const api = {
     preferredDate: string;
     specialRequests?: string;
   }) => postJSON("/api/bookings", data),
+
+  getTravelMemories: () =>
+    fetchJSON<TravelMemory[]>("/api/travel-memories?published=true"),
+
+  getLocations: () =>
+    fetchJSON<Location[]>("/api/locations?published=true"),
+  
+  getLocation: (idOrSlug: string) =>
+    fetchJSON<Location>(`/api/locations/${idOrSlug}`),
+  
+  getLocationByName: async (name: string): Promise<Location | null> => {
+    try {
+      const locations = await fetchJSON<Location[]>("/api/locations?published=true");
+      return locations.find((l) => l.name.toLowerCase() === name.toLowerCase()) || null;
+    } catch {
+      return null;
+    }
+  },
 };

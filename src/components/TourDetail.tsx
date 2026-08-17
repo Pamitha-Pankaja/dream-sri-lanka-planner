@@ -119,11 +119,15 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
 
       {/* Hero Section */}
       <div className="relative rounded-3xl overflow-hidden mb-12 h-[50vh] min-h-[400px]">
-        <img
-          src={tour.heroImage}
-          alt={tour.name}
-          className="w-full h-full object-cover"
-        />
+        {tour.heroImage ? (
+          <img
+            src={tour.heroImage}
+            alt={tour.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-secondary to-muted" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -198,11 +202,15 @@ const TourDetail = ({ tour, onBack, onHotelDetailChange }: TourDetailProps) => {
               <div className="flex flex-col md:flex-row md:h-[280px]">
                 {/* Image Section - Fixed width on desktop */}
                 <div className="relative h-56 md:h-full md:w-2/5 flex-shrink-0 overflow-hidden">
-                  <img
-                    src={day.image}
-                    alt={day.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  {day.image ? (
+                    <img
+                      src={day.image}
+                      alt={day.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-secondary to-muted" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
                   {/* Day Badge */}

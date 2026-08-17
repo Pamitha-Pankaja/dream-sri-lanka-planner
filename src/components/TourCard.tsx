@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Tour } from '@/lib/api';
-import { Calendar, ChevronRight, ChevronDown, Waves, TreePine, Compass, Palmtree, Heart, Camera, Sparkles, MapPin } from 'lucide-react';
+import { Calendar, ChevronRight, ChevronDown, Waves, TreePine, Compass, Palmtree, Heart, Camera, Sparkles, MapPin, Leaf, Users, Gem, Coffee } from 'lucide-react';
 
 interface TourCardProps {
   tour: Tour;
@@ -21,6 +21,13 @@ const tagIcons: Record<string, React.ElementType> = {
   adventure: Sparkles,
   wildlife: Camera,
   relaxation: Heart,
+  wellness: Leaf,
+  family: Users,
+  romance: Heart,
+  honeymoon: Heart,
+  luxury: Gem,
+  tea: Coffee,
+  heritage: Sparkles,
 };
 
 const TourCard = ({ tour, index, onSelect, isExpanded, subPackages, onSubPackageSelect }: TourCardProps) => {
@@ -39,11 +46,15 @@ const TourCard = ({ tour, index, onSelect, isExpanded, subPackages, onSubPackage
         <div className="flex flex-col md:flex-row md:h-[320px]">
           {/* Image Section */}
           <div className="relative h-64 md:h-full md:w-2/5 flex-shrink-0 overflow-hidden">
-            <img
-              src={tour.heroImage}
-              alt={tour.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+            {tour.heroImage ? (
+              <img
+                src={tour.heroImage}
+                alt={tour.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-secondary to-muted" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
             {/* Duration Badge — hidden for parent tours with sub-packages */}
@@ -138,11 +149,15 @@ const TourCard = ({ tour, index, onSelect, isExpanded, subPackages, onSubPackage
               >
                 {/* Image */}
                 <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={pkg.heroImage}
-                    alt={pkg.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover/pkg:scale-105"
-                  />
+                  {pkg.heroImage ? (
+                    <img
+                      src={pkg.heroImage}
+                      alt={pkg.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover/pkg:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-secondary to-muted" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
                   <div className="absolute top-3 left-3 bg-primary text-primary-foreground px-3 py-1.5 rounded-sm flex items-center gap-1.5 shadow-lg">
